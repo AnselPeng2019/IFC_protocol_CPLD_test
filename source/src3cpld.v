@@ -43,17 +43,20 @@ module src3cpld (
 
 
     // statemachine parameters
-    parameter	[2:0]idle            = 3'b000;					//Idle
-    parameter	[2:0]pwr_on          = 3'b001;		    		//Power on
-    parameter	[2:0]system_up       = 3'b010;		        	//System up
-    parameter	[2:0]swr_assert      = 3'b100;	        		//CPLD software reset, reserve CPLD Registers value
+    parameter	[2:0]st_idle            = 3'b000;					//Idle
+    parameter	[2:0]st_pwr_on          = 3'b001;		    		//Power on
+    parameter	[2:0]st_system_up       = 3'b010;		        	//System up
+    parameter	[2:0]st_swr_assert      = 3'b100;	        		//CPLD software reset, reserve CPLD Registers value
+    parameter	[2:0]st_read_block      = 3'b101;	        		//read block data
+    parameter	[2:0]st_write_block     = 3'b110;	        		//write block data
 
     // uart_def Parameters
-    parameter BSN        = 4     ;
+    parameter BSN        = 6     ;
     parameter BRN        = 4     ;
     parameter CLK_FRE    = 50    ;
     parameter BAUD_RATE  = 115200;
 
+    parameter bytes_n    = 10;
 
     // wire	por_drive_n;			//POR drive control
     reg		pll_rst;			//PLL  ##删除赋初值
@@ -61,8 +64,8 @@ module src3cpld (
     wire	pll_100M;
     wire	high_cpld_clk;			//100MHz from PLL
     wire    clk;
-    reg	    [7:0] cpld_addr;			//CPLD Registers address
-    wire	[15:0]cpld_data;			//CPLD Registers data
+    reg	    [7:0] cpld_addr;		//CPLD Registers address
+    wire	[15:0]cpld_data;		//CPLD Registers data
     wire	cpld_cs;				//CPLD Registers chip select
     wire	reset_req;
     wire	[2:0]qspi_bank;			//QSPI Flash bank select
@@ -160,19 +163,45 @@ module src3cpld (
     wire [31:0]cnt;                         //30~33，用于读写计数使用
     reg [15:0] test_16bits;                 //34, 测试16bit通信寄存器
 
-    /*used for FPGA test                    reg address*/
-    reg FPGA_SYS_INFO_SERIALNUMBER;         //0x00, 设备序列号
-    reg FPGA_SYS_INFO_HWREVISION;           //0x02, 设备硬件版本号
-    reg FPGA_SYS_INFO_SOFTREVISION;         //0x04, 软件版本号
-    reg FPGA_SYS_STA_STATUS;                //0x10, FPGA 状态寄存器
-    reg FPGA_SYS_STA_ERROR;                 //0x12, 运行错误码
-    reg FPGA_SYS_STA_TIMESINCESTART;        //0x14, 设备运行时间
-    reg FPGA_HANDSHAKE_CHANNEL0;            //0x40, FPGA 握手寄存器
-    reg FPGA_COMM_CHECKSUM;                 //0x50, 设备通信通讯通道校验码
-    reg FPGA_COMM_DATALEN;                  //0x52, 设备通信通讯通道传输数据长度
-    reg FPGA_COMM_DATA;                     //0x54, 设备通信通讯通道传输数据
+    /*used for FPGA test                             reg address*/
+    reg [15:0] FPGA_SYS_INFO_SERIALNUMBER;         //0x00, 设备序列号
+    reg [15:0] FPGA_SYS_INFO_HWREVISION;           //0x02, 设备硬件版本号
+    reg [15:0] FPGA_SYS_INFO_SOFTREVISION;         //0x04, 软件版本号
+    reg [15:0] FPGA_SYS_STA_STATUS;                //0x10, FPGA 状态寄存器
+    reg [15:0] FPGA_SYS_STA_ERROR;                 //0x12, 运行错误码
+    reg [15:0] FPGA_SYS_STA_TIMESINCESTART;        //0x14, 设备运行时间
+    reg [15:0] FPGA_HANDSHAKE_CHANNEL0;            //0x40, FPGA 握手寄存器
+    reg [15:0] FPGA_COMM_CHECKSUM;                 //0x50, 设备通信通讯通道校验码
+    reg [15:0] FPGA_COMM_DATALEN;                  //0x52, 设备通信通讯通道传输数据长度
+    reg [15:0] FPGA_COMM_DATA;                     //0x54, 设备通信通讯通道传输数据
+
+    reg [15:0] data_len;
 
 
+    wire hs_lock;
+    wire hs_read;
+    wire hs_write;
+    wire hs_ready;
+    wire hs_write_ok;
+    wire hs_fun_en;
+    wire [7:0] hs_cmd_code;
+
+    assign hs_lock              = FPGA_HANDSHAKE_CHANNEL0[0];
+    assign hs_read              = FPGA_HANDSHAKE_CHANNEL0[1];
+    assign hs_write             = FPGA_HANDSHAKE_CHANNEL0[2];
+    assign hs_ready             = FPGA_HANDSHAKE_CHANNEL0[3];
+    assign hs_write_ok          = FPGA_HANDSHAKE_CHANNEL0[4];
+    assign hs_fun_en            = FPGA_HANDSHAKE_CHANNEL0[5];
+    assign hs_cmd_code[7:0]     = FPGA_HANDSHAKE_CHANNEL0[15:8];
+
+    // circular_buffer Inputs
+    wire   cb_write_enable;
+    wire   cb_read_enable;
+    reg   [16-1:0]  cb_data_in;
+    wire  [16-1:0]  cb_data_out;
+
+
+    //用于测试读写次数
     reg     [31:0]cnt_r;
     reg     [31:0]cnt_w;
 
@@ -316,35 +345,35 @@ module src3cpld (
     assign  ifc_ad[15:0] = (cpld_cs==0 && ifc_oe_b==0) ? {regd[0], regd[1], regd[2],  regd[3],  regd[4],  regd[5],  regd[6],  regd[7],
                                                           regd[8], regd[9], regd[10], regd[11], regd[12], regd[13], regd[14], regd[15]} : 16'bzzzz_zzzz_zzzz_zzzz;
 
-    reg [1:0] cs_egde;
-    wire  cs_pe;            //pos edge
-    always @(posedge high_cpld_clk or negedge rst_n ) begin
-        if(rst_n == 0) begin
-            cs_egde <= 0;
-        end
-        else begin
-            cs_egde[0] <= ifc_avd;
-            cs_egde[1] <= cs_egde[0];
-        end
-    end
-    assign cs_pe = (cs_egde[0] == 1 && cs_egde[1] == 0);
 
-    reg [2:0] avd_edge;
-    wire      avd_ne, avd_pe;
-    assign avd_ne = (avd_edge[0] == 0 && avd_edge[1] == 1);
-    assign avd_pe = (avd_edge[0] == 1 && avd_edge[1] == 0);
-    //获取AVD信号的下降沿
-    always @(posedge high_cpld_clk or negedge rst_n ) begin
-        if(rst_n == 0) begin
-            avd_edge <= 0;
-        end
-        else begin
-            avd_edge[0] <= ifc_avd;
-            avd_edge[1] <= avd_edge[0];
-            avd_edge[2] <= avd_edge[1];
-        end
-    end
-    
+    wire cs_ne, cs_pe;
+    get_signal_edge  u_get_signal_edge_cs (
+        .clk                     ( high_cpld_clk        ),
+        .rst_n                   ( rst_n      ),
+        .signal                  ( cpld_cs     ),
+
+        .pos_edge                ( cs_pe   ),
+        .neg_edge                ( cs_ne   )
+    );    
+
+    wire      avd_ne, avd_pe, avd_ne_1cy;
+    get_signal_edge  u_get_signal_edge_avd (
+        .clk                     ( high_cpld_clk        ),
+        .rst_n                   ( rst_n      ),
+        .signal                  ( ifc_avd     ),
+
+        .pos_edge                ( avd_pe   ),
+        .neg_edge                ( avd_ne   )
+    );    
+    delay_cy #(
+        .cycles ( 1 ))
+    u_delay_cy_avd_1 (
+        .clk                     ( high_cpld_clk          ),
+        .rst_n                   ( rst_n        ),
+        .signal_in               ( avd_ne    ),
+
+        .signal_out              ( avd_ne_1cy   )
+    );
     always @(posedge high_cpld_clk or negedge rst_n) begin
         if(rst_n == 0) begin
             cpld_addr <= 0;
@@ -359,34 +388,65 @@ module src3cpld (
         end
     end
 
-    //********************************************************************************************************
+    wire get_in_read_st;
+    wire get_out_read_st;
+    get_signal_edge  u_get_signal_edge_0 (
+    .clk                     ( high_cpld_clk        ),
+    .rst_n                   ( rst_n      ),
+    .signal                  ( current_state == st_read_block     ),
+
+    .pos_edge                ( get_in_read_st   ),
+    .neg_edge                ( get_out_read_st   )
+    );
+    
+    //********************************begin statemachine begin************************************************************************
     //statemachine
     always@(*)	//posedge cpld_clk
     begin
         case (current_state)
-            idle: begin
-                next_state = pwr_on;
+            st_idle: begin
+                next_state = st_pwr_on;
             end
-            pwr_on: begin
+            st_pwr_on: begin
                 if(cpld_poweron)
-                    next_state = system_up;
+                    next_state = st_system_up;
                 else
-                    next_state = pwr_on;
+                    next_state = st_pwr_on;
             end
-            system_up: begin
+            st_system_up: begin
                 if (system_rst)
-                    next_state = swr_assert;
+                    next_state = st_swr_assert;
+                else if(hs_lock && hs_read)
+                    next_state = st_read_block;
+                else if(hs_lock && hs_write)
+                    next_state = st_write_block;
                 else
-                    next_state = system_up;
+                    next_state = st_system_up;
             end
-            swr_assert: begin
+            st_swr_assert: begin
                 if (delay_flag2)
-                    next_state = idle;
+                    next_state = st_idle;
                 else
-                    next_state = swr_assert;
+                    next_state = st_swr_assert;
+            end
+            st_read_block: begin
+                if (system_rst)
+                    next_state = st_swr_assert;
+                else if(hs_lock == 0 && hs_read == 0)
+                    next_state = st_system_up;
+                else
+                    next_state = st_read_block;
+            end
+            st_write_block: begin
+                if (system_rst)
+                    next_state = st_swr_assert;
+                else if(hs_lock == 0 && hs_write == 0)
+                    next_state = st_system_up;
+                else
+                    next_state = st_write_block;
             end
             default:
-                next_state = idle;
+                next_state = st_idle;
         endcase
     end
 
@@ -400,19 +460,19 @@ module src3cpld (
     always@(posedge clk)	//next_state
     begin
         case (next_state)
-            idle: begin
+            st_idle: begin
                 pwr_hrst_n <= 1'b1;
                 sw_rst_n <= 1'b1;
                 pmic_pwron <= 1'b0;
                 cpld_poweron <= 1'b0;
             end
-            pwr_on: begin
+            st_pwr_on: begin
                 pwr_hrst_n <= 1'b0;
                 sw_rst_n <= 1'b1;
                 pmic_pwron <= 1'b1;
                 cpld_poweron <= 1'b1;
             end
-            system_up: begin
+            st_system_up: begin
                 pwr_hrst_n <= 1'b1;
                 sw_rst_n <= 1'b1;
                 pmic_pwron <= 1'b1;
@@ -423,7 +483,7 @@ module src3cpld (
             // 		sw_rst_n <= 1'b1;
             // 		pmic_pwron <= 1'b1;
             // 	end
-            swr_assert: begin
+            st_swr_assert: begin
                 pwr_hrst_n <= 1'b1;
                 sw_rst_n <= 1'b0;
                 pmic_pwron <= 1'b1;
@@ -439,7 +499,7 @@ module src3cpld (
 
     //delay 20ns*128=2.56us
     always@(posedge clk) begin
-        if (current_state == swr_assert) begin
+        if (current_state == st_swr_assert) begin
             if (delay2 == 7'b111_1111) begin
                 delay_flag2 <= 1'b1;
                 delay2 <= 7'b0;
@@ -452,23 +512,55 @@ module src3cpld (
             delay2 <= 7'b0;
         end
     end
+    
+    //********************************end   statemachine end  ************************************************************************
+
 
     //读寄存器********************************************************************************
-    reg     [1:0]oe_ne;
-    wire    read_status;
-
-    assign read_status = ~cpld_cs && oe_ne[1] == 1 && oe_ne[0] == 0;
-
     //获取ifc_oe_b的下降沿
-    always@(posedge high_cpld_clk or negedge rst_n) begin
-        if(rst_n == 0) begin
-            oe_ne <= 0;
-        end
-        else begin
-            oe_ne[0] <= ifc_oe_b;
-            oe_ne[1] <= oe_ne[0];
-        end
-    end
+    wire oe_pe, oe_ne;
+    get_signal_edge  u_get_signal_edge_oe (
+        .clk                     ( high_cpld_clk        ),
+        .rst_n                   ( rst_n      ),
+        .signal                  ( ifc_oe_b     ),
+
+        .pos_edge                ( oe_pe   ),
+        .neg_edge                ( oe_ne   )
+    );    
+
+    //延时5cycles，用于获取read_status
+    delay_cy #(
+        .cycles ( 5 ))
+    u_delay_cy_cs_5 (
+        .clk                     ( high_cpld_clk          ),
+        .rst_n                   ( rst_n        ),
+        .signal_in               (  cpld_cs    ),
+
+        .signal_out              ( cpld_cs_5cy   )
+    );
+
+    wire    read_status;
+    wire    oe_ne_1cy;
+    delay_cy #(
+        .cycles ( 1 ))
+    u_delay_cy_rs_1 (
+        .clk                     ( high_cpld_clk          ),
+        .rst_n                   ( rst_n        ),
+        .signal_in               (  ~cpld_cs_5cy && oe_pe    ),
+
+        .signal_out              ( read_status   )
+    );
+
+    delay_cy #(
+        .cycles ( 2 ))
+    u_delay_cy_oe_ne_1 (
+        .clk                     ( high_cpld_clk          ),
+        .rst_n                   ( rst_n        ),
+        .signal_in               ( oe_ne    ),
+
+        .signal_out              ( oe_ne_1cy   )
+    );
+
     //read registers
     always@(posedge high_cpld_clk or negedge rst_n) begin
         if(rst_n == 0) begin
@@ -477,7 +569,7 @@ module src3cpld (
             cnt_r <= 0;
         end
         else begin
-            if (~cpld_cs && oe_ne[1] == 1 && oe_ne[0] == 0) begin
+            if (~cpld_cs && oe_ne_1cy) begin
                 case (cpld_addr[7:0])
                     0:
                         regd[15:0] <= {cpld_ver[15:0]};
@@ -512,7 +604,7 @@ module src3cpld (
                     15:
                         regd[7:0] <= {7'b0,  ems12_pndt};
                     16:
-                        regd[7:0] <= {6'b0,  saf_ems3[1:0]};
+                        regd[15:0] <= {FPGA_SYS_STA_STATUS[15:0]};//0x10
                     17:
                         regd[7:0] <= {       hand_in[7:0]};
                     18:
@@ -549,6 +641,14 @@ module src3cpld (
                         regd[7:0] <= cnt[31:24];
                     34:
                         regd[15:0] <= test_16bits[15:0];
+                    8'h40:
+                        regd[15:0] <= FPGA_HANDSHAKE_CHANNEL0;
+                    8'h50:
+                        regd[15:0] <= FPGA_COMM_CHECKSUM;
+                    8'h52:
+                        regd[15:0] <= FPGA_COMM_DATALEN;
+                    8'h54:
+                        regd[15:0] <= FPGA_COMM_DATA;
                     default:
                         regd[15:0] <= 0;
                 endcase
@@ -563,59 +663,72 @@ module src3cpld (
 
 
 
-    //write registers
+    //write registers********************************************************************************************************
     //negedge ifc_we_b or negedge pwr_hrst_n or negedge sw_rst_n or posedge uart_send_comlete or negedge uart_send_flag
-    reg [1:0]sw_ne;         //negedge
-    reg [1:0]we_ne;         //negedge
-    reg [1:0]uart_sc_pe;    //posedge
+
+
+    wire we_pe,we_ne;
+    get_signal_edge  u_get_signal_edge_we (
+    .clk                     ( high_cpld_clk        ),
+    .rst_n                   ( rst_n      ),
+    .signal                  ( ifc_we_b     ),
+
+    .pos_edge                ( we_pe   ),
+    .neg_edge                ( we_ne   )
+    );
+    wire sw_pe,sw_ne;
+    get_signal_edge  u_get_signal_edge_sw (
+    .clk                     ( high_cpld_clk        ),
+    .rst_n                   ( rst_n      ),
+    .signal                  ( sw_rst_n     ),
+
+    .pos_edge                ( sw_pe   ),
+    .neg_edge                ( sw_ne   )
+    );
+    wire uart_sc_pe,uart_sc_ne;
+    get_signal_edge  u_get_signal_edge_uart_sc (
+    .clk                     ( high_cpld_clk        ),
+    .rst_n                   ( rst_n      ),
+    .signal                  ( uart_send_comlete     ),
+
+    .pos_edge                ( uart_sc_pe   ),
+    .neg_edge                ( uart_sc_ne   )
+    );
 
     wire write_status;
-    assign write_status = ~cpld_cs && we_ne[0] == 0 && we_ne[1] == 1;
+    delay_cy #(
+        .cycles ( 1 ))
+    u_delay_cy_ws1 (
+        .clk                     ( high_cpld_clk          ),
+        .rst_n                   ( rst_n        ),
+        .signal_in               ( ~cpld_cs && we_ne    ),
+
+        .signal_out              ( write_status   )
+    );
 
     always@(posedge high_cpld_clk or negedge rst_n) begin
         if(rst_n == 0) begin
-            sw_ne <= 0;
-            we_ne <=0;
-            uart_sc_pe <= 0;
-        end
+            /*CPLD Registers uesed for output                                 寄存器地址*/
+            pndt_svon      <= 1'b1;					                    //18, 控制器输出SVON 信号
+            crh[1:0]       <= 2'b11;				                    //19, 控制器输出安全回路信号
+            ovrun_clr      <= 1'b1;					                    //20, 控制器输出OVER RUN 解除信号
+            ext_disp[4:0]  <= 5'b1_1111;			                    //21, 控制器输出信号至数码管
+            rb_rdy         <= 1'b1;					                    //22, 控制器输出给上位PLC 的RDY信号
+            rb_err         <= 1'b1;					                    //23, 控制器输出给上位PLC 的ERR信号
+            svo            <= 1'b1;					                    //24, 控制器输出给上位PLC 的SVO信号
+            self_son       <= 1'b1;					                    //25, 控制器输出的远程模式SVON 信号
+            hand_out[7:0]  <= 8'b1111_1111;			                    //26, 连接本体端HAND IO 的OUTPUT信号
+            error_en       <= 1'b0;                                     //27, 单板显示状态异常灯开关信号
+            cnt_set        <= 0;                                        //29, 计数器模式配置寄存器
+            cnt_w          <= 0;                                        //计数器值寄存器
+            test_16bits    <= 16'h1234;                                 //34, 测试16bit宽度数据的寄存器
+
+        end     
         else begin
-            sw_ne[0] <= sw_rst_n;
-            sw_ne[1] <= sw_ne[0];
-
-            we_ne[0] <= ifc_we_b;
-            we_ne[1] <= we_ne[0];
-
-            uart_sc_pe[0] <= uart_send_comlete;
-            uart_sc_pe[1] <= uart_sc_pe[0];
-        end
-    end
-
-    always@(posedge high_cpld_clk or negedge rst_n) begin
-        if(rst_n == 0) begin
-            /*CPLD Registers uesed for output      寄存器地址*/
-            pndt_svon      <= 1'b1;					//18, 控制器输出SVON 信号
-            crh[1:0]       <= 2'b11;				//19, 控制器输出安全回路信号
-            ovrun_clr      <= 1'b1;					//20, 控制器输出OVER RUN 解除信号
-            ext_disp[4:0]  <= 5'b1_1111;			//21, 控制器输出信号至数码管
-            rb_rdy         <= 1'b1;					//22, 控制器输出给上位PLC 的RDY信号
-            rb_err         <= 1'b1;					//23, 控制器输出给上位PLC 的ERR信号
-            svo            <= 1'b1;					//24, 控制器输出给上位PLC 的SVO信号
-            self_son       <= 1'b1;					//25, 控制器输出的远程模式SVON 信号
-            hand_out[7:0]  <= 8'b1111_1111;			//26, 连接本体端HAND IO 的OUTPUT信号
-            error_en       <= 1'b0;                 //27, 单板显示状态异常灯开关信号
-            cnt_set        <= 0;                    //29, 计数器模式配置寄存器
-            cnt_w          <= 0;                    //计数器值寄存器
-            test_16bits    <= 16'h1234;             //34, 测试16bit宽度数据的寄存器
-
-            // 初始化部分寄存器
-            // uart_send_flag <= 0;
-            // dataT <= 0;
-        end
-        else begin
-            if (sw_ne[0] == 0 && sw_ne[1] == 1) begin
+            if (sw_ne == 1) begin
                 system_rst <= 1'b0;
             end
-            else if (~cpld_cs && we_ne[0] == 0 && we_ne[1] == 1) begin
+            else if (~cpld_cs && we_ne) begin
                 case (cpld_addr[7:0])
                     1:
                         system_rst     <= cpld_data[0];
@@ -643,26 +756,97 @@ module src3cpld (
                         cnt_set        <= cpld_data[2:0];
                     34:
                         test_16bits    <= cpld_data[15:0];
-                    
                     default:
                         non_reg        <= cpld_data[0];
                 endcase
 
-                if(cnt_set[1])
-                    cnt_w <= 0; //clear cnt_w
-                else if(cnt_set[0] && cnt_set[2] == 1'b0)
-                    cnt_w <= cnt_w + 1; //write operation count
-                    
-                // if(uart_send_flag == 0) begin
-                //     dataT <= {8'b0101_0101, cpld_addr,8'b1111_1111, cpld_data};
-                //     uart_send_flag <= 1;
-                // end
             end
             // else if(uart_sc_pe[0] == 1 && uart_sc_pe[1] == 0) begin //在发送数据完成后复位send flag信号
             //     uart_send_flag <= 0;
             // end
         end
     end
+
+    /*******************begin protocol begin**********************/
+    reg [15:0] data_block[0:4];
+    reg [7:0]  pi;
+    always @(posedge high_cpld_clk or negedge rst_n) begin
+        if(rst_n == 0) begin
+            FPGA_SYS_INFO_SERIALNUMBER              <= 16'h0000;
+            FPGA_SYS_INFO_HWREVISION                <= 16'h0000;
+            FPGA_SYS_INFO_SOFTREVISION              <= 16'h0000;
+            FPGA_SYS_STA_STATUS                     <= 16'h0001;
+            FPGA_SYS_STA_ERROR                      <= 16'h0000;
+            FPGA_SYS_STA_TIMESINCESTART             <= 16'h0000;
+            FPGA_HANDSHAKE_CHANNEL0                 <= 16'h0000;        //0x40
+            FPGA_COMM_CHECKSUM                      <= 16'h0000;        //0x50
+            FPGA_COMM_DATALEN                       <= 16'h0000;        //0x52
+            FPGA_COMM_DATA                          <= 16'h0000;        //0x54
+
+            data_block[0] <= 16'h1122;
+            data_block[1] <= 16'h3344;
+            data_block[2] <= 16'h5566;
+            data_block[3] <= 16'h7788;
+            data_block[4] <= 16'h99aa;
+            pi <=0;
+        end
+        else begin
+            if (read_status) begin//读操作
+
+            end
+            else if (write_status) begin       //写操作
+                case (cpld_addr[7:0]) 
+                    8'h40:
+                        FPGA_HANDSHAKE_CHANNEL0     <= cpld_data[15:0];
+                    8'h50:
+                        FPGA_COMM_CHECKSUM          <= cpld_data[15:0];
+                    8'h52:
+                        FPGA_COMM_DATALEN           <= cpld_data[15:0];
+                    8'h54:
+                        FPGA_COMM_DATA              <= cpld_data[15:0];
+                    8'h56:
+                        FPGA_COMM_DATA              <= cpld_data[15:0];
+                    8'h58:
+                        FPGA_COMM_DATA              <= cpld_data[15:0];
+                    8'h5a:
+                        FPGA_COMM_DATA              <= cpld_data[15:0];
+                    8'h5c:
+                        FPGA_COMM_DATA              <= cpld_data[15:0];
+                    default:
+                        ;
+                endcase
+            end
+            else if(current_state == st_read_block && cs_ne && cpld_addr == 8'h54) begin
+                if(pi <= 5) begin
+                    FPGA_COMM_DATA <= data_block[pi];
+                    pi <= pi + 1;
+                end
+            end
+            else if(get_in_read_st) begin
+                FPGA_HANDSHAKE_CHANNEL0[3] <= 1;
+                FPGA_COMM_DATALEN <= 10;
+                pi <= 0;
+            end
+            else if(get_out_read_st) begin
+                FPGA_HANDSHAKE_CHANNEL0[3] <= 0;
+            end
+        end
+    end
+
+    assign cb_write_enable = (current_state == st_read_block && cs_ne && cpld_addr == 8'h54);
+    reg[7:0] wi;
+    always @(posedge high_cpld_clk or negedge rst_n) begin
+        if(rst_n == 0) begin
+            cb_data_in <= 0;
+        end else begin
+            if(cb_write_enable) begin
+                
+            end
+        end
+        
+    end
+
+    /*******************end   protocol end  **********************/
 
     //捕捉statusled信号的下降沿作为定时发送数据的
     reg [1:0] st_ne;
@@ -686,7 +870,7 @@ module src3cpld (
             if (read_status || write_status) begin
             // if (cs_pe) begin
                 if(uart_send_flag == 0) begin
-                    dataT <= {8'b0101_0101, cpld_addr,cpld_data[15:8], cpld_data[7:0]};
+                    dataT <= {8'b0101_1010, cpld_addr,cpld_data[15:8], cpld_data[7:0], FPGA_COMM_DATA[15:8], FPGA_COMM_DATA[7:0]};
                     uart_send_flag <= 1;
                 end
                 else
@@ -700,7 +884,7 @@ module src3cpld (
             //     else
             //         uart_send_flag <= 1;
             // end
-            else if(uart_sc_pe[0] == 1 && uart_sc_pe[1] == 0) begin //在发送数据完成后复位send flag信号
+            else if(uart_sc_pe) begin //在发送数据完成后复位send flag信号
                 uart_send_flag <= 0;
             end
             // else begin
@@ -762,10 +946,23 @@ module src3cpld (
                );
 
     clk_pll_0 pll (
-                  .clkout0(pll_out),    // output
+                  .clkout0(pll_out),        // output
                   .lock(pll_lock),          // output
-                  .clkin1(clk_gtp),      // input
-                  .rst(~rst_n)             // input
+                  .clkin1(clk_gtp),         // input
+                  .rst(~rst_n)              // input
               );
+
+    circular_buffer #(
+        .BUFFER_SIZE ( 10 ),
+        .DATA_WIDTH  ( 16 ))
+    u_circular_buffer (
+        .clk                     ( high_cpld_clk            ),
+        .rst_n                   ( rst_n          ),
+        .write_enable            ( cb_write_enable   ),
+        .read_enable             ( cb_read_enable    ),
+        .data_in                 ( cb_data_in        ),
+
+        .data_out                ( cb_data_out       )
+    );
 
 endmodule

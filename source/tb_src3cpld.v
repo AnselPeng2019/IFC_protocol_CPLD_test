@@ -59,13 +59,29 @@ module tb_src3cpld;
     reg [15:0]dataT = 16'b0000_0001_0010_0011;
     reg [15:0]dataR = 0;
     parameter START = 50;
+
+    reg [7:0] i = 0;
     initial begin
-        //写操作
-        #100    addr[7:0] <= 34;
-                // dataT <= 8'b0000_0001;
-        #300    ifc_ad_r[7:0]   <= {addr[0],addr[1],addr[2],addr[3],addr[4],addr[5],addr[6],addr[7]};
+        //读操作
+                addr[7:0] <= 8'h10;
+        #300    ifc_ad_r[7:0] <= {addr[0],addr[1],addr[2],addr[3],addr[4],addr[5],addr[6],addr[7]};
                 ifc_ad_r[15:8]  <= 0;
                 ifc_avd <= 1;
+        #10     ifc_add_lt[7:0] <= ifc_ad_r[7:0];
+        #40     ifc_avd <= 0;
+        #40     ifc_cs <= 0;
+                ifc_oe_b <= 0;
+        #30     dataR[15:0] <= {ifc_ad[0],ifc_ad[1],ifc_ad[2], ifc_ad[3], ifc_ad[4], ifc_ad[5], ifc_ad[6], ifc_ad[7],
+                               ifc_ad[8],ifc_ad[9],ifc_ad[10],ifc_ad[11],ifc_ad[12],ifc_ad[13],ifc_ad[14],ifc_ad[15]};
+        #10     ifc_oe_b <= 1;
+                ifc_cs   <= 1;
+        #30     ifc_ad_r[15:0] <= 16'bxxxx_xxxx_xxxx_xxxx;
+        //写操作,准备读大块数据
+        #100    addr[7:0] <= 8'h40;
+        #50     ifc_ad_r[7:0]   <= {addr[0],addr[1],addr[2],addr[3],addr[4],addr[5],addr[6],addr[7]};
+                ifc_ad_r[15:8]  <= 0;
+                ifc_avd <= 1;
+                dataT <= 16'b0000_0001_0000_0011;
         #10     ifc_add_lt[7:0] <= ifc_ad_r[7:0];
         #40     ifc_avd <= 0;
         #20     ifc_ad_r[15:0] <= {dataT[0],dataT[1],dataT[2], dataT[3], dataT[4], dataT[5], dataT[6], dataT[7],
@@ -76,74 +92,75 @@ module tb_src3cpld;
                 ifc_cs <= 1;
         #50     ifc_ad_r[15:0] <= 16'bxxxx_xxxx_xxxx_xxxx;
 
-        //写操作
-        // #3000   addr[7:0] <= 26;
-        //         dataT <= 8'b0001_0001;
-        // #50     ifc_ad_r[7:0]   <= {addr[0],addr[1],addr[2],addr[3],addr[4],addr[5],addr[6],addr[7]};
-        //         ifc_add_lt[7:0] <= {addr[0],addr[1],addr[2],addr[3],addr[4],addr[5],addr[6],addr[7]};
-        //         ifc_avd <= 1;
-        // #40     ifc_avd <= 0;
-        // #20     ifc_ad_r[7:0] <= {dataT[0],dataT[1],dataT[2],dataT[3],dataT[4],dataT[5],dataT[6],dataT[7]};
-        // #30     ifc_cs <= 0;
-        // #50     ifc_we_b <= 0;
-        // #80     ifc_we_b <= 1;
-        //         ifc_cs <= 1;
-        // #10     ifc_ad_r[7:0] <= 8'bxxxx_xxxx;
-
-        //读操作
-                // addr[7:0] <= 34;
-        #50     ifc_ad_r[7:0] <= {addr[0],addr[1],addr[2],addr[3],addr[4],addr[5],addr[6],addr[7]};
+        //读操作,确认是否ready
+                addr[7:0] <= 8'h40;
+        #100    ifc_ad_r[7:0] <= {addr[0],addr[1],addr[2],addr[3],addr[4],addr[5],addr[6],addr[7]};
                 ifc_ad_r[15:8]  <= 0;
                 ifc_avd <= 1;
         #10     ifc_add_lt[7:0] <= ifc_ad_r[7:0];
         #40     ifc_avd <= 0;
         #40     ifc_cs <= 0;
-        #40     ifc_oe_b <= 0;
+                ifc_oe_b <= 0;
         #30     dataR[15:0] <= {ifc_ad[0],ifc_ad[1],ifc_ad[2], ifc_ad[3], ifc_ad[4], ifc_ad[5], ifc_ad[6], ifc_ad[7],
                                ifc_ad[8],ifc_ad[9],ifc_ad[10],ifc_ad[11],ifc_ad[12],ifc_ad[13],ifc_ad[14],ifc_ad[15]};
         #10     ifc_oe_b <= 1;
                 ifc_cs   <= 1;
         #30     ifc_ad_r[15:0] <= 16'bxxxx_xxxx_xxxx_xxxx;
 
-        //读操作
-                addr[7:0] <= 0;
-        #50     ifc_ad_r[7:0] <= {addr[0],addr[1],addr[2],addr[3],addr[4],addr[5],addr[6],addr[7]};
-                ifc_ad_r[15:8]  <= 0;
-                ifc_avd <= 1;
-        #10     ifc_add_lt[7:0] <= ifc_ad_r[7:0];
-        #40     ifc_avd <= 0;
-        #40     ifc_cs <= 0;
-        #40     ifc_oe_b <= 0;
-        #30     dataR[15:0] <= {ifc_ad[0],ifc_ad[1],ifc_ad[2], ifc_ad[3], ifc_ad[4], ifc_ad[5], ifc_ad[6], ifc_ad[7],
-                               ifc_ad[8],ifc_ad[9],ifc_ad[10],ifc_ad[11],ifc_ad[12],ifc_ad[13],ifc_ad[14],ifc_ad[15]};
-        #10     ifc_oe_b <= 1;
-                ifc_cs   <= 1;
-        #30     ifc_ad_r[15:0] <= 16'bxxxx_xxxx_xxxx_xxxx;
-        // //写操作
-        // #50     addr[7:0] <= 0;
-        //         ifc_ad_r[7:0] <= {addr[0],addr[1],addr[2],addr[3],addr[4],addr[5],addr[6],addr[7]};
-        //         ifc_avd <= 1;
-        // #40     ifc_avd <= 0;
-        //         dataT[7:0] = 8'b0000_0000;
-        // #20     ifc_ad_r[7:0] <= {dataT[0],dataT[1],dataT[2],dataT[3],dataT[4],dataT[5],dataT[6],dataT[7]};
-        // #30     ifc_cs <= 0;
-        // #50     ifc_we_b <= 0;
-        // #80     ifc_we_b <= 1;
-        //         ifc_cs <= 1;
-        // #10     ifc_ad_r[7:0] <= 8'bxxxx_xxxx;
+        for ( i = 0; i<5; i=i+1) begin
+                //读操作,读出5个16bit数据
+                        addr[7:0] <= 8'h54;
+                #100    ifc_ad_r[7:0] <= {addr[0],addr[1],addr[2],addr[3],addr[4],addr[5],addr[6],addr[7]};
+                        ifc_ad_r[15:8]  <= 0;
+                        ifc_avd <= 1;
+                #10     ifc_add_lt[7:0] <= ifc_ad_r[7:0];
+                #40     ifc_avd <= 0;
+                #40     ifc_cs <= 0;
+                        ifc_oe_b <= 0;
+                #30     dataR[15:0] <= {ifc_ad[0],ifc_ad[1],ifc_ad[2], ifc_ad[3], ifc_ad[4], ifc_ad[5], ifc_ad[6], ifc_ad[7],
+                                ifc_ad[8],ifc_ad[9],ifc_ad[10],ifc_ad[11],ifc_ad[12],ifc_ad[13],ifc_ad[14],ifc_ad[15]};
+                #10     ifc_oe_b <= 1;
+                        ifc_cs   <= 1;
+                #30     ifc_ad_r[15:0] <= 16'bxxxx_xxxx_xxxx_xxxx;
+        end
 
-        #100 $finish;
+
+
+        #200 $finish;
     end
 
 
-    assign ifc_ad[15:0] = ifc_oe_b ? ifc_ad_r[15:0] : 16'bzzzz_zzzz_zzzz_zzzz;
+        assign ifc_ad[15:0] = ifc_oe_b ? ifc_ad_r[15:0] : 16'bzzzz_zzzz_zzzz_zzzz;
 
+        wire [15:0] cpld_data;
+        wire high_cpld_clk;
+        wire [2:0] current_state;
+        assign cpld_data = u_src3cpld.cpld_data;
+        assign high_cpld_clk = u_src3cpld.high_cpld_clk;
+        assign current_state = u_src3cpld.current_state;
+        wire [7:0] cpld_addr;
+        assign cpld_addr = u_src3cpld.cpld_addr;
+        wire write_status;
+        assign write_status = u_src3cpld.write_status;
+        wire read_status;
+        assign read_status  = u_src3cpld.read_status;
+        wire [15:0] FPGA_HANDSHAKE_CHANNEL0;
+        assign FPGA_HANDSHAKE_CHANNEL0 = u_src3cpld.FPGA_HANDSHAKE_CHANNEL0;
+        wire [15:0] FPGA_COMM_DATA;
+        assign FPGA_COMM_DATA = u_src3cpld.FPGA_COMM_DATA;
 
     src3cpld #(
-                 .idle                    ( idle       ),
-                 .pwr_on                  ( pwr_on     ),
-                 .system_up               ( system_up  ),
-                 .swr_assert              ( swr_assert ))
+                .st_idle        ( 3'b000 ),
+                .st_pwr_on      ( 3'b001 ),
+                .st_system_up   ( 3'b010 ),
+                .st_swr_assert  ( 3'b100 ),
+                .st_read_block  ( 3'b101 ),
+                .st_write_block ( 3'b110 ),
+                .BSN            ( 4      ),
+                .BRN            ( 4      ),
+                .CLK_FRE        ( 50     ),
+                .BAUD_RATE      ( 115200 ),
+                .bytes_n        ( 10     ))
              u_src3cpld (
                  .ifc_cs                  ( ifc_cs               ),
                  .ifc_we_b                ( ifc_we_b             ),
