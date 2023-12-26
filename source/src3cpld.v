@@ -355,7 +355,15 @@ module src3cpld (
         .pos_edge                ( cs_pe   ),
         .neg_edge                ( cs_ne   )
     );    
+    delay_cy #(
+        .cycles ( 1 ))
+    u_delay_cy_cs_pe_1 (
+        .clk                     ( high_cpld_clk          ),
+        .rst_n                   ( rst_n        ),
+        .signal_in               ( cs_pe    ),
 
+        .signal_out              ( cs_pe_1cy   )
+    );
     wire      avd_ne, avd_pe, avd_ne_1cy;
     get_signal_edge  u_get_signal_edge_avd (
         .clk                     ( high_cpld_clk        ),
@@ -390,15 +398,25 @@ module src3cpld (
 
     wire get_in_read_st;
     wire get_out_read_st;
-    get_signal_edge  u_get_signal_edge_0 (
-    .clk                     ( high_cpld_clk        ),
-    .rst_n                   ( rst_n      ),
-    .signal                  ( current_state == st_read_block     ),
+    get_signal_edge  u_get_signal_edge_read_st (
+        .clk                     ( high_cpld_clk        ),
+        .rst_n                   ( rst_n      ),
+        .signal                  ( current_state == st_read_block     ),
 
-    .pos_edge                ( get_in_read_st   ),
-    .neg_edge                ( get_out_read_st   )
-    );
+        .pos_edge                ( get_in_read_st   ),
+        .neg_edge                ( get_out_read_st   )
+        );
     
+    wire get_in_write_st, get_out_write_st;
+    get_signal_edge  u_get_signal_edge_write_st (
+        .clk                     ( high_cpld_clk        ),
+        .rst_n                   ( rst_n      ),
+        .signal                  ( current_state == st_write_block     ),
+
+        .pos_edge                ( get_in_write_st   ),
+        .neg_edge                ( get_out_write_st   )
+        );
+
     //********************************begin statemachine begin************************************************************************
     //statemachine
     always@(*)	//posedge cpld_clk
@@ -706,6 +724,17 @@ module src3cpld (
         .signal_out              ( write_status   )
     );
 
+    wire write_status_1cy;
+    delay_cy #(
+        .cycles ( 1 ))
+    u_delay_cy_ws2 (
+        .clk                     ( high_cpld_clk          ),
+        .rst_n                   ( rst_n        ),
+        .signal_in               ( write_status    ),
+
+        .signal_out              ( write_status_1cy   )
+    );
+
     always@(posedge high_cpld_clk or negedge rst_n) begin
         if(rst_n == 0) begin
             /*CPLD Registers uesed for output                                 寄存器地址*/
@@ -768,7 +797,7 @@ module src3cpld (
     end
 
     /*******************begin protocol begin**********************/
-    reg [15:0] data_block[0:4];
+    reg [15:0] data_block[0:5];
     reg [7:0]  pi;
     always @(posedge high_cpld_clk or negedge rst_n) begin
         if(rst_n == 0) begin
@@ -788,6 +817,7 @@ module src3cpld (
             data_block[2] <= 16'h5566;
             data_block[3] <= 16'h7788;
             data_block[4] <= 16'h99aa;
+            data_block[5] <= 16'hbbcc;
             pi <=0;
         end
         else begin
@@ -816,15 +846,24 @@ module src3cpld (
                         ;
                 endcase
             end
-            else if(current_state == st_read_block && cs_ne && cpld_addr == 8'h54) begin
-                if(pi <= 5) begin
+            if(current_state == st_read_block && cs_ne && cpld_addr == 8'h54) begin
+                if(pi <= 6) begin
                     FPGA_COMM_DATA <= data_block[pi];
+                    pi <= pi + 1;
+                end
+            end
+            else if (current_state == st_write_block && cs_pe_1cy && cpld_addr == 8'h54) begin
+                if(pi <= 6) begin
+                    data_block[pi] <= FPGA_COMM_DATA;
                     pi <= pi + 1;
                 end
             end
             else if(get_in_read_st) begin
                 FPGA_HANDSHAKE_CHANNEL0[3] <= 1;
-                FPGA_COMM_DATALEN <= 10;
+                FPGA_COMM_DATALEN <= 12;
+                pi <= 0;
+            end
+            else if(get_in_write_st) begin
                 pi <= 0;
             end
             else if(get_out_read_st) begin
@@ -867,9 +906,20 @@ module src3cpld (
             dataT <= 0;
         end
         else begin
-            if (read_status || write_status) begin
+            if (read_status) begin
             // if (cs_pe) begin
                 if(uart_send_flag == 0) begin
+                // if(1) begin
+                    dataT <= {8'b0101_1010, cpld_addr,regd[15:8], regd[7:0], FPGA_COMM_DATA[15:8], FPGA_COMM_DATA[7:0]};
+                    uart_send_flag <= 1;
+                end
+                else
+                    uart_send_flag <= 1;
+            end
+            else if (write_status_1cy) begin
+            // if (cs_pe) begin
+                if(uart_send_flag == 0) begin
+                // if(1) begin
                     dataT <= {8'b0101_1010, cpld_addr,cpld_data[15:8], cpld_data[7:0], FPGA_COMM_DATA[15:8], FPGA_COMM_DATA[7:0]};
                     uart_send_flag <= 1;
                 end

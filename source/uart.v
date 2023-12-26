@@ -1,5 +1,5 @@
 module uart_def #(
-        parameter BSN = 4,                  //发送的数据位数
+        parameter BSN = 6,                  //发送的数据位数
         parameter BRN = 4,                  //接收的数据位数
         parameter CLK_FRE = 50,             //输入时钟，MHz
         parameter BAUD_RATE = 115200        //波特率
