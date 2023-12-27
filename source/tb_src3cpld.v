@@ -70,29 +70,30 @@ module tb_src3cpld;
     // end
 
     task read_operation;
-            input [7:0] address;
-            // input data;
-            output reg [15:0] data;
-            begin
-                    #150            addr[7:0]     = address;
-                                    ifc_ad_r[7:0] = {addr[0],addr[1],addr[2],addr[3],addr[4],addr[5],addr[6],addr[7]};
-                                    ifc_avd = 1;
-                                    ifc_add_lt[7:0] = ifc_ad_r[7:0];
-                    #teadc          ifc_avd = 0;
-                    #(teahc+tacse)  ifc_cs  = 0;
-                    #taco           ifc_oe_b = 0;
-                    #trad           data[15:0] = {ifc_ad[0],ifc_ad[1],ifc_ad[2], ifc_ad[3], ifc_ad[4], ifc_ad[5], ifc_ad[6], ifc_ad[7],
-                                            ifc_ad[8],ifc_ad[9],ifc_ad[10],ifc_ad[11],ifc_ad[12],ifc_ad[13],ifc_ad[14],ifc_ad[15]};
-                                    ifc_oe_b  = 1;
-                                    ifc_cs    = 1;
-                    // #50             ifc_ad_r[15:0] <= 16'bxxxx_xxxx_xxxx_xxxx;
-            end
+        input [7:0] address;
+        // input data;
+        output reg [15:0] data;
+        begin
+            #150              addr[7:0]     = address;
+                              ifc_ad_r[7:0] = {addr[0],addr[1],addr[2],addr[3],addr[4],addr[5],addr[6],addr[7]};
+                              ifc_avd = 1;
+                              ifc_add_lt[7:0] = ifc_ad_r[7:0];
+            #teadc            ifc_avd = 0;
+            #(teahc+tacse)    ifc_cs  = 0;
+            #taco             ifc_oe_b = 0;
+            #trad             data[15:0] = {ifc_ad[0],ifc_ad[1],ifc_ad[2], ifc_ad[3], ifc_ad[4], ifc_ad[5], ifc_ad[6], ifc_ad[7],
+                                      ifc_ad[8],ifc_ad[9],ifc_ad[10],ifc_ad[11],ifc_ad[12],ifc_ad[13],ifc_ad[14],ifc_ad[15]};
+                              ifc_oe_b  = 1;
+                              ifc_cs    = 1;
+            // #50             ifc_ad_r[15:0] <= 16'bxxxx_xxxx_xxxx_xxxx;
+        end
     endtask
     
     task read_operation_set_1;
         reg [7:0] i;
         begin
             //读状态
+            data_checksum = 0;
             read_operation(8'h10,dataR);
             #50    ifc_ad_r[15:0] <= 16'bxxxx_xxxx_xxxx_xxxx;    
             //写操作,准备连续读大块数据
@@ -110,6 +111,7 @@ module tb_src3cpld;
                 for ( i = 0; i<(data_len/2); i=i+1) begin
                 //读操作,读出6个16bit数据
                 read_operation(8'h54,dataR);
+                data_checksum = data_checksum ^ dataR;
                 #50    ifc_ad_r[15:0] <= 16'bxxxx_xxxx_xxxx_xxxx;
                 end
             end
@@ -121,43 +123,52 @@ module tb_src3cpld;
     endtask
     
     task write_operation;
-            input [7:0] address;
-            // input data;
-            input [15:0] data;
-            begin
-            #150        addr[7:0]     = address;
-                            ifc_ad_r[7:0] = {addr[0],addr[1],addr[2],addr[3],addr[4],addr[5],addr[6],addr[7]};
-                            ifc_ad_r[15:8] = 8'h00;
-                            ifc_avd <= 1;
-                            ifc_add_lt[7:0] = ifc_ad_r[7:0];
-            #teadc      ifc_avd <= 0;
-            #teahc      ifc_ad_r[15:0] = {data[0],data[1],data[2], data[3], data[4], data[5], data[6], data[7],
-                                            data[8],data[9],data[10],data[11],data[12],data[13],data[14],data[15]};
-            #tacse      ifc_cs  = 0;
-            #tcs        ifc_we_b = 0;
-            #twp        ifc_we_b = 1;
-            #tch        ifc_cs = 1;
-            #50         ifc_ad_r[15:0] = 16'bxxxx_xxxx_xxxx_xxxx;
+        input [7:0] address;
+        // input data;
+        input [15:0] data;
+        begin
+            #150    addr[7:0]     = address;
+                        ifc_ad_r[7:0] = {addr[0],addr[1],addr[2],addr[3],addr[4],addr[5],addr[6],addr[7]};
+                        ifc_ad_r[15:8] = 8'h00;
+                        ifc_avd <= 1;
+                        ifc_add_lt[7:0] = ifc_ad_r[7:0];
+            #teadc  ifc_avd <= 0;
+            #teahc  ifc_ad_r[15:0] = {data[0],data[1],data[2], data[3], data[4], data[5], data[6], data[7],
+                                        data[8],data[9],data[10],data[11],data[12],data[13],data[14],data[15]};
+            #tacse  ifc_cs  = 0;
+            #tcs    ifc_we_b = 0;
+            #twp    ifc_we_b = 1;
+            #tch    ifc_cs = 1;
+            #50     ifc_ad_r[15:0] = 16'bxxxx_xxxx_xxxx_xxxx;
             end
     endtask
     
     task write_operation_set_1;
         reg [7:0] i;
-            begin
-                //写操作,准备连续写大块数据
-                write_operation(8'h40, 16'b0000_0001_0000_0101);
-
-                //写操作,写数据长度
-                write_operation(8'h52, data_len);
-
-                        for ( i = 0; i<(data_len/2); i=i+1) begin
-                                //写操作,连续写6个16bit数据
-                                write_operation(8'h54,data_write[i]);
-                        end
-
-                //写操作,连续写大块数据操作结束
-                write_operation(8'h40, 16'b0000_0001_0000_0000);
+        begin
+            data_checksum = 0;
+            //预先计算checksum值
+            for (i = 0;i<(data_len/2); i=i+1) begin
+                data_checksum = data_checksum ^ data_write[i];
             end
+            //写操作,准备连续写大块数据
+            write_operation(8'h40, 16'b0000_0001_0000_0101);
+            //是否ready？
+            read_operation(8'h40,dataR);
+            #50    ifc_ad_r[15:0] <= 16'bxxxx_xxxx_xxxx_xxxx;
+            //写checksum
+            write_operation(8'h50, data_checksum);
+            //写操作,写数据长度
+            write_operation(8'h52, data_len);
+            for ( i = 0; i<(data_len/2); i=i+1) begin
+                //写操作,连续写6个16bit数据
+                write_operation(8'h54,data_write[i]);
+            end
+            //读，write OK？
+            read_operation(8'h40,dataR);
+            //写操作,连续写大块数据操作结束
+            write_operation(8'h40, 16'b0000_0001_0000_0000);
+        end
     endtask
 
 
@@ -187,25 +198,42 @@ module tb_src3cpld;
     end
 
 
-        assign ifc_ad[15:0] = ifc_oe_b ? ifc_ad_r[15:0] : 16'bzzzz_zzzz_zzzz_zzzz;
+    assign ifc_ad[15:0] = ifc_oe_b ? ifc_ad_r[15:0] : 16'bzzzz_zzzz_zzzz_zzzz;
 
-        //probe
-        wire [15:0] cpld_data;
-        wire high_cpld_clk;
-        wire [2:0] current_state;
-        assign cpld_data = u_src3cpld.cpld_data;
-        assign high_cpld_clk = u_src3cpld.high_cpld_clk;
-        assign current_state = u_src3cpld.current_state;
-        wire [7:0] cpld_addr;
-        assign cpld_addr = u_src3cpld.cpld_addr;
-        wire write_status;
-        assign write_status = u_src3cpld.write_status;
-        wire read_status;
-        assign read_status  = u_src3cpld.read_status;
-        wire [15:0] FPGA_HANDSHAKE_CHANNEL0;
-        assign FPGA_HANDSHAKE_CHANNEL0 = u_src3cpld.FPGA_HANDSHAKE_CHANNEL0;
-        wire [15:0] FPGA_COMM_DATA;
-        assign FPGA_COMM_DATA = u_src3cpld.FPGA_COMM_DATA;
+    //probe
+    wire [15:0] cpld_data;
+    wire [2:0] current_state;
+    assign cpld_data = u_src3cpld.cpld_data;
+    wire [7:0] cpld_addr;
+    assign cpld_addr = u_src3cpld.cpld_addr;
+    wire [15:0] FPGA_HANDSHAKE_CHANNEL0;
+    assign FPGA_HANDSHAKE_CHANNEL0 = u_src3cpld.FPGA_HANDSHAKE_CHANNEL0;
+    wire [15:0] FPGA_COMM_DATA;
+    assign FPGA_COMM_DATA = u_src3cpld.FPGA_COMM_DATA;
+    wire [15:0] checksum_out;
+    assign checksum_out[15:0] = u_src3cpld.checksum_out[15:0];
+    assign checksum_en_r = u_src3cpld.checksum_en_r;
+    assign checksum_en_w = u_src3cpld.checksum_en_w;
+    assign write_status = u_src3cpld.write_status;
+    assign read_status  = u_src3cpld.read_status;
+    assign high_cpld_clk = u_src3cpld.high_cpld_clk;
+    assign current_state = u_src3cpld.current_state;
+    assign get_in_write_st = u_src3cpld.get_in_write_st;
+    assign get_in_read_st  = u_src3cpld.get_in_read_st;
+    assign checksum_clear  = u_src3cpld.checksum_clear;
+    wire [15:0] data_block[0:5];
+    assign data_block[0]  = u_src3cpld.data_block[0];
+    assign data_block[1]  = u_src3cpld.data_block[1];
+    assign data_block[2]  = u_src3cpld.data_block[2];
+    assign data_block[3]  = u_src3cpld.data_block[3];
+    assign data_block[4]  = u_src3cpld.data_block[4];
+    assign data_block[5]  = u_src3cpld.data_block[5];
+    wire [7:0]  pi;
+    assign pi  = u_src3cpld.pi;
+    assign oe_ne_1cy = u_src3cpld.oe_ne_1cy;
+    wire [15:0] checksum_datain;
+    assign checksum_datain  = u_src3cpld.checksum_datain;
+    assign checksum_en_w_2cy = u_src3cpld.checksum_en_w_2cy;
 
     src3cpld #(
                 .st_idle        ( 3'b000 ),

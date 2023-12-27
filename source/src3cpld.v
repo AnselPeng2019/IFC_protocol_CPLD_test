@@ -1,5 +1,5 @@
 
-`timescale 1ns/100ps
+`timescale 1ns/10ps
 
 module src3cpld (
         ifc_ad,
@@ -799,6 +799,10 @@ module src3cpld (
     /*******************begin protocol begin**********************/
     reg [15:0] data_block[0:5];
     reg [7:0]  pi;
+    reg checksum_clear;
+    wire checksum_en_r,checksum_en_w,checksum_en_w_2cy;
+    wire [15:0] checksum_out;
+    wire check_result;
     always @(posedge high_cpld_clk or negedge rst_n) begin
         if(rst_n == 0) begin
             FPGA_SYS_INFO_SERIALNUMBER              <= 16'h0000;
@@ -819,6 +823,7 @@ module src3cpld (
             data_block[4] <= 16'h99aa;
             data_block[5] <= 16'hbbcc;
             pi <=0;
+            checksum_clear <= 0;
         end
         else begin
             if (read_status) begin//读操作
@@ -847,13 +852,13 @@ module src3cpld (
                 endcase
             end
             if(current_state == st_read_block && cs_ne && cpld_addr == 8'h54) begin
-                if(pi <= 6) begin
+                if(pi <= 5) begin
                     FPGA_COMM_DATA <= data_block[pi];
                     pi <= pi + 1;
                 end
             end
             else if (current_state == st_write_block && cs_pe_1cy && cpld_addr == 8'h54) begin
-                if(pi <= 6) begin
+                if(pi <= 5) begin
                     data_block[pi] <= FPGA_COMM_DATA;
                     pi <= pi + 1;
                 end
@@ -862,15 +867,73 @@ module src3cpld (
                 FPGA_HANDSHAKE_CHANNEL0[3] <= 1;
                 FPGA_COMM_DATALEN <= 12;
                 pi <= 0;
+                checksum_clear <= 0;
             end
             else if(get_in_write_st) begin
                 pi <= 0;
+                checksum_clear <= 0;
+                FPGA_HANDSHAKE_CHANNEL0[4] <= 0;
             end
             else if(get_out_read_st) begin
                 FPGA_HANDSHAKE_CHANNEL0[3] <= 0;
+                checksum_clear <= 1;
             end
+            else if(get_out_write_st) begin
+                checksum_clear <= 1;
+            end            
+            else if(pi == 6 && (read_status)) begin
+                FPGA_COMM_CHECKSUM <= checksum_out;
+                // if(checksum_out == FPGA_COMM_CHECKSUM) begin
+                //     FPGA_HANDSHAKE_CHANNEL0[4] <= 1;
+                // end
+            end
+            else if(pi == 6 && checksum_en_w_2cy) begin
+                if(checksum_out == FPGA_COMM_CHECKSUM) begin
+                    FPGA_HANDSHAKE_CHANNEL0[4] <= 1;
+                end
+            end        
         end
     end
+    // assign checksum_en_r = (current_state == st_read_block && cs_ne && cpld_addr == 8'h54);
+    delay_cy #(
+        .cycles ( 2 ))
+    u_delay_cy_checksum_r_2cy (
+        .clk                     ( high_cpld_clk          ),
+        .rst_n                   ( rst_n        ),
+        .signal_in               ( current_state == st_read_block && cs_ne && cpld_addr == 8'h54    ),
+
+        .signal_out              ( checksum_en_r   )
+    );
+    delay_cy #(
+        .cycles ( 1 ))
+    u_delay_cy_checksum_w_1cy (
+        .clk                     ( high_cpld_clk          ),
+        .rst_n                   ( rst_n        ),
+        .signal_in               ( current_state == st_write_block && cs_pe_1cy && cpld_addr == 8'h54    ),
+
+        .signal_out              ( checksum_en_w   )
+    );
+    delay_cy #(
+        .cycles ( 2 ))
+    u_delay_cy_checksum_w_2cy (
+        .clk                     ( high_cpld_clk          ),
+        .rst_n                   ( rst_n        ),
+        .signal_in               ( checksum_en_w),
+
+        .signal_out              ( checksum_en_w_2cy   )
+    );    
+    wire [15:0] checksum_datain;
+    assign checksum_datain = (current_state == st_read_block) ? FPGA_COMM_DATA : data_block[pi-1];
+    ifc_checksum  u_ifc_checksum (
+        .clk                     ( high_cpld_clk            ),
+        .rst_n                   ( rst_n          ),
+        .en                      ( checksum_en_r || checksum_en_w ),
+        .clear                   ( checksum_clear          ),
+        .r_or_w                  ( 0         ),
+        .datain                  ( checksum_datain         ),
+
+        .checksum                ( checksum_out       )
+    );    
 
     assign cb_write_enable = (current_state == st_read_block && cs_ne && cpld_addr == 8'h54);
     reg[7:0] wi;
