@@ -8,6 +8,7 @@
 
 clk_pll_0 the_instance_name (
   .clkout0(clkout0),    // output
+  .clkout1(clkout1),    // output
   .lock(lock),          // output
   .clkin1(clkin1),      // input
   .rst(rst)             // input

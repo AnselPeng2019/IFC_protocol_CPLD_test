@@ -1,0 +1,7 @@
+inst = data_block[44][9]/opit_0_inv_L5Q(gopL5Q), x = 13, y = 36
+inst = data_block[83][13]/opit_0_inv_L5Q(gopL5Q), x = 33, y = 12
+inst = data_block[83][3]/opit_0_inv_L5Q(gopL5Q), x = 33, y = 18
+inst = data_block[52][13]/opit_0_inv_L5Q(gopL5Q), x = 32, y = 12
+inst = data_block[52][9]/opit_0_inv_L5Q(gopL5Q), x = 32, y = 13
+inst = data_block[52][10]/opit_0_inv_L5Q(gopL5Q), x = 31, y = 15
+inst = data_block[52][3]/opit_0_inv_L5Q(gopL5Q), x = 31, y = 16

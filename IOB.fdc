@@ -321,7 +321,7 @@ define_attribute {p:voltage_drop} {PAP_IO_STANDARD} {LVCMOS33}
 define_attribute {p:voltage_drop} {PAP_IO_PULLDW} {TRUE}
 create_clock -name {clock_50MHz} [get_ports {clock_50MHz}] -period {20.000} -waveform {0.000 10.000}
 define_attribute {n:ifc_oe_b} {PAP_CLOCK_DEDICATED_ROUTE} {FALSE}
-create_generated_clock -name {pll_100M} -source [get_ports {clock_50MHz}] [get_nets {pll.clkout0}] -master_clock [get_clocks {clock_50MHz}] -multiply_by {4} -duty_cycle {50.000}
+create_generated_clock -name {pll_200M} -source [get_ports {clock_50MHz}] [get_nets {pll.clkout0}] -master_clock [get_clocks {clock_50MHz}] -multiply_by {4} -divide_by {1} -duty_cycle {50.000}
 define_attribute {p:tp13} {PAP_IO_DIRECTION} {OUTPUT}
 define_attribute {p:tp13} {PAP_IO_LOC} {83}
 define_attribute {p:tp13} {PAP_IO_VCCIO} {3.3}
@@ -432,3 +432,4 @@ define_attribute {p:ifc_ad[8]} {PAP_IO_STANDARD} {LVCMOS33}
 define_attribute {p:ifc_ad[8]} {PAP_IO_DRIVE} {4}
 define_attribute {p:ifc_ad[8]} {PAP_IO_NONE} {TRUE}
 define_attribute {p:ifc_ad[8]} {PAP_IO_SLEW} {SLOW}
+create_generated_clock -name {pll_100M} -source [get_ports {clock_50MHz}] {get_nets {pll.clkout1}} -master_clock [get_clocks {clock_50MHz}] -multiply_by {2} -divide_by {1} -duty_cycle {50.000}

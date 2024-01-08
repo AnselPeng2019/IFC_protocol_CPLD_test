@@ -122,6 +122,8 @@ module clk_pll_0_tb ();
     
     .clkout0(clkout0),
     
+    .clkout1(clkout1),
+    
     .clkin1(clkin1),
     
     .rst(rst),

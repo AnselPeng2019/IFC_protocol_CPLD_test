@@ -1,34 +1,43 @@
 Instances in group:
-    gopA2 N433_0_1/gateop_A2
-    gopA2 N433_0_3/gateop_A2
-    gopA2 N433_0_5/gateop_A2
-    gopA2 N433_0_7/gateop_A2
-    gopA2 N433_0_9/gateop_A2
-    gopA2 N433_0_11/gateop_A2
-    gopA2 N433_0_13/gateop_A2
-    gopA2 N433_0_15/gateop_A2
-    gopA2 N433_0_17/gateop_A2
-    gopA2 N433_0_19/gateop_A2
-    gopA2 N433_0_21/gateop_A2
-    gopA2 N433_0_23/gateop_A2
-    gopA2 N433_0_25/gateop_A2
-    gopA2 N433_0_27/gateop_A2
-    gopA2 N433_0_29/gateop_A2
-    gopA N433_0_31/gateop
-    gopA2 N632_0_1/gateop_A2
-    gopA2 N632_0_3/gateop_A2
-    gopA2 N632_0_5/gateop_A2
-    gopA N632_0_7/gateop
-    gopA2 N670.eq_0/gateop_A2
-    gopA2 N670.eq_2/gateop_A2
-    gopA2 N670.eq_4/gateop_A2
-    gopA2 N670.eq_6/gateop_A2
-    gopA2 N739_0.fsub_2/gateop_A2
-    gopA2 N739_0.fsub_4/gateop_A2
-    gopA2 N739_0.fsub_6/gateop_A2
-    gopA N739_0.fsub_8/gateop
+    gopA2 N453_0.fsub_1/gateop_A2
+    gopA2 N453_0.fsub_3/gateop_A2
+    gopA2 N453_0.fsub_5/gateop_A2
+    gopA2 N453_0.fsub_7/gateop_A2
+    gopA2 N453_0.fsub_9/gateop_A2
+    gopA2 N453_0.fsub_11/gateop_A2
+    gopA2 N453_0.fsub_13/gateop_A2
+    gopA N453_0.fsub_15/gateop
+    gopA2 N454.lt_0/gateop_A2
+    gopA2 N454.lt_2/gateop_A2
+    gopA2 N454.lt_4/gateop_A2
+    gopA2 N454.lt_6/gateop_A2
+    gopA N454.lt_8/gateop
+    gopA2 N483_0_1/gateop_A2
+    gopA2 N483_0_3/gateop_A2
+    gopA2 N483_0_5/gateop_A2
+    gopA2 N483_0_7/gateop_A2
+    gopA2 N483_0_9/gateop_A2
+    gopA2 N483_0_11/gateop_A2
+    gopA2 N483_0_13/gateop_A2
+    gopA N483_0_15/gateop
+    gopA2 N602.eq_0/gateop_A2
+    gopA2 N602.eq_2/gateop_A2
+    gopA2 N602.eq_4/gateop_A2
+    gopA2 N602.eq_6/gateop_A2
+    gopA2 N622.eq_0/gateop_A2
+    gopA2 N622.eq_2/gateop_A2
+    gopA2 N622.eq_4/gateop_A2
+    gopA2 N622.eq_6/gateop_A2
     gopIBUF clock_50MHz_ibuf/opit_0
     gopIBUFIOL clock_50MHz_ibuf/opit_1
+    gopA2Q2 cnt_frf[2]/opit_0_inv_A2Q21
+    gopA2Q2 cnt_frf[4]/opit_0_inv_A2Q21
+    gopA2Q2 cnt_frf[6]/opit_0_inv_A2Q21
+    gopAQ cnt_frf[7]/opit_0_inv_AQ
+    gopA2Q2 cnt_scope[2]/opit_0_inv_A2Q21
+    gopA2Q2 cnt_scope[4]/opit_0_inv_A2Q21
+    gopA2Q2 cnt_scope[6]/opit_0_inv_A2Q21
+    gopAQ cnt_scope[7]/opit_0_inv_AQ
     gopA2Q2 delay2[2]/opit_0_A2Q21
     gopA2Q2 delay2[4]/opit_0_A2Q21
     gopA2Q2 delay2[6]/opit_0_A2Q21
@@ -171,38 +180,38 @@ Instances in group:
     gopIBUFIOL io_in_ibuf[14]/opit_1
     gopIBUF io_in_ibuf[15]/opit_0
     gopIBUFIOL io_in_ibuf[15]/opit_1
-    gopOBUF io_out_obuf[0]/opit_0
-    gopOBUFIOL io_out_obuf[0]/opit_1
-    gopOBUF io_out_obuf[1]/opit_0
-    gopOBUFIOL io_out_obuf[1]/opit_1
-    gopOBUF io_out_obuf[2]/opit_0
-    gopOBUFIOL io_out_obuf[2]/opit_1
-    gopOBUF io_out_obuf[3]/opit_0
-    gopOBUFIOL io_out_obuf[3]/opit_1
-    gopOBUF io_out_obuf[4]/opit_0
-    gopOBUFIOL io_out_obuf[4]/opit_1
-    gopOBUF io_out_obuf[5]/opit_0
-    gopOBUFIOL io_out_obuf[5]/opit_1
-    gopOBUF io_out_obuf[6]/opit_0
-    gopOBUFIOL io_out_obuf[6]/opit_1
-    gopOBUF io_out_obuf[7]/opit_0
-    gopOBUFIOL io_out_obuf[7]/opit_1
-    gopOBUF io_out_obuf[8]/opit_0
-    gopOBUFIOL io_out_obuf[8]/opit_1
-    gopOBUF io_out_obuf[9]/opit_0
-    gopOBUFIOL io_out_obuf[9]/opit_1
-    gopOBUF io_out_obuf[10]/opit_0
-    gopOBUFIOL io_out_obuf[10]/opit_1
-    gopOBUF io_out_obuf[11]/opit_0
-    gopOBUFIOL io_out_obuf[11]/opit_1
-    gopOBUF io_out_obuf[12]/opit_0
-    gopOBUFIOL io_out_obuf[12]/opit_1
-    gopOBUF io_out_obuf[13]/opit_0
-    gopOBUFIOL io_out_obuf[13]/opit_1
-    gopOBUF io_out_obuf[14]/opit_0
-    gopOBUFIOL io_out_obuf[14]/opit_1
-    gopOBUF io_out_obuf[15]/opit_0
-    gopOBUFIOL io_out_obuf[15]/opit_1
+    gopOBUFT io_out[0]/opit_0
+    gopOBUFTIOL io_out[0]/opit_1
+    gopOBUFT io_out[1]/opit_0
+    gopOBUFTIOL io_out[1]/opit_1
+    gopOBUFT io_out[2]/opit_0
+    gopOBUFTIOL io_out[2]/opit_1
+    gopOBUFT io_out[3]/opit_0
+    gopOBUFTIOL io_out[3]/opit_1
+    gopOBUFT io_out[4]/opit_0
+    gopOBUFTIOL io_out[4]/opit_1
+    gopOBUFT io_out[5]/opit_0
+    gopOBUFTIOL io_out[5]/opit_1
+    gopOBUFT io_out[6]/opit_0
+    gopOBUFTIOL io_out[6]/opit_1
+    gopOBUFT io_out[7]/opit_0
+    gopOBUFTIOL io_out[7]/opit_1
+    gopOBUFT io_out[8]/opit_0
+    gopOBUFTIOL io_out[8]/opit_1
+    gopOBUFT io_out[9]/opit_0
+    gopOBUFTIOL io_out[9]/opit_1
+    gopOBUFT io_out[10]/opit_0
+    gopOBUFTIOL io_out[10]/opit_1
+    gopOBUFT io_out[11]/opit_0
+    gopOBUFTIOL io_out[11]/opit_1
+    gopOBUFT io_out[12]/opit_0
+    gopOBUFTIOL io_out[12]/opit_1
+    gopOBUFT io_out[13]/opit_0
+    gopOBUFTIOL io_out[13]/opit_1
+    gopOBUFT io_out[14]/opit_0
+    gopOBUFTIOL io_out[14]/opit_1
+    gopOBUFT io_out[15]/opit_0
+    gopOBUFTIOL io_out[15]/opit_1
     gopOBUF irq_obuf/opit_0
     gopOBUFIOL irq_obuf/opit_1
     gopIBUF pcb_ver_ibuf[0]/opit_0
@@ -227,6 +236,24 @@ Instances in group:
     gopA2Q1 u_led_light/timer[16]/opit_0_inv_A2Q1
     gopA2Q2 u_led_light/timer[18]/opit_0_inv_A2Q21
     gopA2Q2 u_led_light/timer[22]/opit_0_inv_A2Q21
+    gopA2 u_sample_timer/N70.lt_0/gateop_A2
+    gopA2 u_sample_timer/N70.lt_2/gateop_A2
+    gopA u_sample_timer/N70.lt_4/gateop
+    gopA2Q1 u_sample_timer/i1[1]/opit_0_inv_A2Q1
+    gopA2Q2 u_sample_timer/i1[3]/opit_0_inv_A2Q21
+    gopA2Q2 u_sample_timer/i1[5]/opit_0_inv_A2Q21
+    gopA2Q2 u_sample_timer/i1[7]/opit_0_inv_A2Q21
+    gopA2Q2 u_sample_timer/i1[9]/opit_0_inv_A2Q21
+    gopA2Q2 u_sample_timer/i1[11]/opit_0_inv_A2Q21
+    gopAQ u_sample_timer/i1[12]/opit_0_inv_AQ
+    gopA2Q2 u_sample_timer/ns_cnt[2]/opit_0_inv_A2Q21
+    gopA2Q2 u_sample_timer/ns_cnt[4]/opit_0_inv_A2Q21
+    gopA2Q2 u_sample_timer/ns_cnt[6]/opit_0_inv_A2Q21
+    gopAQ u_sample_timer/ns_cnt[7]/opit_0_inv_AQ
+    gopA2Q1 u_sample_timer/us_cnt[1]/opit_0_inv_A2Q1
+    gopA2Q2 u_sample_timer/us_cnt[3]/opit_0_inv_A2Q21
+    gopA2Q2 u_sample_timer/us_cnt[5]/opit_0_inv_A2Q21
+    gopA2Q2 u_sample_timer/us_cnt[7]/opit_0_inv_A2Q21
     gopA2 u_uart_def/u_uart_send_nbytes/N80_1_1/gateop_A2
     gopA2 u_uart_def/u_uart_send_nbytes/N134_1.fsub_2/gateop_A2
     gopA2 u_uart_def/u_uart_send_nbytes/N134_1.fsub_4/gateop_A2
@@ -258,6 +285,7 @@ Instances without PInst:
 Instances fixed:
     gopUSCMDC CLKBUFG_1/gopclkbufg
     gopUSCMDC CLKBUFG_2/gopclkbufg
+    gopUSCMDC CLKBUFG_3/gopclkbufg
     gopCCS GRS_INST/grs_ccs
     gopPLL pll/u_pll_e2/goppll
     gopBKCL BKCL_auto_0
@@ -267,339 +295,191 @@ Instances fixed:
     gopBKCL BKCL_auto_4
     gopBKCL BKCL_auto_5
 Instances is not target:
-    gopMUX4TO1Q FPGA_HANDSHAKE_CHANNEL0[3]/opit_0_inv_MUX4TO1Q
-    gopMUX8TO1 N429[7:0]_6[0]_muxf6
-    gopMUX8TO1 N429[7:0]_6[1]_muxf6
-    gopMUX8TO1 N429[7:0]_20[0]_muxf6
-    gopMUX8TO1 N429[7:0]_21[1]_muxf6
-    gopMUX8TO1 N429[7:0]_21[2]_muxf6
-    gopMUX8TO1 N429[7:0]_21[3]_muxf6
-    gopMUX8TO1 N429[7:0]_22[4]_muxf6
-    gopMUX8TO1 N429[7:0]_22[5]_muxf6
-    gopMUX8TO1 N429[7:0]_22[6]_muxf6
-    gopMUX8TO1 N429[7:0]_22[7]_muxf6
-    gopMUX8TO1 N429[7:0]_36[0]_muxf6
-    gopMUX8TO1 N429[7:0]_47[0]_muxf6
-    gopMUX8TO1 N429[7:0]_49[1]_muxf6
-    gopMUX8TO1 N429[7:0]_51[2]_muxf6
-    gopMUX8TO1 N429[7:0]_51[3]_muxf6
-    gopMUX8TO1 N1261_16[0]_muxf6
-    gopMUX8TO1 N1261_16[1]_muxf6
-    gopMUX8TO1 N1261_16[2]_muxf6
-    gopMUX8TO1 N1261_16[3]_muxf6
-    gopMUX8TO1 N1261_16[4]_muxf6
-    gopMUX8TO1 N1261_16[5]_muxf6
-    gopMUX8TO1 N1261_16[6]_muxf6
-    gopMUX8TO1 N1261_16[7]_muxf6
-    gopMUX4TO1Q checksum_clear/opit_0_inv_MUX4TO1Q
+    gopMUX4TO1Q FPGA_COMM_DATA[0]/opit_0_inv_MUX4TO1Q
+    gopMUX4TO1Q FPGA_COMM_DATA[1]/opit_0_inv_MUX4TO1Q
+    gopMUX4TO1Q FPGA_COMM_DATA[2]/opit_0_inv_MUX4TO1Q
+    gopMUX4TO1Q FPGA_COMM_DATA[5]/opit_0_inv_MUX4TO1Q
+    gopMUX4TO1Q FPGA_COMM_DATA[12]/opit_0_inv_MUX4TO1Q
+    gopMUX8TO1 N240[7:0]_15[0]_muxf6
+    gopMUX8TO1 N240[7:0]_15[1]_muxf6
+    gopMUX8TO1 N240[7:0]_15[2]_muxf6
+    gopMUX8TO1 N240[7:0]_15[3]_muxf6
+    gopMUX8TO1 N240[7:0]_15[4]_muxf6
+    gopMUX8TO1 N240[7:0]_15[5]_muxf6
+    gopMUX8TO1 N1324_17[3]_muxf6
+    gopMUX8TO1 N1324_17[4]_muxf6
+    gopMUX8TO1 N1324_17[5]_muxf6
+    gopMUX8TO1 N1324_17[6]_muxf6
+    gopMUX8TO1 N1324_17[7]_muxf6
     gopMUX4TO1Q cpld_poweron/opit_0_MUX4TO1Q
     gopMUX4TO1Q current_state_5/opit_0_MUX4TO1Q
+    gopMUX4TO1Q frf_data_avl/opit_0_inv_MUX4TO1Q
     gopPLLINMUXD pll/u_pll_e2/goppllinmuxd
-    gopMUX4TO1Q regd[0]/opit_0_inv_MUX4TO1Q
-    gopMUX4TO1Q regd[1]/opit_0_inv_MUX4TO1Q
-    gopMUX4TO1Q regd[4]/opit_0_inv_MUX4TO1Q
+    gopMUX4TO1Q regd[6]/opit_0_inv_MUX4TO1Q
+    gopMUX4TO1Q regd[7]/opit_0_inv_MUX4TO1Q
     gopMUX4TO1Q regd[8]/opit_0_inv_MUX4TO1Q
     gopMUX4TO1Q regd[9]/opit_0_inv_MUX4TO1Q
     gopMUX4TO1Q regd[10]/opit_0_inv_MUX4TO1Q
-    gopMUX4TO1Q regd[11]/opit_0_inv_MUX4TO1Q
-    gopMUX4TO1Q regd[12]/opit_0_inv_MUX4TO1Q
-    gopMUX4TO1Q regd[13]/opit_0_inv_MUX4TO1Q
-    gopMUX4TO1Q regd[14]/opit_0_inv_MUX4TO1Q
-    gopMUX4TO1Q regd[15]/opit_0_inv_MUX4TO1Q
-    gopL6Q u_ifc_checksum/checksum[1]/opit_0_inv_L6Q
-    gopL6Q u_ifc_checksum/checksum[2]/opit_0_inv_L6Q
-    gopL6Q u_ifc_checksum/checksum[3]/opit_0_inv_L6Q
-    gopL6Q u_ifc_checksum/checksum[4]/opit_0_inv_L6Q
-    gopL6Q u_ifc_checksum/checksum[5]/opit_0_inv_L6Q
-    gopL6Q u_ifc_checksum/checksum[6]/opit_0_inv_L6Q
-    gopL6Q u_ifc_checksum/checksum[7]/opit_0_inv_L6Q
-    gopL6Q u_ifc_checksum/checksum[8]/opit_0_inv_L6Q
-    gopL6Q u_ifc_checksum/checksum[9]/opit_0_inv_L6Q
-    gopL6Q u_ifc_checksum/checksum[10]/opit_0_inv_L6Q
-    gopL6Q u_ifc_checksum/checksum[11]/opit_0_inv_L6Q
-    gopL6Q u_ifc_checksum/checksum[12]/opit_0_inv_L6Q
-    gopL6Q u_ifc_checksum/checksum[13]/opit_0_inv_L6Q
-    gopL6Q u_ifc_checksum/checksum[14]/opit_0_inv_L6Q
-    gopL6Q u_ifc_checksum/checksum[15]/opit_0_inv_L6Q
-    gopMUX8TO1 u_uart_def/u_uart_send_nbytes/N375_11[1]_muxf6
-    gopMUX8TO1 u_uart_def/u_uart_send_nbytes/N375_11[3]_muxf6
-    gopMUX8TO1 u_uart_def/u_uart_send_nbytes/N375_11[4]_muxf6
-    gopMUX8TO1 u_uart_def/u_uart_send_nbytes/N375_11[6]_muxf6
+    gopMUX4TO1Q scope_data_avl/opit_0_inv_MUX4TO1Q
     gopLATCH u_uart_def/u_uart_send_nbytes/ns[0]/opit_0
     gopLATCH u_uart_def/u_uart_send_nbytes/ns[1]/opit_0
     gopMUX4TO1Q u_uart_def/u_uart_send_nbytes/tx_str[0]/opit_0_inv_MUX4TO1Q
-    gopMUX4TO1Q u_uart_def/u_uart_send_nbytes/tx_str[1]/opit_0_inv_MUX4TO1Q
     gopMUX4TO1Q u_uart_def/u_uart_send_nbytes/tx_str[2]/opit_0_inv_MUX4TO1Q
-    gopMUX4TO1Q u_uart_def/u_uart_send_nbytes/tx_str[3]/opit_0_inv_MUX4TO1Q
-    gopMUX4TO1Q u_uart_def/u_uart_send_nbytes/tx_str[4]/opit_0_inv_MUX4TO1Q
     gopMUX4TO1Q u_uart_def/u_uart_send_nbytes/tx_str[5]/opit_0_inv_MUX4TO1Q
-    gopMUX4TO1Q u_uart_def/u_uart_send_nbytes/tx_str[6]/opit_0_inv_MUX4TO1Q
     gopMUX4TO1Q u_uart_def/u_uart_send_nbytes/tx_str[7]/opit_0_inv_MUX4TO1Q
     gopMUX8TO1 u_uart_def/u_uart_send_nbytes/uart_tx_inst/N135_17_muxf6
     gopMUX4TO1Q u_uart_def/u_uart_send_nbytes/uart_tx_inst/state_3/opit_0_inv_MUX4TO1Q
 Pin whose loads are focus:
-    Q gopL5Q FPGA_COMM_CHECKSUM[10]/opit_0_inv_L5Q
-    Q gopQ cpld_addr[0]/opit_0_inv
-    Z gopLUT5 N906_2/gateop
-    Z gopLUT6 N1070_22_muxf6
-    Z gopLUT5 N1055_0/gateop
-    Z gopLUT5 N1070_19/gateop
-    Q gopQ cpld_addr[6]/opit_0_inv
-    Q gopL5Q pi[6]/opit_0_inv_L5Q
-    Z gopLUT6 N741_13[15]_muxf6
-    Z gopLUT5 N1069_3/gateop
-    Z gopLUT5 N998/gateop
-    Q gopQ cpld_addr[7]/opit_0_inv
-    Z gopLUT5 N926_0/gateop
-    Q gopL5Q pi[2]/opit_0_inv_L5Q
-    Z gopLUT5 N741_13[1]_1/gateop
-    Z gopLUT6 N741_13[3]_muxf6
-    Z gopLUT5 N1069_4/gateop
-    Q gopL5Q pi[4]/opit_0_inv_L5Q
-    Q gopL5Q pi[3]/opit_0_inv_L5Q
-    F gopMUX4TO1 N741_9[8]/gateop
-    Z gopLUT6 N741_13[8]_muxf6
-    Z gopLUT6 N1069_5/LUT6_inst
-    F gopMUX4TO1 N741_9[3]/gateop
-    Q gopL5Q pi[0]/opit_0_inv_L5Q
-    F gopMUX4TO1 N741_9[15]/gateop
-    Q gopL5Q FPGA_COMM_CHECKSUM[3]/opit_0_inv_L5Q
-    Q gopL5Q FPGA_COMM_CHECKSUM[8]/opit_0_inv_L5Q
-    Q gopL5Q FPGA_COMM_CHECKSUM[15]/opit_0_inv_L5Q
-    Q gopL5Q FPGA_COMM_CHECKSUM[0]/opit_0_inv_L5Q
-    Q gopL5Q FPGA_COMM_CHECKSUM[1]/opit_0_inv_L5Q
-    Q gopQ u_delay_cy_cs_5/prev_data[1]/opit_0_inv
-    Z gopLUT5 N618_7/gateop
-    F gopMUX4TO1 N741_9[11]/gateop
-    Z gopLUT6 N741_13[11]_muxf6
-    Q gopQ cpld_addr[2]/opit_0_inv
-    Z gopLUT5 N618_2/gateop
-    Q gopQ cpld_addr[1]/opit_0_inv
-    Z gopLUT5 N999/gateop
-    Q gopL5Q FPGA_COMM_CHECKSUM[2]/opit_0_inv_L5Q
-    Q gopL5Q FPGA_COMM_CHECKSUM[4]/opit_0_inv_L5Q
-    Q gopL5Q FPGA_COMM_CHECKSUM[5]/opit_0_inv_L5Q
-    Q gopL5Q FPGA_COMM_CHECKSUM[7]/opit_0_inv_L5Q
+    Q gopL5Q FPGA_COMM_DATALEN[3]/opit_0_inv_L5Q
+    Q gopL5Q FPGA_COMM_DATA[3]/opit_0_inv_L5Q
+    Q gopL5Q FPGA_COMM_DATA[4]/opit_0_inv_L5Q
+    Q gopL5Q FPGA_COMM_DATA[11]/opit_0_inv_L5Q
+    Q gopL5Q FPGA_COMM_DATA[14]/opit_0_inv_L5Q
+    Z gopLUT5 N1483_0/gateop
+    Q gopL5Q FPGA_COMM_DATA[9]/opit_0_inv_L5Q
+    Z gopLUT5 N1484_903/gateop
+    Z gopLUT5 N1484_80[0]_8/gateop
+    Q gopL5Q FPGA_HANDSHAKE_CHANNEL0[4]/opit_0_inv_L5Q
     Q gopL5Q pi[1]/opit_0_inv_L5Q
-    Q gopQ cpld_addr[5]/opit_0_inv
-    Q gopQ cpld_addr[4]/opit_0_inv
-    F gopMUX4TO1 N741_9[14]/gateop
-    Z gopLUT6 N741_13[14]_muxf6
-    Z gopLUT5 N1069_1/gateop
-    Q gopQ u_delay_cy_cs_5/prev_data[0]/opit_0_inv
-    Z gopLUT6 N741_13[13]_muxf6
-    F gopMUX4TO1 N741_9[7]/gateop
-    F gopMUX4TO1 N741_9[12]/gateop
-    Z gopLUT6 N741_13[7]_muxf6
-    Z gopLUT6 N741_13[12]_muxf6
-    Q gopQ u_delay_cy_cs_pe_1/signal_out/opit_0
-    Z gopLUT5 N640_0/gateop
-    F gopMUX4TO1 N741_9[2]/gateop
-    Z gopLUT6 N741_13[2]_muxf6
-    Q gopL5Q pi[5]/opit_0_inv_L5Q
-    Q gopQ cpld_addr[3]/opit_0_inv
-    F gopMUX4TO1 N1259_0_6/gateop
-    Z gopLUT5 N1259_0_12/gateop
-    Z gopLUT5 N1263_1/gateop
-    F gopMUX4TO1 N1259_0_7/gateop
-    F gopMUX4TO1 N741_9[6]/gateop
-    Z gopLUT6 N741_13[6]_muxf6
-    F gopMUX4TO1 N741_9[4]/gateop
-    Z gopLUT6 N741_13[4]_muxf6
-    F gopMUX4TO1 N741_9[10]/gateop
-    Z gopLUT6 N741_13[10]_muxf6
-    Q gopL5Q pi[7]/opit_0_inv_L5Q
-    Q gopL5Q FPGA_COMM_CHECKSUM[9]/opit_0_inv_L5Q
-    Q gopL5Q FPGA_COMM_CHECKSUM[11]/opit_0_inv_L5Q
-    F gopMUX4TO1 N741_9[13]/gateop
-    Z gopLUT5 N1259_132/gateop
-    Z gopLUT5 N1259_0_4/gateop
-    Z gopLUT5 N429[7:0]_16[1]_1/gateop
-    Z gopLUT5 N429[7:0]_20[7]_3/gateop
-    Z gopLUT5 N871/gateop
-    Q gopL5Q FPGA_COMM_DATA[12]/opit_0_inv_L5Q
-    Z gopLUT5 N1104_1_3/gateop
-    Z gopLUT5 N1104_1_4/gateop
-    F gopMUX4TO1 N1117_0/gateop
+    Z gopLUT5 N603/gateop
+    Z gopLUT5 N1647_0_10/gateop
+    Z gopLUT5 N1647_0_12/gateop
+    Q gopL5Q FPGA_COMM_DATALEN[2]/opit_0_inv_L5Q
+    Q gopL5Q FPGA_COMM_DATALEN[1]/opit_0_inv_L5Q
+    Q gopL5Q FPGA_COMM_DATA[8]/opit_0_inv_L5Q
+    Q gopL5Q FPGA_COMM_DATA[10]/opit_0_inv_L5Q
+    Q gopL5Q FPGA_COMM_DATA[15]/opit_0_inv_L5Q
+    Q gopQ FPGA_HANDSHAKE_CHANNEL0[12]/opit_0_inv
+    Z gopLUT5 N1484_906/gateop
+    Z gopLUT5 N1647_10/gateop
+    Z gopLUT5 N1813_1/gateop
+    Z gopLUT6 N1484_72[1]_2/LUT6_inst
+    Q gopL5Q FPGA_COMM_DATALEN[4]/opit_0_inv_L5Q
     Q gopL5Q FPGA_COMM_DATA[6]/opit_0_inv_L5Q
-    Z gopLUT5 N1376_3/gateop
-    Z gopLUT6 N741_13[9]_muxf6
-    Z gopLUT6 N741_13[5]_muxf6
-    Q gopL5Q FPGA_COMM_DATA[5]/opit_0_inv_L5Q
+    Z gopLUT5 N1813_0/gateop
+    Q gopQ FPGA_HANDSHAKE_CHANNEL0[14]/opit_0_inv
+    Q gopL5Q FPGA_COMM_DATALEN[5]/opit_0_inv_L5Q
+    Q gopL5Q FPGA_COMM_DATALEN[6]/opit_0_inv_L5Q
+    Q gopQ cpld_addr[5]/opit_0_inv
+    Z gopLUT5 N1375_0/gateop
+    Z gopLUT5 N1376_0/gateop
+    Q gopL5Q pi[3]/opit_0_inv_L5Q
+    Q gopL5Q FPGA_COMM_DATALEN[8]/opit_0_inv_L5Q
+    Q gopL5Q pi[2]/opit_0_inv_L5Q
+    Q gopL5Q FPGA_COMM_DATALEN[7]/opit_0_inv_L5Q
+    Q gopL5Q pi[4]/opit_0_inv_L5Q
     Q gopL5Q FPGA_COMM_DATA[13]/opit_0_inv_L5Q
-    Q gopQ data_block[2][1]/opit_0_inv
-    Q gopQ data_block[2][4]/opit_0_inv
-    Q gopQ data_block[2][5]/opit_0_inv
-    Q gopQ data_block[2][6]/opit_0_inv
-    Q gopQ data_block[2][12]/opit_0_inv
-    Q gopQ data_block[2][13]/opit_0_inv
-    Z gopLUT5 N926/gateop
-    Z gopLUT5 N1000_4/gateop
-    Z gopLUT5 N1292/gateop
-    Q gopL5Q u_ifc_checksum/checksum[0]/opit_0_inv_L5Q
-    Z gopLUT5 N741_8[0]/gateop
-    F gopMUX4TO1 N741_10[0]/gateop
-    F gopMUX4TO1 N1259_45/gateop
-    Z gopLUT5 N1259_55/gateop
+    Q gopQ cpld_addr[3]/opit_0_inv
+    Q gopL5Q pi[0]/opit_0_inv_L5Q
+    Q gopL5Q pi[10]/opit_0_inv_L5Q
+    Z gopLUT5 N1513/gateop
+    Q gopL5Q pi[5]/opit_0_inv_L5Q
+    Z gopLUT5 N1484_76[1]_4/gateop
+    Q gopQ FPGA_HANDSHAKE_CHANNEL0[11]/opit_0_inv
+    Q gopL5Q FPGA_COMM_DATA[7]/opit_0_inv_L5Q
+    Q gopL5Q FPGA_COMM_DATALEN[9]/opit_0_inv_L5Q
+    Q gopL5Q pi[7]/opit_0_inv_L5Q
+    Q gopL5Q pi[9]/opit_0_inv_L5Q
+    Q gopL5Q FPGA_COMM_DATALEN[12]/opit_0_inv_L5Q
+    Q gopL5Q FPGA_COMM_DATALEN[10]/opit_0_inv_L5Q
+    Q gopQ FPGA_HANDSHAKE_CHANNEL0[13]/opit_0_inv
+    Q gopL5Q FPGA_COMM_DATALEN[11]/opit_0_inv_L5Q
+    Q gopQ cpld_addr[0]/opit_0_inv
+    Z gopLUT5 N1484_74[2]_1/gateop
+    Q gopL5Q pi[11]/opit_0_inv_L5Q
+    Z gopLUT5 N1484_71[0]/gateop
+    Q gopL5Q pi[15]/opit_0_inv_L5Q
+    Q gopQ FPGA_HANDSHAKE_CHANNEL0[15]/opit_0_inv
+    Q gopL5Q FPGA_COMM_DATALEN[14]/opit_0_inv_L5Q
+    Q gopQ cpld_addr[1]/opit_0_inv
+    Z gopLUT5 N240[7:0]_12[0]/gateop
+    Q gopL5Q FPGA_COMM_DATALEN[13]/opit_0_inv_L5Q
+    Q gopL5Q FPGA_COMM_DATALEN[15]/opit_0_inv_L5Q
+    Q gopL5Q FPGA_HANDSHAKE_CHANNEL0[3]/opit_0_inv_L5Q
+    Q gopQ FPGA_HANDSHAKE_CHANNEL0[9]/opit_0_inv
+    Z gopLUT5 N873_2/gateop
+    Z gopLUT5 N1718_0/gateop
+    Z gopLUT5 N1776_6/gateop
+    Z gopLUT5 N1776_3/gateop
+    Q gopL5Q pi[6]/opit_0_inv_L5Q
+    Q gopL5Q pi[13]/opit_0_inv_L5Q
+    Q gopL5Q pi[14]/opit_0_inv_L5Q
+    Z gopLUT5 N1484_73[8]/gateop
+    Z gopLUT5 N1484_163_4/gateop
+    Q gopQ FPGA_HANDSHAKE_CHANNEL0[8]/opit_0_inv
+    Q gopQ cpld_addr[4]/opit_0_inv
+    Q gopL5Q pi[8]/opit_0_inv_L5Q
+    Q gopQ u_delay_cy_cs_5/prev_data[1]/opit_0_inv
+    Z gopLUT5 N440_3/gateop
+    Q gopL5Q FPGA_COMM_CHECKSUM[1]/opit_0_inv_L5Q
+    Q gopL5Q FPGA_COMM_CHECKSUM[3]/opit_0_inv_L5Q
     Q gopL5Q FPGA_COMM_CHECKSUM[6]/opit_0_inv_L5Q
+    Q gopL5Q FPGA_COMM_CHECKSUM[7]/opit_0_inv_L5Q
+    Z gopLUT5 N1387_4/gateop
+    F gopMUX4TO1 N1391_8/gateop
+    Q gopL5Q FPGA_COMM_CHECKSUM[9]/opit_0_inv_L5Q
+    Q gopL5Q FPGA_COMM_CHECKSUM[10]/opit_0_inv_L5Q
+    Q gopL5Q FPGA_COMM_CHECKSUM[15]/opit_0_inv_L5Q
+    Q gopL5Q FPGA_COMM_CHECKSUM[8]/opit_0_inv_L5Q
     Q gopL5Q FPGA_COMM_CHECKSUM[12]/opit_0_inv_L5Q
     Q gopL5Q FPGA_COMM_CHECKSUM[13]/opit_0_inv_L5Q
     Q gopL5Q FPGA_COMM_CHECKSUM[14]/opit_0_inv_L5Q
-    F gopMUX4TO1 N741_9[1]/gateop
-    Z gopLUT6 N741_13[1]_muxf6
-    F gopMUX4TO1 N1259_0_3/gateop
-    Z gopLUT5 N1259_0_8/gateop
-    F gopMUX4TO1 N741_9[9]/gateop
-    Q gopQ data_block[1][5]/opit_0_inv
-    Q gopQ data_block[1][6]/opit_0_inv
-    Q gopQ data_block[1][11]/opit_0_inv
-    Q gopQ data_block[1][13]/opit_0_inv
-    Q gopQ data_block[1][15]/opit_0_inv
-    Z gopLUT5 N925/gateop
-    Z gopLUT5 N1299/gateop
-    Q gopL5Q FPGA_COMM_DATA[3]/opit_0_inv_L5Q
-    Q gopQ data_block[2][14]/opit_0_inv
-    Z gopLUT5 N1099_1/gateop
-    Q gopL5Q FPGA_COMM_DATA[11]/opit_0_inv_L5Q
-    Q gopL5Q FPGA_COMM_DATA[7]/opit_0_inv_L5Q
-    Q gopL5Q FPGA_HANDSHAKE_CHANNEL0[4]/opit_0_inv_L5Q
-    Z gopLUT5 N1369_1/gateop
-    F gopMUX4TO1 FPGA_HANDSHAKE_CHANNEL0[4]_1/gateop
-    Z gopLUT5 ND14[3]_3/gateop
-    Q gopQ data_block[2][9]/opit_0_inv
-    Q gopQ data_block[2][10]/opit_0_inv
-    Q gopQ data_block[2][15]/opit_0_inv
-    Z gopLUT5 N626_mux7_5/gateop
-    Z gopLUT5 N626_mux7_6/gateop
-    Q gopQ data_block[4][2]/opit_0_inv
-    Z gopLUT5 N1278/gateop
-    Q gopQ data_block[4][1]/opit_0_inv
-    Q gopQ data_block[4][3]/opit_0_inv
-    Q gopQ data_block[4][4]/opit_0_inv
-    Q gopQ data_block[4][12]/opit_0_inv
-    Q gopQ data_block[2][8]/opit_0_inv
-    Q gopQ data_block[2][11]/opit_0_inv
-    Q gopL5Q current_state_4/opit_0_L5Q
-    Q gopQ data_block[4][7]/opit_0_inv
-    Q gopQ data_block[4][8]/opit_0_inv
-    Q gopQ data_block[4][9]/opit_0_inv
-    Q gopQ data_block[4][11]/opit_0_inv
-    Q gopL5Q FPGA_COMM_DATA[0]/opit_0_inv_L5Q
-    Z gopLUT5 N1118_13[0]/gateop
-    Q gopQ data_block[1][0]/opit_0_inv
-    Q gopQ data_block[1][1]/opit_0_inv
-    Q gopQ data_block[1][2]/opit_0_inv
-    Q gopQ data_block[1][3]/opit_0_inv
-    Q gopQ data_block[1][7]/opit_0_inv
-    Q gopQ data_block[1][14]/opit_0_inv
-    Q gopQ data_block[1][4]/opit_0_inv
-    Q gopQ data_block[1][12]/opit_0_inv
-    F gopMUX4TO1 N741_9[5]/gateop
-    Q gopL5Q FPGA_COMM_DATA[14]/opit_0_inv_L5Q
-    Z gopLUT5 N1118_13[14]/gateop
-    Q gopL5Q FPGA_COMM_DATA[1]/opit_0_inv_L5Q
-    F gopMUX4TO1 N1118_11[1]/gateop
-    Z gopLUT5 N1118_13[1]/gateop
-    Q gopL5Q FPGA_COMM_DATA[2]/opit_0_inv_L5Q
-    Q gopL5Q FPGA_COMM_DATA[4]/opit_0_inv_L5Q
-    Z gopLUT5 N906_6/gateop
-    Z gopLUT5 N1367_2/gateop
-    Z gopLUT5 N1118_13[5]/gateop
-    Z gopLUT5 N1369_3/gateop
-    Z gopLUT5 N1376_0_3/gateop
-    Z gopLUT5 N618_0/gateop
-    Z gopLUT5 N1070_26/gateop
-    Z gopLUT5 N741_12[0]_2/gateop
+    Q gopQ cpld_addr[7]/opit_0_inv
+    Z gopLUT5 N751_2/gateop
+    Z gopLUT5 N852/gateop
+    Q gopL5Q pi[12]/opit_0_inv_L5Q
+    Z gopLUT5 N1484_502/gateop
+    Z gopLUT5 N1484_892/gateop
+    F gopMUX4TO1 N1484_81[6]_5/gateop
+    Z gopLUT5 N1484_81[6]_7/gateop
+    Q gopQ u_delay_cy_cs_pe_1/signal_out/opit_0
+    Z gopLUT5 N491_0/gateop
+    Z gopL5Q u_delay_cy_checksum_r_2cy/prev_data[0]/opit_0_inv_L5Q
+    Q gopL5Q u_delay_cy_checksum_r_2cy/prev_data[0]/opit_0_inv_L5Q
+    Z gopLUT5 N1776_2/gateop
+    F gopMUX4TO1 N1457_0/gateop
+    Z gopLUT5 N1484_893/gateop
+    Z gopLUT5 N1718_3/gateop
+    Q gopQ cpld_addr[6]/opit_0_inv
+    Z gopLUT5 N240[7:0]_14[6]_1/gateop
+    Q gopL5Q FPGA_COMM_CHECKSUM[2]/opit_0_inv_L5Q
+    Q gopL5Q FPGA_COMM_CHECKSUM[4]/opit_0_inv_L5Q
+    Q gopL5Q FPGA_COMM_CHECKSUM[5]/opit_0_inv_L5Q
+    Q gopL5Q FPGA_COMM_CHECKSUM[11]/opit_0_inv_L5Q
+    Z gopLUT5 N1484_496/gateop
+    Z gopLUT5 N1448_0/gateop
+    Z gopLUT5 N1448_3/gateop
+    Z gopLUT5 N1717_1/gateop
+    Z gopLUT5 N1484_891/gateop
+    Z gopLUT5 N1448_2/gateop
+    Z gopLUT5 N987_13/gateop
+    Q gopL5Q FPGA_COMM_CHECKSUM[0]/opit_0_inv_L5Q
+    F gopMUX4TO1 N1717_0_4/gateop
+    Q gopQ cpld_addr[2]/opit_0_inv
+    Q gopQ FPGA_HANDSHAKE_CHANNEL0[10]/opit_0_inv
+    Z gopLUT5 N1484_80[2]_1/gateop
+    Z gopLUT5 N1484_501/gateop
+    Z gopLUT5 N1484_81[2]_9/gateop
+    Q gopQ u_get_signal_edge_write_st/sig_reg[0]/opit_0_inv
+    Z gopLUT5 u_get_signal_edge_write_st/N20/gateop
+    Z gopLUT5 N1484_225/gateop
+    Z gopLUT5 N1484_902/gateop
+    Z gopLUT5 N1484_495/gateop
+    Z gopLUT5 N1324_20[3]_5/gateop
+    Q gopQ u_delay_cy_cs_5/prev_data[0]/opit_0_inv
+    Q gopL5Q FPGA_COMM_DATALEN[0]/opit_0_inv_L5Q
     Q gopQ u_get_signal_edge_read_st/sig_reg[1]/opit_0_inv
-    Z gopLUT5 N1066_2/gateop
-    Z gopLUT5 N1408_1/gateop
-    Q gopL5Q FPGA_COMM_DATA[9]/opit_0_inv_L5Q
-    Q gopL5Q FPGA_COMM_DATA[10]/opit_0_inv_L5Q
-    Q gopL5Q FPGA_COMM_DATA[15]/opit_0_inv_L5Q
-    Q gopQ data_block[4][0]/opit_0_inv
-    Q gopQ data_block[3][5]/opit_0_inv
-    Q gopQ data_block[3][6]/opit_0_inv
-    Q gopQ data_block[3][13]/opit_0_inv
-    Q gopQ data_block[3][15]/opit_0_inv
-    Z gopLUT5 N1285/gateop
-    Q gopL5Q FPGA_COMM_DATA[8]/opit_0_inv_L5Q
-    Z gopLUT5 N906_5/gateop
-    Q gopQ data_block[5][6]/opit_0_inv
-    Z gopLUT5 N1271_3/gateop
-    Q gopQ data_block[4][13]/opit_0_inv
-    Q gopQ data_block[4][14]/opit_0_inv
-    Q gopQ data_block[4][15]/opit_0_inv
-    Z gopLUT5 N1118_13[13]/gateop
-    Q gopL5Q FPGA_COMM_DATALEN[2]/opit_0_inv_L5Q
-    Q gopL5Q FPGA_COMM_DATALEN[3]/opit_0_inv_L5Q
-    Z gopLUT5 N1094/gateop
-    Q gopL5Q regd[3]/opit_0_inv_L5Q
-    Z gopLUT6 N429[7:0]_6[3]_muxf6
-    Q gopQ data_block[4][5]/opit_0_inv
-    Q gopQ data_block[4][6]/opit_0_inv
-    Q gopQ data_block[4][10]/opit_0_inv
-    F gopMUX4TO1 N1224/gateop
-    Q gopQ data_block[0][15]/opit_0_inv
-    Z gopLUT5 N924_3/gateop
-    Z gopLUT5 N1306/gateop
-    Q gopQ data_block[5][1]/opit_0_inv
-    Q gopQ data_block[5][4]/opit_0_inv
-    Q gopQ data_block[5][5]/opit_0_inv
-    Q gopQ data_block[5][8]/opit_0_inv
-    Q gopQ data_block[5][9]/opit_0_inv
-    Q gopQ data_block[5][12]/opit_0_inv
-    F gopMUX4TO1 N1118_11[5]/gateop
-    F gopMUX4TO1 N1118_11[15]/gateop
-    Z gopLUT5 N1118_13[15]/gateop
-    Z gopLUT5 ND14[2]/gateop
-    F gopMUX4TO1 N1118_11[11]/gateop
-    Z gopLUT5 N1118_13[11]/gateop
-    Q gopQ data_block[0][5]/opit_0_inv
-    Q gopQ data_block[0][14]/opit_0_inv
-    Q gopQ data_block[0][1]/opit_0_inv
-    Q gopQ data_block[0][3]/opit_0_inv
-    Q gopQ data_block[0][4]/opit_0_inv
-    Q gopQ data_block[0][6]/opit_0_inv
-    Q gopQ data_block[0][12]/opit_0_inv
-    Q gopQ data_block[0][13]/opit_0_inv
-    Q gopL5Q FPGA_COMM_DATALEN[4]/opit_0_inv_L5Q
-    Q gopL5Q FPGA_COMM_DATALEN[15]/opit_0_inv_L5Q
-    Z gopLUT5 N1118_13[10]/gateop
-    Q gopQ data_block[1][8]/opit_0_inv
-    Q gopQ data_block[1][9]/opit_0_inv
-    Q gopQ data_block[1][10]/opit_0_inv
-    Z gopLUT5 N1118_13[6]/gateop
-    F gopMUX4TO1 N1118_11[9]/gateop
-    Z gopLUT5 N1118_13[9]/gateop
-    Q gopL5Q FPGA_COMM_DATALEN[8]/opit_0_inv_L5Q
-    Q gopQ data_block[2][0]/opit_0_inv
-    Q gopQ data_block[2][2]/opit_0_inv
-    Q gopQ data_block[2][3]/opit_0_inv
-    Q gopQ data_block[2][7]/opit_0_inv
-    Q gopL5Q cnt_r[2]/opit_0_inv_L5Q
-    Q gopL5Q cnt_r[30]/opit_0_inv_L5Q
-    Q gopQ test_16bits[3]/opit_0_inv
-    Q gopQ test_16bits[4]/opit_0_inv
-    Q gopQ test_16bits[7]/opit_0_inv
-    Q gopQ u_get_signal_edge_sw/sig_reg[1]/opit_0_inv
-    Z gopLUT5 N924_0/gateop
-    Z gopLUT5 N1195_3/gateop
-    Z gopLUT5 N1195_4/gateop
-    Q gopQ data_block[0][8]/opit_0_inv
-    Q gopQ data_block[0][9]/opit_0_inv
-    Q gopQ data_block[0][10]/opit_0_inv
-    Q gopQ data_block[0][11]/opit_0_inv
-    Q gopL5Q FPGA_COMM_DATALEN[9]/opit_0_inv_L5Q
-    Q gopL5Q FPGA_COMM_DATALEN[5]/opit_0_inv_L5Q
-    Q gopL5Q FPGA_COMM_DATALEN[6]/opit_0_inv_L5Q
-    Q gopL5Q FPGA_COMM_DATALEN[12]/opit_0_inv_L5Q
-    F gopMUX4TO1 N1118_11[0]/gateop
-    F gopMUX4TO1 N1118_11[14]/gateop
-    Q gopQ data_block[0][2]/opit_0_inv
-    Q gopQ u_get_signal_edge_read_st/sig_reg[0]/opit_0_inv
     Z gopLUT5 u_get_signal_edge_read_st/N13/gateop
-    Q gopQ data_block[3][1]/opit_0_inv
-    Q gopQ data_block[3][4]/opit_0_inv
-    Q gopQ data_block[3][12]/opit_0_inv
+    Z gopLUT6 N1484_894/LUT6_inst
+    Z gopLUT5 N987_17/gateop
+    Z gopLUT5 N987_20/gateop
+    Z gopLUT5 N1484_81[0]_1/gateop
+    Z gopLUT5 N1484_81[0]_3/gateop
+    Z gopLUT5 N1484_487/gateop
+    Z gopLUT5 N1484_77[13]_3/gateop
+    Q gopL5Q regd[14]/opit_0_inv_L5Q
+    Z gopLUT5 N846_4/gateop
+    Z gopLUT5 N846_5/gateop
+    Z gopLUT5 N1326/gateop
 
 Reduce:

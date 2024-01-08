@@ -43,12 +43,16 @@ module src3cpld (
 
 
     // statemachine parameters
-    parameter	[2:0]st_idle            = 3'b000;					//Idle
-    parameter	[2:0]st_pwr_on          = 3'b001;		    		//Power on
-    parameter	[2:0]st_system_up       = 3'b010;		        	//System up
-    parameter	[2:0]st_swr_assert      = 3'b100;	        		//CPLD software reset, reserve CPLD Registers value
-    parameter	[2:0]st_read_block      = 3'b101;	        		//read block data
-    parameter	[2:0]st_write_block     = 3'b110;	        		//write block data
+    parameter	[3:0]st_idle            = 4'b0000;					//0 Idle
+    parameter	[3:0]st_pwr_on          = 4'b0001;		    		//1 Power on
+    parameter	[3:0]st_system_up       = 4'b0010;		        	//2 System up
+    parameter	[3:0]st_swr_assert      = 4'b0011;	        		//3 CPLD software reset, reserve CPLD Registers value
+    parameter	[3:0]st_read_block      = 4'b0100;	        		//4 read block data
+    parameter	[3:0]st_write_block     = 4'b0101;	        		//5 write block data
+    parameter	[3:0]st_r_frf_block     = 4'b0110;	        		//6 read frf block data
+    parameter	[3:0]st_w_frf_block     = 4'b0111;	        		//7 write frf block data
+    parameter	[3:0]st_r_scp_block     = 4'b1000;	        		//8 read scope block data
+    parameter	[3:0]st_w_scp_block     = 4'b1001;	        		//9 write scope block data
 
     // uart_def Parameters
     parameter BSN        = 6     ;
@@ -62,6 +66,7 @@ module src3cpld (
     reg		pll_rst;			//PLL  ##删除赋初值
     wire	pll_lock;
     wire	pll_100M;
+    wire    pll_200M;
     wire	high_cpld_clk;			//100MHz from PLL
     wire    clk;
     reg	    [7:0] cpld_addr;		//CPLD Registers address
@@ -70,10 +75,11 @@ module src3cpld (
     wire	reset_req;
     wire	[2:0]qspi_bank;			//QSPI Flash bank select
     wire    clk_gtp;
-    wire    pll_out;
+    wire    pll_out0;
+    wire    pll_out1;
 
     assign  clk  = clk_gtp;
-    assign  high_cpld_clk = pll_100M;
+    assign  high_cpld_clk = pll_200M;
 
     GTP_CLKBUFG CLKBUFG_1  (
                     .CLKOUT(clk_gtp),// OUTPUT
@@ -81,25 +87,29 @@ module src3cpld (
                 );
 
     GTP_CLKBUFG CLKBUFG_2  (
+                    .CLKOUT(pll_200M),// OUTPUT
+                    .CLKIN(pll_out0)  // INPUT
+                );
+    GTP_CLKBUFG CLKBUFG_3  (
                     .CLKOUT(pll_100M),// OUTPUT
-                    .CLKIN(pll_out)  // INPUT
+                    .CLKIN(pll_out1)  // INPUT
                 );
 
 
-    reg	    pwr_hrst_n;					//CPLD internal hardware reset ##删除赋初值
+    reg	    pwr_hrst_n;					//CPLD internal hardware reset 
     reg	    sw_rst_n;				    //CPLD internal software reset
     reg	    pmic_pwron;
 
     //创建一个poweron的信号，让开机后，会从idle进入到pow_on状态对寄存器进行初始化
-    reg     cpld_poweron;//##删除赋初值
+    reg     cpld_poweron;//
 
-    reg	    [1:0]pll_count;// = 2'b00;//##删除赋初值
+    reg	    [1:0]pll_count;
     reg	    [6:0]delay2;
     reg	    delay_flag2;
 
 
-    reg	    [2:0]current_state;// = idle; //##删除赋初值
-    reg	    [2:0]next_state;
+    reg	    [3:0]current_state;//
+    reg	    [3:0]next_state;
     reg	    [15:0]regd;
     reg	    non_reg;
     wire    error_in;
@@ -128,40 +138,9 @@ module src3cpld (
     /*CPLD Registers uesed for input        register address*/
     reg	[15:0]cpld_ver;		            	//00, CPLD版本号
     reg	system_rst = 1'b0;					//01, CPLD软复位
-    reg [1:0]cmode_sel;						//02, 控制器监控控制柜钥匙档位
-    reg [3:0]ems;							//03, 控制器监控安全回路
-    reg [1:0]tmp_mon;						//04, 控制器监控控制柜温度
-    reg ackm_mon;							//05, 控制器监控接触器吸合
-    reg sr_err;								//06, 安全继电器反馈信号
-    reg [1:0]pmode_sel;						//07, 控制器监控示教器钥匙档位
-    reg en12_pndt;							//08, 控制器监控示教器使能开关
-    reg eq_door2_b;							//09, 设备门锁2 状态检测
-    reg acpwr_mon;							//10, 控制器监控AC 电源
-    reg rio_rdy;							//11, 控制器监控远程IO 板RDY 信号
-    reg eq_svon_b;							//12, 安全盒启动按钮状态检测
-    reg eq_remote_b;						//13, 安全盒模式切换开关状态检测
-    reg [1:0]saf_ems6;						//14, 使能开关状态检测信号
-    reg ems12_pndt;							//15, 示教器急停状态信号检测
-    reg [1:0]saf_ems3;						//16, 未超限状态检测信号
-    reg [7:0]hand_in;						//17, 连接本体端HAND IO 的INPUT信号
 
-    /*CPLD Registers uesed for output      寄存器地址*/
-    reg pndt_svon;							//18, 控制器输出SVON 信号
-    reg [1:0]crh;							//19, 控制器输出安全回路信号
-    reg ovrun_clr;							//20, 控制器输出OVER RUN 解除信号
-    reg [4:0]ext_disp;						//21, 控制器输出信号至数码管
-    reg rb_rdy;								//22, 控制器输出给上位PLC 的RDY信号
-    reg rb_err;								//23, 控制器输出给上位PLC 的ERR信号
-    reg svo;								//24, 控制器输出给上位PLC 的SVO信号
-    reg self_son;							//25, 控制器输出的远程模式SVON 信号
-    reg [7:0]hand_out;						//26, 连接本体端HAND IO 的OUTPUT信号
 
-    /*CPLD Registers uesed for read       寄存器地址*/
-    reg error_en;                           //27, 异常状态灯控制开关
-    reg vin_fall;                           //28, 输入电压状态
-    reg [2:0]cnt_set;                       //29, 计数器模式配置寄存器
-    wire [31:0]cnt;                         //30~33，用于读写计数使用
-    reg [15:0] test_16bits;                 //34, 测试16bit通信寄存器
+
 
     /*used for FPGA test                             reg address*/
     reg [15:0] FPGA_SYS_INFO_SERIALNUMBER;         //0x00, 设备序列号
@@ -170,106 +149,45 @@ module src3cpld (
     reg [15:0] FPGA_SYS_STA_STATUS;                //0x10, FPGA 状态寄存器
     reg [15:0] FPGA_SYS_STA_ERROR;                 //0x12, 运行错误码
     reg [15:0] FPGA_SYS_STA_TIMESINCESTART;        //0x14, 设备运行时间
-    reg [15:0] FPGA_HANDSHAKE_CHANNEL0;            //0x40, FPGA 握手寄存器
+    reg [15:0] FPGA_HANDSHAKE_CHANNEL0;            //0x40, FPGA 握手同步寄存器
+    reg [15:0] FPGA_HANDSHAKE_CHANNEL1;            //0x42, FPGA 握手同步寄存器
     reg [15:0] FPGA_COMM_CHECKSUM;                 //0x50, 设备通信通讯通道校验码
     reg [15:0] FPGA_COMM_DATALEN;                  //0x52, 设备通信通讯通道传输数据长度
     reg [15:0] FPGA_COMM_DATA;                     //0x54, 设备通信通讯通道传输数据
+    reg [15:0] FPGA_APP_SCOPE_SAMPLING;            //0x56, 设备通信通讯通道传输数据长度；在FPGA中使用0x2000
 
-    reg [15:0] data_len;
+    reg [7:0] freq_scp;
+    wire [9:0] scp_period;
+    wire [1:0] scp_unit;
 
+    reg frf_data_avl,scope_data_avl;
 
-    wire hs_lock;
-    wire hs_read;
-    wire hs_write;
-    wire hs_ready;
-    wire hs_write_ok;
-    wire hs_fun_en;
-    wire [7:0] hs_cmd_code;
+    wire [63:0] sampling_cnt;
+    wire [1:0] sampling_unit;
 
-    assign hs_lock              = FPGA_HANDSHAKE_CHANNEL0[0];
-    assign hs_read              = FPGA_HANDSHAKE_CHANNEL0[1];
-    assign hs_write             = FPGA_HANDSHAKE_CHANNEL0[2];
-    assign hs_ready             = FPGA_HANDSHAKE_CHANNEL0[3];
-    assign hs_write_ok          = FPGA_HANDSHAKE_CHANNEL0[4];
-    assign hs_fun_en            = FPGA_HANDSHAKE_CHANNEL0[5];
-    assign hs_cmd_code[7:0]     = FPGA_HANDSHAKE_CHANNEL0[15:8];
+    wire hs_lock, hs_read, hs_write, hs_ready, hs_write_ok;
+    wire [7:0] hs_cmd;
+
+    wire HS1_SCOPE_FUN_EN, HS1_FRF_FUN_EN;
+
+    assign hs_lock                   =     FPGA_HANDSHAKE_CHANNEL0[0];
+    assign hs_read                   =     FPGA_HANDSHAKE_CHANNEL0[1];
+    assign hs_write                  =     FPGA_HANDSHAKE_CHANNEL0[2];
+    assign hs_ready                  =     FPGA_HANDSHAKE_CHANNEL0[3];
+    assign hs_write_ok               =     FPGA_HANDSHAKE_CHANNEL0[4];
+    assign hs_cmd[7:0]               =     FPGA_HANDSHAKE_CHANNEL0[15:8];
+
+    assign HS1_SCOPE_FUN_EN          =     FPGA_HANDSHAKE_CHANNEL1[0];
+    assign HS1_FRF_FUN_EN            =     FPGA_HANDSHAKE_CHANNEL1[1];
+
+    assign scp_period[9:0]         =     FPGA_APP_SCOPE_SAMPLING[9:0];
+    assign scp_unit[1:0]           =     FPGA_APP_SCOPE_SAMPLING[11:10];
 
     // circular_buffer Inputs
     wire   cb_write_enable;
     wire   cb_read_enable;
     reg   [16-1:0]  cb_data_in;
     wire  [16-1:0]  cb_data_out;
-
-
-    //用于测试读写次数
-    reg     [31:0]cnt_r;
-    reg     [31:0]cnt_w;
-
-    assign cnt = cnt_set[2] ? cnt_r : cnt_w;
-
-    always @(posedge high_cpld_clk or negedge rst_n) begin
-        if(rst_n == 0) begin
-            //N.O. I IO board
-            cmode_sel[1:0]    <= 0;       //
-            ems[3:0] 		  <= 0;       //
-            tmp_mon[1:0]	  <= 0;       //
-            ackm_mon 		  <= 0;       //
-            sr_err 			  <= 0;       //
-            pmode_sel[1:0] 	  <= 0;       //
-            en12_pndt 		  <= 0;       //
-            eq_door2_b 		  <= 0;       //
-            acpwr_mon 		  <= 0;       //
-            rio_rdy 		  <= 0;       //
-            //N.O. II IO board            //
-            eq_svon_b 		  <= 0;       //
-            eq_remote_b 	  <= 0;       //
-            saf_ems6[1:0]	  <= 0;       //
-            ems12_pndt 	  	  <= 0;       //
-            saf_ems3[1:0] 	  <= 0;       //
-            hand_in[7:0] 	  <= 0;       //
-
-            //
-
-        end
-        else begin
-            //N.O. I IO board cs3
-            cmode_sel[1:0]    <= {io_in[0], io_in[2]};//02
-            ems[3:0] 		  <= {io_in[7],io_in[5], io_in[3], io_in[1]};
-            tmp_mon[1:0]	  <= {io_in[6], io_in[4]};
-            ackm_mon 		  <= io_in[8];
-            sr_err 			  <= io_in[9];
-            pmode_sel[1:0] 	  <= {io_in[12], io_in[10]};
-            en12_pndt 		  <= io_in[11];
-            eq_door2_b 		  <= io_in[15];
-            acpwr_mon 		  <= io_in[13];
-            rio_rdy 		  <= io_in[14];//11,0x0b
-            //N.O. II IO board cs4
-            eq_svon_b 		  <= io_in[0];//12,0x0c
-            eq_remote_b 	  <= io_in[1];
-            saf_ems6[1:0]	  <= {io_in[4], io_in[2]};
-            ems12_pndt 	  	  <= io_in[5];
-            saf_ems3[1:0] 	  <= {io_in[6], io_in[4]};
-            hand_in[7:0] 	  <= {io_in[14:7]};//17,0x11
-        end
-    end
-
-    //假设所有寄存器的初始值是1
-    /*IO output connector definition      				        pin number   */
-    assign io_out[15:0] = {3'b011,
-                           ext_disp[0],  						    //p13
-                           self_son,							    //p12
-                           ext_disp[1],							    //p11
-                           svo,									    //p10
-                           ext_disp[2],							    //p09
-                           rb_err        &  hand_out[7],			//p08
-                           ext_disp[3]   &  hand_out[6],			//p07
-                           rb_rdy        &  hand_out[5],			//p06
-                           ext_disp[4]   &  hand_out[4],			//p05
-                           crh[1]        &  hand_out[3],			//p04
-                           ovrun_clr     &  hand_out[2],			//p03
-                           crh[0] 	     &  hand_out[1],			//p02
-                           pndt_svon     &  hand_out[0]};			//p01
-
 
     //**************************************************************************
     //IRQ Assignment irq
@@ -290,51 +208,6 @@ module src3cpld (
         end
     end
 
-    always @(posedge high_cpld_clk or negedge rst_n) begin
-        if(rst_n == 0) begin
-            irq <= 0;
-            vin_fall <= 0;
-        end
-        else begin
-            //use the edge to judge voltage drop
-            // if (vd_pe) begin
-            //     irq <= 1'b1;
-            //     vin_fall <= 1'b1;
-            // end
-            // else if (vd_ne) begin
-            //     vin_fall <= 1'b0;
-            // end
-            // else if (vd_edge == 3'b000) begin
-            //     irq <= 1'b0;
-            // end
-            //use the voltage to judge the drop
-            if(voltage_drop == 1'b1) begin
-                vin_fall <= 1'b1;
-                irq      <= 1'b1;
-            end
-            else if(voltage_drop == 1'b0) begin
-                vin_fall <= 1'b0;
-                irq      <= 1'b0;
-            end
-        end
-    end
-
-    //error signals
-    always @(posedge high_cpld_clk or negedge rst_n) begin
-        if(rst_n == 0) begin
-            error_source <= 0;
-        end
-        else begin
-            error_source[0] <= voltage_drop ? 1'b1 : 1'b0;
-            error_source[1] <= 1'b0;
-            error_source[2] <= 1'b0;
-            error_source[3] <= 1'b0;
-            error_source[4] <= 1'b0;
-            error_source[5] <= 1'b0;
-            error_source[6] <= 1'b0;
-            error_source[7] <= 1'b0;
-        end
-    end
 
     //CPLD data and address assignment
     // assign	cpld_addr[7:0] = (ifc_avd) ? {ifc_ad[0], ifc_ad[1], ifc_ad[2], ifc_ad[3], ifc_ad[4], ifc_ad[5], ifc_ad[6], ifc_ad[7]} : cpld_addr[7:0];
@@ -434,10 +307,18 @@ module src3cpld (
             st_system_up: begin
                 if (system_rst)
                     next_state = st_swr_assert;
-                else if(hs_lock && hs_read)
+                else if(hs_lock && hs_read )
                     next_state = st_read_block;
                 else if(hs_lock && hs_write)
                     next_state = st_write_block;
+                // else if(hs_lock && hs_read  && hs_cmd == 8'h01)
+                //     next_state = st_read_block;
+                // else if(hs_lock && hs_write && hs_cmd == 8'h01)
+                //     next_state = st_write_block;
+                // else if(hs_lock && hs_write && hs_cmd == 8'h02)
+                //     next_state = st_w_frf_block;
+                // else if(hs_lock && hs_read  && hs_cmd == 8'h02)
+                //     next_state = st_r_frf_block;
                 else
                     next_state = st_system_up;
             end
@@ -462,6 +343,22 @@ module src3cpld (
                     next_state = st_system_up;
                 else
                     next_state = st_write_block;
+            end
+            st_w_frf_block: begin
+                if (system_rst)
+                    next_state = st_swr_assert;
+                else if(hs_lock == 0 && hs_write == 0)
+                    next_state = st_system_up;
+                else
+                    next_state = st_w_frf_block;
+            end
+            st_r_frf_block: begin
+                if (system_rst)
+                    next_state = st_swr_assert;
+                else if(hs_lock == 0 && hs_read == 0)
+                    next_state = st_system_up;
+                else
+                    next_state = st_r_frf_block;
             end
             default:
                 next_state = st_idle;
@@ -584,7 +481,6 @@ module src3cpld (
         if(rst_n == 0) begin
             regd <= 0;
             cpld_ver <= 16'b0010_0001_0011_0100;//0x2134
-            cnt_r <= 0;
         end
         else begin
             if (~cpld_cs && oe_ne_1cy) begin
@@ -593,88 +489,23 @@ module src3cpld (
                         regd[15:0] <= {cpld_ver[15:0]};
                     1:
                         regd[7:0] <= {7'b0,  system_rst};
-                    2://cs3
-                        regd[7:0] <= {6'b0,  cmode_sel[1:0]};
-                    3:
-                        regd[7:0] <= {4'b0,  ems[3:0]};
-                    4:
-                        regd[7:0] <= {6'b0,  tmp_mon[1:0]};
-                    5:
-                        regd[7:0] <= {7'b0,  ackm_mon};
-                    6:
-                        regd[7:0] <= {7'b0,  sr_err};
-                    7:
-                        regd[7:0] <= {6'b0,  pmode_sel[1:0]};
-                    8:
-                        regd[7:0] <= {7'b0,  en12_pndt};
-                    9:
-                        regd[7:0] <= {7'b0,  eq_door2_b};
-                    10:
-                        regd[7:0] <= {7'b0,  acpwr_mon};
-                    11:
-                        regd[7:0] <= {7'b0,  rio_rdy};
-                    12://cs4
-                        regd[7:0] <= {7'b0,  eq_svon_b};
-                    13:
-                        regd[7:0] <= {7'b0,  eq_remote_b};
-                    14:
-                        regd[7:0] <= {6'b0,  saf_ems6[1:0]};
-                    15:
-                        regd[7:0] <= {7'b0,  ems12_pndt};
                     16:
                         regd[15:0] <= {FPGA_SYS_STA_STATUS[15:0]};//0x10
-                    17:
-                        regd[7:0] <= {       hand_in[7:0]};
-                    18:
-                        regd[7:0] <= {7'b0,  pndt_svon};
-                    19:
-                        regd[7:0] <= {6'b0,  crh[1:0]};
-                    20:
-                        regd[7:0] <= {7'b0,  ovrun_clr};
-                    21:
-                        regd[7:0] <= {3'b0,  ext_disp[4:0]};
-                    22:
-                        regd[7:0] <= {7'b0,  rb_rdy};
-                    23:
-                        regd[7:0] <= {7'b0,  rb_err};
-                    24:
-                        regd[7:0] <= {7'b0,  svo};
-                    25:
-                        regd[7:0] <= {7'b0,  self_son};
-                    26:
-                        regd[7:0] <=         hand_out[7:0];
-                    27:
-                        regd[7:0] <= {7'b0,  error_en};
-                    28:
-                        regd[7:0] <= {7'b0,  vin_fall};
-                    29:
-                        regd[7:0] <= {5'b0,  cnt_set[2:0]};
-                    30:
-                        regd[7:0] <= cnt[7:0];
-                    31:
-                        regd[7:0] <= cnt[15:8];
-                    32:
-                        regd[7:0] <= cnt[23:16];
-                    33:
-                        regd[7:0] <= cnt[31:24];
-                    34:
-                        regd[15:0] <= test_16bits[15:0];
                     8'h40:
                         regd[15:0] <= FPGA_HANDSHAKE_CHANNEL0;
+                    8'h42:
+                        regd[15:0] <= FPGA_HANDSHAKE_CHANNEL1;
                     8'h50:
                         regd[15:0] <= FPGA_COMM_CHECKSUM;
                     8'h52:
                         regd[15:0] <= FPGA_COMM_DATALEN;
                     8'h54:
                         regd[15:0] <= FPGA_COMM_DATA;
+                    8'h56:
+                        regd[15:0] <= FPGA_APP_SCOPE_SAMPLING;
                     default:
                         regd[15:0] <= 0;
                 endcase
-
-                if(cnt_set[1])
-                    cnt_r <= 0; //clear cnt_r
-                else if(cnt_set[0] && cnt_set[2])
-                    cnt_r <= cnt_r + 1; //read operation count
             end
         end
     end
@@ -738,19 +569,6 @@ module src3cpld (
     always@(posedge high_cpld_clk or negedge rst_n) begin
         if(rst_n == 0) begin
             /*CPLD Registers uesed for output                                 寄存器地址*/
-            pndt_svon      <= 1'b1;					                    //18, 控制器输出SVON 信号
-            crh[1:0]       <= 2'b11;				                    //19, 控制器输出安全回路信号
-            ovrun_clr      <= 1'b1;					                    //20, 控制器输出OVER RUN 解除信号
-            ext_disp[4:0]  <= 5'b1_1111;			                    //21, 控制器输出信号至数码管
-            rb_rdy         <= 1'b1;					                    //22, 控制器输出给上位PLC 的RDY信号
-            rb_err         <= 1'b1;					                    //23, 控制器输出给上位PLC 的ERR信号
-            svo            <= 1'b1;					                    //24, 控制器输出给上位PLC 的SVO信号
-            self_son       <= 1'b1;					                    //25, 控制器输出的远程模式SVON 信号
-            hand_out[7:0]  <= 8'b1111_1111;			                    //26, 连接本体端HAND IO 的OUTPUT信号
-            error_en       <= 1'b0;                                     //27, 单板显示状态异常灯开关信号
-            cnt_set        <= 0;                                        //29, 计数器模式配置寄存器
-            cnt_w          <= 0;                                        //计数器值寄存器
-            test_16bits    <= 16'h1234;                                 //34, 测试16bit宽度数据的寄存器
 
         end     
         else begin
@@ -761,30 +579,6 @@ module src3cpld (
                 case (cpld_addr[7:0])
                     1:
                         system_rst     <= cpld_data[0];
-                    18:
-                        pndt_svon      <= cpld_data[0];
-                    19:
-                        crh[1:0]       <= (cpld_data[1:0] == 2'b11) ? (2'b00) : (2'b11);
-                    20:
-                        ovrun_clr      <= cpld_data[0];
-                    21:
-                        ext_disp[4:0]  <= cpld_data[4:0];
-                    22:
-                        rb_rdy         <= cpld_data[0];
-                    23:
-                        rb_err         <= cpld_data[0];
-                    24:
-                        svo            <= cpld_data[0];
-                    25:
-                        self_son       <= cpld_data[0];
-                    26:
-                        hand_out[7:0]  <= cpld_data[7:0];
-                    27:
-                        error_en       <= cpld_data[0];
-                    29:
-                        cnt_set        <= cpld_data[2:0];
-                    34:
-                        test_16bits    <= cpld_data[15:0];
                     default:
                         non_reg        <= cpld_data[0];
                 endcase
@@ -797,8 +591,31 @@ module src3cpld (
     end
 
     /*******************begin protocol begin**********************/
-    reg [15:0] data_block[0:5];
-    reg [7:0]  pi;
+    // reg [15:0] data_block    [0:119];
+    // task reset_data_block;
+    //     begin
+    //         data_block[ 0] <= 16'h0000;data_block[ 1] <= 16'h0000;data_block[ 2] <= 16'h0000;data_block[ 3] <= 16'h0000;data_block[ 4] <= 16'h0000;data_block[ 5] <= 16'h0000;data_block[ 6] <= 16'h0000; data_block[ 7] <= 16'h0000; data_block[ 8] <= 16'h0000; data_block[ 9] <= 16'h0000;data_block[10] <= 16'h0000;data_block[11] <= 16'h0000;data_block[12] <= 16'h0000; data_block[13] <= 16'h0000; data_block[14] <= 16'h0000;
+    //         data_block[15] <= 16'h0000;data_block[16] <= 16'h0000;data_block[17] <= 16'h0000;data_block[18] <= 16'h0000;data_block[19] <= 16'h0000;data_block[20] <= 16'h0000;data_block[21] <= 16'h0000; data_block[22] <= 16'h0000; data_block[23] <= 16'h0000; data_block[24] <= 16'h0000;data_block[25] <= 16'h0000;data_block[26] <= 16'h0000;data_block[27] <= 16'h0000; data_block[28] <= 16'h0000; data_block[29] <= 16'h0000;
+    //         data_block[30] <= 16'h0000;data_block[31] <= 16'h0000;data_block[32] <= 16'h0000;data_block[33] <= 16'h0000;data_block[34] <= 16'h0000;data_block[35] <= 16'h0000;data_block[36] <= 16'h0000; data_block[37] <= 16'h0000; data_block[38] <= 16'h0000; data_block[39] <= 16'h0000;data_block[40] <= 16'h0000;data_block[41] <= 16'h0000;data_block[42] <= 16'h0000; data_block[43] <= 16'h0000; data_block[44] <= 16'h0000;
+    //         data_block[45] <= 16'h0000;data_block[46] <= 16'h0000;data_block[47] <= 16'h0000;data_block[48] <= 16'h0000;data_block[49] <= 16'h0000;data_block[50] <= 16'h0000;data_block[51] <= 16'h0000; data_block[52] <= 16'h0000; data_block[53] <= 16'h0000; data_block[54] <= 16'h0000;data_block[55] <= 16'h0000;data_block[56] <= 16'h0000;data_block[57] <= 16'h0000; data_block[58] <= 16'h0000; data_block[59] <= 16'h0000;
+    //         data_block[60] <= 16'h0000;data_block[61] <= 16'h0000;data_block[62] <= 16'h0000;data_block[63] <= 16'h0000;data_block[64] <= 16'h0000;data_block[65] <= 16'h0000;data_block[66] <= 16'h0000; data_block[67] <= 16'h0000; data_block[68] <= 16'h0000; data_block[69] <= 16'h0000;data_block[70] <= 16'h0000;data_block[71] <= 16'h0000;data_block[72] <= 16'h0000; data_block[73] <= 16'h0000; data_block[74] <= 16'h0000;
+    //         data_block[75] <= 16'h0000;data_block[76] <= 16'h0000;data_block[77] <= 16'h0000;data_block[78] <= 16'h0000;data_block[79] <= 16'h0000;data_block[80] <= 16'h0000;data_block[81] <= 16'h0000; data_block[82] <= 16'h0000; data_block[83] <= 16'h0000; data_block[84] <= 16'h0000;data_block[85] <= 16'h0000;data_block[86] <= 16'h0000;data_block[87] <= 16'h0000; data_block[88] <= 16'h0000; data_block[89] <= 16'h0000;
+    //         data_block[90] <= 16'h0000;data_block[91] <= 16'h0000;data_block[92] <= 16'h0000;data_block[93] <= 16'h0000;data_block[94] <= 16'h0000;data_block[95] <= 16'h0000;data_block[96] <= 16'h0000; data_block[97] <= 16'h0000; data_block[98] <= 16'h0000; data_block[99] <= 16'h0000;data_block[100]<= 16'h0000;data_block[101]<= 16'h0000;data_block[102]<= 16'h0000; data_block[103]<= 16'h0000; data_block[104]<= 16'h0000;
+    //         data_block[105]<= 16'h0000;data_block[106]<= 16'h0000;data_block[107]<= 16'h0000;data_block[108]<= 16'h0000;data_block[109]<= 16'h0000;data_block[110]<= 16'h0000;data_block[111]<= 16'h0000; data_block[112]<= 16'h0000; data_block[113]<= 16'h0000; data_block[114]<= 16'h0000;data_block[115]<= 16'h0000;data_block[116]<= 16'h0000;data_block[117]<= 16'h0000; data_block[118]<= 16'h0000; data_block[119]<= 16'h0000;
+    //     end
+    // endtask
+
+    reg [15:0] data_period    [0:59];
+    task reset_period_data;
+        begin
+            data_period[ 0] <= 16'h0003;data_period[ 1] <= 16'h1122;data_period[ 2] <= 16'h3344;data_period[ 3] <= 16'h0004;data_period[ 4] <= 16'h1122;data_period[ 5] <= 16'h3344;data_period[ 6] <= 16'h0005; data_period[ 7] <= 16'h1122; data_period[ 8] <= 16'h3344; data_period[ 9] <= 16'h0006;data_period[10] <= 16'h1122;data_period[11] <= 16'h3344;data_period[12] <= 16'h0007; data_period[13] <= 16'h1122; data_period[14] <= 16'h3344;
+            data_period[15] <= 16'h1003;data_period[16] <= 16'h1122;data_period[17] <= 16'h3344;data_period[18] <= 16'h1004;data_period[19] <= 16'h1122;data_period[20] <= 16'h3344;data_period[21] <= 16'h0005; data_period[22] <= 16'h1122; data_period[23] <= 16'h3344; data_period[24] <= 16'h0006;data_period[25] <= 16'h1122;data_period[26] <= 16'h3344;data_period[27] <= 16'h0007; data_period[28] <= 16'h1122; data_period[29] <= 16'h3344;
+            data_period[30] <= 16'h2003;data_period[31] <= 16'h1122;data_period[32] <= 16'h3344;data_period[33] <= 16'h2004;data_period[34] <= 16'h1122;data_period[35] <= 16'h3344;data_period[36] <= 16'h0005; data_period[37] <= 16'h1122; data_period[38] <= 16'h3344; data_period[39] <= 16'h0006;data_period[40] <= 16'h1122;data_period[41] <= 16'h3344;data_period[42] <= 16'h0007; data_period[43] <= 16'h1122; data_period[44] <= 16'h3344;
+            data_period[45] <= 16'h3003;data_period[46] <= 16'h1122;data_period[47] <= 16'h3344;data_period[48] <= 16'h3004;data_period[49] <= 16'h1122;data_period[50] <= 16'h3344;data_period[51] <= 16'h0005; data_period[52] <= 16'h1122; data_period[53] <= 16'h3344; data_period[54] <= 16'h0006;data_period[55] <= 16'h1122;data_period[56] <= 16'h3344;data_period[57] <= 16'h0007; data_period[58] <= 16'h1122; data_period[59] <= 16'h3344;
+        end
+    endtask
+
+    reg [15:0]  pi;
     reg checksum_clear;
     wire checksum_en_r,checksum_en_w,checksum_en_w_2cy;
     wire [15:0] checksum_out;
@@ -808,31 +625,33 @@ module src3cpld (
             FPGA_SYS_INFO_SERIALNUMBER              <= 16'h0000;
             FPGA_SYS_INFO_HWREVISION                <= 16'h0000;
             FPGA_SYS_INFO_SOFTREVISION              <= 16'h0000;
-            FPGA_SYS_STA_STATUS                     <= 16'h0001;
+            FPGA_SYS_STA_STATUS                     <= 16'h0003;        //0000_0000_0000_0011
             FPGA_SYS_STA_ERROR                      <= 16'h0000;
             FPGA_SYS_STA_TIMESINCESTART             <= 16'h0000;
             FPGA_HANDSHAKE_CHANNEL0                 <= 16'h0000;        //0x40
+            FPGA_HANDSHAKE_CHANNEL1                 <= 16'h0000;        //0x42
             FPGA_COMM_CHECKSUM                      <= 16'h0000;        //0x50
             FPGA_COMM_DATALEN                       <= 16'h0000;        //0x52
             FPGA_COMM_DATA                          <= 16'h0000;        //0x54
-
-            data_block[0] <= 16'h1122;
-            data_block[1] <= 16'h3344;
-            data_block[2] <= 16'h5566;
-            data_block[3] <= 16'h7788;
-            data_block[4] <= 16'h99aa;
-            data_block[5] <= 16'hbbcc;
-            pi <=0;
-            checksum_clear <= 0;
+            FPGA_APP_SCOPE_SAMPLING                 <= {5'b0_0000, 2'b00, 9'd50}; //0x
+            freq_scp                                <= 16'h0001;        //scope frequency, kHz
+            pi                                      <= 0; 
+            checksum_clear                          <= 0;
+            // scp_period                              <= 5000;            //50us
+            // reset_data_block;
+            reset_period_data;
         end
         else begin
-            if (read_status) begin//读操作
-
+            if (~cpld_cs) begin//update registers
+                FPGA_SYS_STA_STATUS[2] <= frf_data_avl;
+                FPGA_SYS_STA_STATUS[3] <= scope_data_avl;
             end
-            else if (write_status) begin       //写操作
+            if (write_status) begin       //写操作
                 case (cpld_addr[7:0]) 
                     8'h40:
                         FPGA_HANDSHAKE_CHANNEL0     <= cpld_data[15:0];
+                    8'h42:
+                        FPGA_HANDSHAKE_CHANNEL1     <= cpld_data[15:0];
                     8'h50:
                         FPGA_COMM_CHECKSUM          <= cpld_data[15:0];
                     8'h52:
@@ -840,32 +659,77 @@ module src3cpld (
                     8'h54:
                         FPGA_COMM_DATA              <= cpld_data[15:0];
                     8'h56:
-                        FPGA_COMM_DATA              <= cpld_data[15:0];
-                    8'h58:
-                        FPGA_COMM_DATA              <= cpld_data[15:0];
-                    8'h5a:
-                        FPGA_COMM_DATA              <= cpld_data[15:0];
-                    8'h5c:
-                        FPGA_COMM_DATA              <= cpld_data[15:0];
+                        FPGA_APP_SCOPE_SAMPLING     <= cpld_data[15:0];
                     default:
                         ;
                 endcase
             end
             if(current_state == st_read_block && cs_ne && cpld_addr == 8'h54) begin
-                if(pi <= 5) begin
-                    FPGA_COMM_DATA <= data_block[pi];
+                $display("read block.\n");
+                if(pi <= FPGA_COMM_DATALEN/2 - 1) begin
+                    if(hs_cmd == 8'h01) begin //period mode
+                        FPGA_COMM_DATA <= data_period[pi];
+                        $display(".....Read data in period mode: id = %d, FPGA_COMM_DATA = %h.....\n", pi, data_period[pi]);
+                    end else if(hs_cmd == 8'h02) begin //frf mode
+                        FPGA_COMM_DATA <= data_period[pi];
+                        $display(".....Read data in frf   mode: id = %d, FPGA_COMM_DATA = %h.....\n", pi, data_period[pi]);
+                    end else if(hs_cmd == 8'h03) begin //scope mode
+                        FPGA_COMM_DATA <= data_period[pi];
+                        $display(".....Read data in scope mode: id = %d, FPGA_COMM_DATA = %h.....\n", pi, data_period[pi]);
+                    end else if(hs_cmd == 8'h04) begin //para mode
+                        $display(".....Here should assign FPGA_COMM_DATA with patameter data.....\n");
+                    end
                     pi <= pi + 1;
                 end
             end
             else if (current_state == st_write_block && cs_pe_1cy && cpld_addr == 8'h54) begin
-                if(pi <= 5) begin
-                    data_block[pi] <= FPGA_COMM_DATA;
+                if(pi <= FPGA_COMM_DATALEN/2 - 1) begin
+                    if(hs_cmd == 8'h01) begin //period mode
+                        // data_block[pi] <= FPGA_COMM_DATA;
+                        $display(".....Write data in period mode: id = %d, FPGA_COMM_DATA = %h.....\n", pi, FPGA_COMM_DATA);
+                    end else if(hs_cmd == 8'h02) begin //frf mode
+                        $display(".....Write data in frf    mode: id = %d, FPGA_COMM_DATA = %h.....\n", pi, FPGA_COMM_DATA);
+                    end else if(hs_cmd == 8'h03) begin //scope mode
+                        $display(".....Write data in scope  mode: id = %d, FPGA_COMM_DATA = %h.....\n", pi, FPGA_COMM_DATA);
+                    end else if(hs_cmd == 8'h04) begin //para mode
+                        $display(".....Write data in para   mode: id = %d, FPGA_COMM_DATA = %h.....\n", pi, FPGA_COMM_DATA);
+                    end
+                    pi <= pi + 1;
+                end
+            end            
+            else if (current_state == st_w_frf_block && cs_pe_1cy && cpld_addr == 8'h54) begin
+                if(pi <= FPGA_COMM_DATALEN/2 - 1) begin
+                    // data_block[pi] <= FPGA_COMM_DATA;
                     pi <= pi + 1;
                 end
             end
             else if(get_in_read_st) begin
-                FPGA_HANDSHAKE_CHANNEL0[3] <= 1;
-                FPGA_COMM_DATALEN <= 12;
+                if(hs_cmd == 8'h01)begin        //period mode
+                    // reset_data_block();
+                    FPGA_HANDSHAKE_CHANNEL0[3] <= 1;//ready bit
+                    FPGA_COMM_DATALEN <= 120;
+                    $display(".....Ready bit is assigned %d in period mode.....\n", 120);
+                    $display(".....FPGA_COMM_DATALEN was assigned %d in period mode.....\n", 120);
+                end else if(hs_cmd == 8'h02) begin      //frf mode
+                    $display(".....Check if frf data available.....\n");
+                    if(frf_data_avl == 1) begin
+                        FPGA_HANDSHAKE_CHANNEL0[3] <= 1;//set ready bit
+                        FPGA_COMM_DATALEN <= 120;
+                        $display(".....FPGA_COMM_DATALEN was assigned %d in period mode.....\n", 120);
+                    end
+                end else if(hs_cmd == 8'h03) begin      //scope mode
+                    $display(".....Check if scope data available.....\n");
+                    if(scope_data_avl == 1) begin
+                        FPGA_HANDSHAKE_CHANNEL0[3] <= 1;//set ready bit
+                        FPGA_COMM_DATALEN <= 120;
+                        $display(".....FPGA_COMM_DATALEN was assigned %d in period mode.....\n", 120);
+                    end
+                end else if(hs_cmd == 8'h04) begin      //para  mode
+                    // FPGA_HANDSHAKE_CHANNEL0[3] <= 1; //ready bit
+                    FPGA_COMM_DATALEN <= 120;
+                    $display(".....Ready bit is assigned in para mode.....\n");
+                    $display(".....FPGA_COMM_DATALEN was assigned %d in para mode.....\n", 120);
+                end
                 pi <= 0;
                 checksum_clear <= 0;
             end
@@ -881,17 +745,29 @@ module src3cpld (
             else if(get_out_write_st) begin
                 checksum_clear <= 1;
             end            
-            else if(pi == 6 && (read_status)) begin
+            else if(pi == FPGA_COMM_DATALEN/2 && read_status) begin
                 FPGA_COMM_CHECKSUM <= checksum_out;
-                // if(checksum_out == FPGA_COMM_CHECKSUM) begin
-                //     FPGA_HANDSHAKE_CHANNEL0[4] <= 1;
-                // end
             end
-            else if(pi == 6 && checksum_en_w_2cy) begin
-                if(checksum_out == FPGA_COMM_CHECKSUM) begin
-                    FPGA_HANDSHAKE_CHANNEL0[4] <= 1;
+            else if(pi == FPGA_COMM_DATALEN/2 && checksum_en_w_2cy) begin
+                if(checksum_out == FPGA_COMM_CHECKSUM) begin //write ok check
+                    FPGA_HANDSHAKE_CHANNEL0[4] <= 1;            //write ok assign
+                    if(hs_cmd == 8'h02) begin   //frf mode
+                        if(HS1_FRF_FUN_EN) begin
+                            $display(".....start to sample frf data, enable 20kHz timer.....");
+                        end
+                    end else if(hs_cmd == 8'h03) begin  //scope mode
+                        if(HS1_SCOPE_FUN_EN) begin
+                            $display(".....start to sample scope data.....");
+                            // case (sampling_unit)
+                            //     00: scp_period <= sampling_cnt * 100;               //us
+                            //     // 01: scp_period <= sampling_cnt * 100 * 1000;          //ms
+                            //     // 02: scp_period <= sampling_cnt * 100 * 1000 * 1000;     //s
+                            //     default: scp_period <= 5000;                        //default:50us
+                            // endcase
+                        end
+                    end
                 end
-            end        
+            end
         end
     end
     // assign checksum_en_r = (current_state == st_read_block && cs_ne && cpld_addr == 8'h54);
@@ -899,7 +775,7 @@ module src3cpld (
         .cycles ( 2 ))
     u_delay_cy_checksum_r_2cy (
         .clk                     ( high_cpld_clk          ),
-        .rst_n                   ( rst_n        ),
+        .rst_n                   ( rst_n                  ),
         .signal_in               ( current_state == st_read_block && cs_ne && cpld_addr == 8'h54    ),
 
         .signal_out              ( checksum_en_r   )
@@ -923,7 +799,8 @@ module src3cpld (
         .signal_out              ( checksum_en_w_2cy   )
     );    
     wire [15:0] checksum_datain;
-    assign checksum_datain = (current_state == st_read_block) ? FPGA_COMM_DATA : data_block[pi-1];
+    // assign checksum_datain = (current_state == st_read_block) ? FPGA_COMM_DATA : data_block[pi-1];
+    assign checksum_datain = (current_state == st_read_block) ? FPGA_COMM_DATA : FPGA_COMM_DATA;//used for period write test
     ifc_checksum  u_ifc_checksum (
         .clk                     ( high_cpld_clk            ),
         .rst_n                   ( rst_n          ),
@@ -933,19 +810,82 @@ module src3cpld (
         .datain                  ( checksum_datain         ),
 
         .checksum                ( checksum_out       )
-    );    
+    );
 
-    assign cb_write_enable = (current_state == st_read_block && cs_ne && cpld_addr == 8'h54);
-    reg[7:0] wi;
+    sample_timer #(
+        .freq ( 100 )
+    ) u_sample_timer (
+        .clk                     ( pll_100M          ),
+        .rst_n                   ( rst_n        ),
+        .en1                     ( HS1_FRF_FUN_EN          ),
+        .en2                     ( en2          ),
+        .en3                     ( en3          ),
+        .en4                     ( en4          ),
+        .en5                     ( HS1_SCOPE_FUN_EN          ),
+        .scp_period              ( scp_period   ),
+        .scp_unit                ( scp_unit   ),
+
+        .clk_o1                  ( clk_o1       ),
+        .clk_o2                  ( clk_o2       ),
+        .clk_o3                  ( clk_o3       ),
+        .clk_o4                  ( clk_o4       ),
+        .clk_o5                  ( clk_o5       )
+    );
+
+    get_signal_edge  u_get_signal_edge_clko1 (
+    .clk                     ( high_cpld_clk        ),
+    .rst_n                   ( rst_n      ),
+    .signal                  ( clk_o1     ),
+
+    .pos_edge                ( clk_o1_pe   ),
+    .neg_edge                ( clk_o1_ne   )
+    );
+    get_signal_edge  u_get_signal_edge_clko5 (
+    .clk                     ( high_cpld_clk        ),
+    .rst_n                   ( rst_n      ),
+    .signal                  ( clk_o5     ),
+
+    .pos_edge                ( clk_o5_pe   ),
+    .neg_edge                ( clk_o5_ne   )
+    );
+
+    reg [7:0] cnt_frf, cnt_scope;
     always @(posedge high_cpld_clk or negedge rst_n) begin
-        if(rst_n == 0) begin
-            cb_data_in <= 0;
+        if(~rst_n) begin
+            cnt_frf <= 0;
+            cnt_scope <= 0;
+            frf_data_avl <= 0;
+            scope_data_avl <= 0;
         end else begin
-            if(cb_write_enable) begin
-                
+            if(clk_o1_ne && HS1_FRF_FUN_EN) begin
+                if(cnt_frf == 9) begin
+                    frf_data_avl <= 1;
+                    cnt_frf <= 0;
+                end else begin
+                    cnt_frf <= cnt_frf + 1;
+                end
+            end else if(~HS1_FRF_FUN_EN) begin
+                frf_data_avl <= 0;
+                cnt_frf <= 0;
+            end else if(get_out_read_st && hs_cmd == 8'h02 && frf_data_avl) begin
+                frf_data_avl <= 0;
+                cnt_frf <= 0;
+            end
+            if(clk_o5_ne && HS1_SCOPE_FUN_EN) begin
+                if(cnt_scope == 9) begin
+                    scope_data_avl <= 1;
+                    cnt_scope <= 0;
+                end else begin
+                    cnt_scope <= cnt_scope + 1;
+                end
+            end else if(~HS1_SCOPE_FUN_EN) begin
+                scope_data_avl <= 0;
+                cnt_scope <= 0;
+            end else if(get_out_read_st && hs_cmd == 8'h03 && scope_data_avl) begin
+                scope_data_avl <= 0;
+                cnt_scope <= 0;
             end
         end
-        
     end
 
     /*******************end   protocol end  **********************/
@@ -1059,7 +999,8 @@ module src3cpld (
                );
 
     clk_pll_0 pll (
-                  .clkout0(pll_out),        // output
+                  .clkout0(pll_out0),        // output
+                  .clkout1(pll_out1),        // output
                   .lock(pll_lock),          // output
                   .clkin1(clk_gtp),         // input
                   .rst(~rst_n)              // input

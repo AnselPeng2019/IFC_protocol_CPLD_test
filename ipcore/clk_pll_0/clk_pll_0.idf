@@ -15,114 +15,60 @@
     </header>
     <param_list>
         <param>
-            <name>CLKOUT2_GATE_EN_basicPage</name>
+            <name>CLKOUT2_EN_advancedPage</name>
             <value>false</value>
         </param>
         <param>
-            <name>CLKOUT1_SYN_EN</name>
-            <value>false</value>
-        </param>
-        <param>
-            <name>FB_MODE_basicPage</name>
+            <name>ODIV1_CLKIN_SEL</name>
             <value>0</value>
         </param>
         <param>
-            <name>CLKOUT1_EN</name>
+            <name>RSTODIV2_EN_advancedPage</name>
             <value>false</value>
         </param>
         <param>
-            <name>STATIC_RATIOI_advancedPage</name>
-            <value>1</value>
+            <name>STATIC_RATIOF</name>
+            <value>4</value>
         </param>
         <param>
-            <name>DYNAMIC_PHASE_EN_advancedPage</name>
+            <name>DYNAMIC_PHASE_EN</name>
             <value>false</value>
         </param>
         <param>
-            <name>STATIC_RATIO0_basicPage</name>
-            <value>1</value>
-        </param>
-        <param>
-            <name>PLL_PWD_EN_advancedPage</name>
-            <value>false</value>
-        </param>
-        <param>
-            <name>STATIC_RATIOF_advancedPage</name>
-            <value>1</value>
-        </param>
-        <param>
-            <name>CLKOUT3_GATE_EN_advancedPage</name>
-            <value>false</value>
-        </param>
-        <param>
-            <name>FRACN_EN</name>
-            <value>false</value>
-        </param>
-        <param>
-            <name>STATIC_PHASE2_advancedPage</name>
+            <name>FB_MODE_advancedPage</name>
             <value>0</value>
         </param>
         <param>
-            <name>CLKOUT3_EN_advancedPage</name>
+            <name>CLKOUT3_BYPASS_EN_basicPage</name>
             <value>false</value>
         </param>
         <param>
-            <name>CLKOUT2_REQ_PHASE_basicPage</name>
-            <value>0.0000</value>
-            <decimal>4</decimal>
+            <name>SOURCE_ODIV3_advancedPage</name>
+            <value>VCO</value>
         </param>
         <param>
-            <name>CLKOUT_EN_basicPage</name>
-            <value>false</value>
-        </param>
-        <param>
-            <name>FB_advancedPage</name>
+            <name>STATIC_PHASE2</name>
             <value>0</value>
+        </param>
+        <param>
+            <name>RSTODIV3_EN_basicPage</name>
+            <value>false</value>
+        </param>
+        <param>
+            <name>APB_EN_advancedPage</name>
+            <value>false</value>
         </param>
         <param>
             <name>PFDEN_APB_EN_advancedPage</name>
             <value>false</value>
         </param>
         <param>
-            <name>PFDEN_EN</name>
+            <name>CLKOUT3_SYN_EN</name>
             <value>false</value>
         </param>
         <param>
-            <name>CLKOUT_EN_advancedPage</name>
+            <name>DYNAMIC_PHASE_EN_basicPage</name>
             <value>false</value>
-        </param>
-        <param>
-            <name>PLL_PWD_EN</name>
-            <value>false</value>
-        </param>
-        <param>
-            <name>STATIC_RATIO1</name>
-            <value>8</value>
-        </param>
-        <param>
-            <name>STATIC_PHASE3_advancedPage</name>
-            <value>0</value>
-        </param>
-        <param>
-            <name>RSTODIV_EN_advancedPage</name>
-            <value>false</value>
-        </param>
-        <param>
-            <name>CLKOUT3_SEL</name>
-            <value>0</value>
-        </param>
-        <param>
-            <name>CLKIN_FREQ_advancedPage</name>
-            <value>50.0000</value>
-            <decimal>4</decimal>
-        </param>
-        <param>
-            <name>SOURCE_ODIV2_basicPage</name>
-            <value>ODIV3</value>
-        </param>
-        <param>
-            <name>STATIC_RATIO3</name>
-            <value>8</value>
         </param>
         <param>
             <name>CLKOUT0_REQ_FREQ_basicPage</name>
@@ -130,76 +76,11 @@
             <decimal>4</decimal>
         </param>
         <param>
-            <name>LOCK_MODE_advancedPage</name>
+            <name>CLKOUT_EN_advancedPage</name>
             <value>false</value>
         </param>
         <param>
-            <name>RSTODIV3_EN_advancedPage</name>
-            <value>false</value>
-        </param>
-        <param>
-            <name>APB_EN_basicPage</name>
-            <value>false</value>
-        </param>
-        <param>
-            <name>RST_INNER_EN_advancedPage</name>
-            <value>false</value>
-        </param>
-        <param>
-            <name>CLKOUT2_REQ_FREQ_basicPage</name>
-            <value>50.0000</value>
-            <decimal>4</decimal>
-        </param>
-        <param>
-            <name>SOURCE_ODIV0_advancedPage</name>
-            <value>VCO</value>
-        </param>
-        <param>
-            <name>VCOCLK_BYPASS1</name>
-            <value>false</value>
-        </param>
-        <param>
-            <name>ODIV3_CASCADE_EN_basicPage</name>
-            <value>false</value>
-        </param>
-        <param>
-            <name>CLKOUT1_GATE_EN_basicPage</name>
-            <value>false</value>
-        </param>
-        <param>
-            <name>INTERNAL_FB</name>
-            <value>CLKOUT0</value>
-        </param>
-        <param>
-            <name>SOURCE_ODIV3_basicPage</name>
-            <value>ODIV0</value>
-        </param>
-        <param>
-            <name>SOURCE_ODIV1_advancedPage</name>
-            <value>VCO</value>
-        </param>
-        <param>
-            <name>CLKOUT0_GATE_EN_advancedPage</name>
-            <value>false</value>
-        </param>
-        <param>
-            <name>STATIC_PHASE1</name>
-            <value>0</value>
-        </param>
-        <param>
-            <name>DYNAMIC_PHASE_EN_basicPage</name>
-            <value>false</value>
-        </param>
-        <param>
-            <name>RST_INNER_EN</name>
-            <value>true</value>
-        </param>
-        <param>
-            <name>RST_INNER_EN_basicPage</name>
-            <value>true</value>
-        </param>
-        <param>
-            <name>CLKOUT1_EN_advancedPage</name>
+            <name>CLKOUT2_SYN_EN</name>
             <value>false</value>
         </param>
         <param>
@@ -207,8 +88,293 @@
             <value>0</value>
         </param>
         <param>
+            <name>VCOCLK_BYPASS1</name>
+            <value>false</value>
+        </param>
+        <param>
+            <name>STATIC_CPHASE3</name>
+            <value>0</value>
+        </param>
+        <param>
+            <name>ODIV3_CASCADE_EN_basicPage</name>
+            <value>false</value>
+        </param>
+        <param>
+            <name>DYNAMIC_PHASE_EN_advancedPage</name>
+            <value>false</value>
+        </param>
+        <param>
+            <name>CLKOUT1_EN_basicPage</name>
+            <value>true</value>
+        </param>
+        <param>
+            <name>CLKOUT2_EN</name>
+            <value>false</value>
+        </param>
+        <param>
+            <name>RSTODIV_EN_advancedPage</name>
+            <value>false</value>
+        </param>
+        <param>
+            <name>STATIC_RATIO3_advancedPage</name>
+            <value>1</value>
+        </param>
+        <param>
+            <name>STDBY_EN_advancedPage</name>
+            <value>false</value>
+        </param>
+        <param>
+            <name>CLKOUT0_BYPASS_EN_basicPage</name>
+            <value>false</value>
+        </param>
+        <param>
+            <name>FB_advancedPage</name>
+            <value>0</value>
+        </param>
+        <param>
+            <name>CLKOUT3_EN</name>
+            <value>false</value>
+        </param>
+        <param>
+            <name>STATIC_PHASE3_advancedPage</name>
+            <value>0</value>
+        </param>
+        <param>
+            <name>VCOCLK_BYPASS0</name>
+            <value>false</value>
+        </param>
+        <param>
+            <name>STATIC_RATIOI_advancedPage</name>
+            <value>1</value>
+        </param>
+        <param>
+            <name>CLKOUT0_EN_basicPage</name>
+            <value>true</value>
+        </param>
+        <param>
+            <name>STATIC_CPHASE1</name>
+            <value>0</value>
+        </param>
+        <param>
+            <name>CLKOUT1_EN_advancedPage</name>
+            <value>false</value>
+        </param>
+        <param>
+            <name>PLL_PWD_EN</name>
+            <value>false</value>
+        </param>
+        <param>
+            <name>STATIC_PHASE2_advancedPage</name>
+            <value>0</value>
+        </param>
+        <param>
+            <name>STATIC_RATIO3_basicPage</name>
+            <value>1</value>
+        </param>
+        <param>
+            <name>VCOCLK_BYPASS3</name>
+            <value>false</value>
+        </param>
+        <param>
+            <name>CLKOUT3_SEL</name>
+            <value>0</value>
+        </param>
+        <param>
+            <name>CLKOUT3_EN_advancedPage</name>
+            <value>false</value>
+        </param>
+        <param>
+            <name>RST_INNER_EN_advancedPage</name>
+            <value>false</value>
+        </param>
+        <param>
+            <name>CLKOUT0_EN_advancedPage</name>
+            <value>true</value>
+        </param>
+        <param>
+            <name>STATIC_CPHASE0</name>
+            <value>0</value>
+        </param>
+        <param>
+            <name>ODIV1_CASCADE_EN_basicPage</name>
+            <value>false</value>
+        </param>
+        <param>
+            <name>DYNAMIC_CLKIN_EN_advancedPage</name>
+            <value>false</value>
+        </param>
+        <param>
+            <name>CLKOUT3_REQ_FREQ_basicPage</name>
+            <value>50.0000</value>
+            <decimal>4</decimal>
+        </param>
+        <param>
+            <name>SOURCE_ODIV2_advancedPage</name>
+            <value>VCO</value>
+        </param>
+        <param>
+            <name>BANDWIDTH</name>
+            <value>OPTIMIZED</value>
+        </param>
+        <param>
+            <name>CLKOUT1_REQ_PHASE_basicPage</name>
+            <value>0.0000</value>
+            <decimal>4</decimal>
+        </param>
+        <param>
+            <name>STATIC_RATIO1_advancedPage</name>
+            <value>1</value>
+        </param>
+        <param>
+            <name>STATIC_RATIO2_advancedPage</name>
+            <value>1</value>
+        </param>
+        <param>
+            <name>CLKOUT1_SYN_EN</name>
+            <value>false</value>
+        </param>
+        <param>
+            <name>STATIC_RATIO3</name>
+            <value>8</value>
+        </param>
+        <param>
+            <name>ODIV0_CLKIN_SEL</name>
+            <value>0</value>
+        </param>
+        <param>
+            <name>FB_MODE_basicPage</name>
+            <value>0</value>
+        </param>
+        <param>
             <name>BANDWIDTH_advancedPage</name>
             <value>OPTIMIZED</value>
+        </param>
+        <param>
+            <name>CLKOUT3_GATE_EN_advancedPage</name>
+            <value>false</value>
+        </param>
+        <param>
+            <name>CLKOUT1_GATE_EN_basicPage</name>
+            <value>false</value>
+        </param>
+        <param>
+            <name>ODIV3_CLKIN_SEL</name>
+            <value>0</value>
+        </param>
+        <param>
+            <name>SOURCE_ODIV0_basicPage</name>
+            <value>ODIV1</value>
+        </param>
+        <param>
+            <name>STATIC_RATIO0_advancedPage</name>
+            <value>1</value>
+        </param>
+        <param>
+            <name>SOURCE_ODIV1_advancedPage</name>
+            <value>VCO</value>
+        </param>
+        <param>
+            <name>STATIC_PHASE3</name>
+            <value>0</value>
+        </param>
+        <param>
+            <name>CLKOUT1_GATE_EN_advancedPage</name>
+            <value>false</value>
+        </param>
+        <param>
+            <name>CLKOUT_EN_basicPage</name>
+            <value>false</value>
+        </param>
+        <param>
+            <name>EXTERNAL_FB</name>
+            <value>DISABLE</value>
+        </param>
+        <param>
+            <name>APB_EN_basicPage</name>
+            <value>false</value>
+        </param>
+        <param>
+            <name>FRACN_EN_advancedPage</name>
+            <value>false</value>
+        </param>
+        <param>
+            <name>CLKOUT3_GATE_EN_basicPage</name>
+            <value>false</value>
+        </param>
+        <param>
+            <name>RSTODIV2_EN</name>
+            <value>false</value>
+        </param>
+        <param>
+            <name>VCOCLK_BYPASS2</name>
+            <value>false</value>
+        </param>
+        <param>
+            <name>STATIC_RATIO2</name>
+            <value>8</value>
+        </param>
+        <param>
+            <name>CLKIN_FREQ_advancedPage</name>
+            <value>50.0000</value>
+            <decimal>4</decimal>
+        </param>
+        <param>
+            <name>CLKIN_FREQ</name>
+            <value>50.0000</value>
+            <decimal>4</decimal>
+        </param>
+        <param>
+            <name>RSTODIV_EN_basicPage</name>
+            <value>false</value>
+        </param>
+        <param>
+            <name>STATIC_CPHASE2</name>
+            <value>0</value>
+        </param>
+        <param>
+            <name>FRACN_DIV</name>
+            <value>0</value>
+        </param>
+        <param>
+            <name>FRACN_EN</name>
+            <value>false</value>
+        </param>
+        <param>
+            <name>STATIC_RATIO1</name>
+            <value>4</value>
+        </param>
+        <param>
+            <name>CLKOUT3_REQ_PHASE_basicPage</name>
+            <value>0.0000</value>
+            <decimal>4</decimal>
+        </param>
+        <param>
+            <name>CLKOUT0_EN</name>
+            <value>true</value>
+        </param>
+        <param>
+            <name>INTERNAL_FB</name>
+            <value>CLKOUT0</value>
+        </param>
+        <param>
+            <name>PHASE_APB_EN</name>
+            <value>false</value>
+        </param>
+        <param>
+            <name>STATIC_PHASE0_advancedPage</name>
+            <value>0</value>
+        </param>
+        <param>
+            <name>SOURCE_ODIV2_basicPage</name>
+            <value>ODIV3</value>
+        </param>
+        <param>
+            <name>SOURCE_ODIV3_basicPage</name>
+            <value>ODIV0</value>
+        </param>
+        <param>
+            <name>DYNAMIC_CLKIN_EN</name>
+            <value>false</value>
         </param>
         <param>
             <name>CLKOUT2_GATE_EN_advancedPage</name>
@@ -220,47 +386,11 @@
             <decimal>4</decimal>
         </param>
         <param>
-            <name>CLKOUT2_EN_basicPage</name>
-            <value>false</value>
-        </param>
-        <param>
-            <name>STATIC_CPHASE1</name>
+            <name>STATIC_PHASE1</name>
             <value>0</value>
-        </param>
-        <param>
-            <name>STATIC_PHASE3</name>
-            <value>0</value>
-        </param>
-        <param>
-            <name>STATIC_CPHASE2</name>
-            <value>0</value>
-        </param>
-        <param>
-            <name>SOURCE_ODIV3_advancedPage</name>
-            <value>VCO</value>
-        </param>
-        <param>
-            <name>MODE_CFG</name>
-            <value>0</value>
-        </param>
-        <param>
-            <name>DYNAMIC_CLKIN_EN</name>
-            <value>false</value>
-        </param>
-        <param>
-            <name>CLKOUT3_EN</name>
-            <value>false</value>
         </param>
         <param>
             <name>CLKOUT_EN</name>
-            <value>false</value>
-        </param>
-        <param>
-            <name>STATIC_RATIO2</name>
-            <value>8</value>
-        </param>
-        <param>
-            <name>VCOCLK_BYPASS2</name>
             <value>false</value>
         </param>
         <param>
@@ -268,43 +398,19 @@
             <value>false</value>
         </param>
         <param>
-            <name>DYNAMIC_PHASE_EN</name>
+            <name>RSTODIV_EN</name>
             <value>false</value>
         </param>
         <param>
-            <name>CLKOUT2_EN</name>
+            <name>RSTODIV3_EN_advancedPage</name>
             <value>false</value>
         </param>
         <param>
-            <name>CLKOUT2_EN_advancedPage</name>
+            <name>PLL_PWD_EN_basicPage</name>
             <value>false</value>
         </param>
         <param>
-            <name>CLKOUT0_SYN_EN</name>
-            <value>false</value>
-        </param>
-        <param>
-            <name>CLKOUT1_BYPASS_EN_basicPage</name>
-            <value>false</value>
-        </param>
-        <param>
-            <name>STATIC_RATIO0</name>
-            <value>2</value>
-        </param>
-        <param>
-            <name>STATIC_CPHASE3</name>
-            <value>0</value>
-        </param>
-        <param>
-            <name>FB_MODE</name>
-            <value>false</value>
-        </param>
-        <param>
-            <name>ODIV0_CLKIN_SEL</name>
-            <value>0</value>
-        </param>
-        <param>
-            <name>CLKOUT2_BYPASS_EN_basicPage</name>
+            <name>STDBY_EN</name>
             <value>false</value>
         </param>
         <param>
@@ -312,67 +418,12 @@
             <value>false</value>
         </param>
         <param>
-            <name>STATIC_RATIOI</name>
+            <name>CLKOUT2_GATE_EN_basicPage</name>
+            <value>false</value>
+        </param>
+        <param>
+            <name>STATIC_RATIO0_basicPage</name>
             <value>1</value>
-        </param>
-        <param>
-            <name>SOURCE_CLKOUT0_advancedPage</name>
-            <value>ODIV0</value>
-        </param>
-        <param>
-            <name>CLKOUT1_REQ_FREQ_basicPage</name>
-            <value>50.0000</value>
-            <decimal>4</decimal>
-        </param>
-        <param>
-            <name>SOURCE_ODIV2_advancedPage</name>
-            <value>VCO</value>
-        </param>
-        <param>
-            <name>FB_basicPage</name>
-            <value>0</value>
-        </param>
-        <param>
-            <name>CLKOUT3_REQ_PHASE_basicPage</name>
-            <value>0.0000</value>
-            <decimal>4</decimal>
-        </param>
-        <param>
-            <name>CLKOUT3_EN_basicPage</name>
-            <value>false</value>
-        </param>
-        <param>
-            <name>STATIC_PHASE0</name>
-            <value>0</value>
-        </param>
-        <param>
-            <name>CLKOUT3_REQ_FREQ_basicPage</name>
-            <value>50.0000</value>
-            <decimal>4</decimal>
-        </param>
-        <param>
-            <name>RSTODIV3_EN</name>
-            <value>false</value>
-        </param>
-        <param>
-            <name>CLKOUT0_EN_advancedPage</name>
-            <value>true</value>
-        </param>
-        <param>
-            <name>PHASE_APB_EN</name>
-            <value>false</value>
-        </param>
-        <param>
-            <name>BANDWIDTH</name>
-            <value>OPTIMIZED</value>
-        </param>
-        <param>
-            <name>STDBY_EN_advancedPage</name>
-            <value>false</value>
-        </param>
-        <param>
-            <name>LOCK_MODE</name>
-            <value>0</value>
         </param>
         <param>
             <name>CLKIN_FREQ_basicPage</name>
@@ -380,115 +431,28 @@
             <decimal>4</decimal>
         </param>
         <param>
-            <name>FRACN_DIV</name>
-            <value>0</value>
-        </param>
-        <param>
-            <name>ODIV2_CLKIN_SEL</name>
-            <value>0</value>
-        </param>
-        <param>
-            <name>SOURCE_ODIV1_basicPage</name>
-            <value>ODIV2</value>
-        </param>
-        <param>
-            <name>DYNAMIC_CLKIN_EN_basicPage</name>
+            <name>CLKOUT0_SYN_EN</name>
             <value>false</value>
-        </param>
-        <param>
-            <name>STATIC_RATIOF</name>
-            <value>4</value>
-        </param>
-        <param>
-            <name>SOURCE_ODIV0_basicPage</name>
-            <value>ODIV1</value>
-        </param>
-        <param>
-            <name>RSTODIV2_EN_basicPage</name>
-            <value>false</value>
-        </param>
-        <param>
-            <name>FB_MODE_advancedPage</name>
-            <value>0</value>
-        </param>
-        <param>
-            <name>RSTODIV2_EN_advancedPage</name>
-            <value>false</value>
-        </param>
-        <param>
-            <name>ODIV0_CASCADE_EN_basicPage</name>
-            <value>false</value>
-        </param>
-        <param>
-            <name>VCOCLK_BYPASS3</name>
-            <value>false</value>
-        </param>
-        <param>
-            <name>ODIV1_CLKIN_SEL</name>
-            <value>0</value>
-        </param>
-        <param>
-            <name>SOURCE_CLKOUT2_advancedPage</name>
-            <value>ODIV2</value>
-        </param>
-        <param>
-            <name>ODIV2_CASCADE_EN_basicPage</name>
-            <value>false</value>
-        </param>
-        <param>
-            <name>EXTERNAL_FB</name>
-            <value>DISABLE</value>
         </param>
         <param>
             <name>STATIC_PHASE1_advancedPage</name>
             <value>0</value>
         </param>
         <param>
-            <name>SOURCE_CLKOUT1_advancedPage</name>
-            <value>ODIV1</value>
+            <name>CLKOUT2_REQ_FREQ_basicPage</name>
+            <value>50.0000</value>
+            <decimal>4</decimal>
         </param>
         <param>
-            <name>CLKOUT0_BYPASS_EN_basicPage</name>
+            <name>SOURCE_CLKOUT3_advancedPage</name>
+            <value>ODIV3</value>
+        </param>
+        <param>
+            <name>PLL_PWD_EN_advancedPage</name>
             <value>false</value>
         </param>
         <param>
-            <name>CLKOUT0_EN_basicPage</name>
-            <value>true</value>
-        </param>
-        <param>
-            <name>STDBY_EN_basicPage</name>
-            <value>false</value>
-        </param>
-        <param>
-            <name>CLKOUT3_GATE_EN_basicPage</name>
-            <value>false</value>
-        </param>
-        <param>
-            <name>STATIC_PHASE0_advancedPage</name>
-            <value>0</value>
-        </param>
-        <param>
-            <name>CLKOUT0_EN</name>
-            <value>true</value>
-        </param>
-        <param>
-            <name>CLKOUT3_BYPASS_EN_basicPage</name>
-            <value>false</value>
-        </param>
-        <param>
-            <name>CLKOUT2_SEL</name>
-            <value>0</value>
-        </param>
-        <param>
-            <name>FRACN_DIV_advancedPage</name>
-            <value>0</value>
-        </param>
-        <param>
-            <name>STATIC_RATIO1_advancedPage</name>
-            <value>1</value>
-        </param>
-        <param>
-            <name>RSTODIV3_EN_basicPage</name>
+            <name>LOCK_MODE_advancedPage</name>
             <value>false</value>
         </param>
         <param>
@@ -496,32 +460,128 @@
             <value>1</value>
         </param>
         <param>
-            <name>CLKOUT1_EN_basicPage</name>
+            <name>ODIV2_CLKIN_SEL</name>
+            <value>0</value>
+        </param>
+        <param>
+            <name>CLKOUT2_SEL</name>
+            <value>0</value>
+        </param>
+        <param>
+            <name>FB_MODE</name>
             <value>false</value>
         </param>
         <param>
-            <name>CLKOUT1_GATE_EN_advancedPage</name>
+            <name>CLKOUT0_GATE_EN_advancedPage</name>
             <value>false</value>
+        </param>
+        <param>
+            <name>CLKOUT1_BYPASS_EN_basicPage</name>
+            <value>false</value>
+        </param>
+        <param>
+            <name>STATIC_RATIOI</name>
+            <value>1</value>
+        </param>
+        <param>
+            <name>MODE_CFG</name>
+            <value>0</value>
+        </param>
+        <param>
+            <name>LOCK_MODE</name>
+            <value>0</value>
+        </param>
+        <param>
+            <name>ODIV2_CASCADE_EN_basicPage</name>
+            <value>false</value>
+        </param>
+        <param>
+            <name>RSTODIV2_EN_basicPage</name>
+            <value>false</value>
+        </param>
+        <param>
+            <name>ODIV0_CASCADE_EN_basicPage</name>
+            <value>false</value>
+        </param>
+        <param>
+            <name>PFDEN_EN</name>
+            <value>false</value>
+        </param>
+        <param>
+            <name>RSTODIV3_EN</name>
+            <value>false</value>
+        </param>
+        <param>
+            <name>STATIC_RATIO0</name>
+            <value>2</value>
         </param>
         <param>
             <name>STATIC_RATIO1_basicPage</name>
             <value>1</value>
         </param>
         <param>
-            <name>SOURCE_CLKOUT3_advancedPage</name>
-            <value>ODIV3</value>
+            <name>STATIC_RATIOF_advancedPage</name>
+            <value>1</value>
         </param>
         <param>
-            <name>PHASE_APB_EN_advancedPage</name>
+            <name>CLKOUT2_EN_basicPage</name>
             <value>false</value>
         </param>
         <param>
-            <name>CLKOUT1_REQ_PHASE_basicPage</name>
-            <value>0.0000</value>
+            <name>SOURCE_ODIV0_advancedPage</name>
+            <value>VCO</value>
+        </param>
+        <param>
+            <name>CLKOUT2_BYPASS_EN_basicPage</name>
+            <value>false</value>
+        </param>
+        <param>
+            <name>SOURCE_CLKOUT2_advancedPage</name>
+            <value>ODIV2</value>
+        </param>
+        <param>
+            <name>CLKOUT1_SEL</name>
+            <value>0</value>
+        </param>
+        <param>
+            <name>RST_INNER_EN</name>
+            <value>true</value>
+        </param>
+        <param>
+            <name>CLKOUT1_EN</name>
+            <value>true</value>
+        </param>
+        <param>
+            <name>FRACN_DIV_advancedPage</name>
+            <value>0</value>
+        </param>
+        <param>
+            <name>STATIC_PHASE0</name>
+            <value>0</value>
+        </param>
+        <param>
+            <name>CLKOUT1_REQ_FREQ_basicPage</name>
+            <value>100.0000</value>
             <decimal>4</decimal>
         </param>
         <param>
-            <name>VCOCLK_BYPASS0</name>
+            <name>FB_basicPage</name>
+            <value>0</value>
+        </param>
+        <param>
+            <name>CLKOUT3_EN_basicPage</name>
+            <value>false</value>
+        </param>
+        <param>
+            <name>RST_INNER_EN_basicPage</name>
+            <value>true</value>
+        </param>
+        <param>
+            <name>SOURCE_ODIV1_basicPage</name>
+            <value>ODIV2</value>
+        </param>
+        <param>
+            <name>STDBY_EN_basicPage</name>
             <value>false</value>
         </param>
         <param>
@@ -529,88 +589,28 @@
             <value>false</value>
         </param>
         <param>
-            <name>FRACN_EN_advancedPage</name>
-            <value>false</value>
-        </param>
-        <param>
-            <name>RSTODIV_EN</name>
-            <value>false</value>
-        </param>
-        <param>
-            <name>RSTODIV2_EN</name>
-            <value>false</value>
-        </param>
-        <param>
-            <name>STATIC_CPHASE0</name>
-            <value>0</value>
-        </param>
-        <param>
             <name>APB_EN</name>
             <value>false</value>
         </param>
         <param>
-            <name>CLKOUT2_SYN_EN</name>
-            <value>false</value>
+            <name>SOURCE_CLKOUT0_advancedPage</name>
+            <value>ODIV0</value>
         </param>
         <param>
-            <name>CLKOUT3_SYN_EN</name>
-            <value>false</value>
-        </param>
-        <param>
-            <name>CLKIN_FREQ</name>
-            <value>50.0000</value>
+            <name>CLKOUT2_REQ_PHASE_basicPage</name>
+            <value>0.0000</value>
             <decimal>4</decimal>
         </param>
         <param>
-            <name>STATIC_RATIO3_advancedPage</name>
-            <value>1</value>
+            <name>SOURCE_CLKOUT1_advancedPage</name>
+            <value>ODIV1</value>
         </param>
         <param>
-            <name>ODIV1_CASCADE_EN_basicPage</name>
+            <name>DYNAMIC_CLKIN_EN_basicPage</name>
             <value>false</value>
         </param>
         <param>
-            <name>RSTODIV_EN_basicPage</name>
-            <value>false</value>
-        </param>
-        <param>
-            <name>CLKOUT1_SEL</name>
-            <value>0</value>
-        </param>
-        <param>
-            <name>STDBY_EN</name>
-            <value>false</value>
-        </param>
-        <param>
-            <name>STATIC_RATIO0_advancedPage</name>
-            <value>1</value>
-        </param>
-        <param>
-            <name>PLL_PWD_EN_basicPage</name>
-            <value>false</value>
-        </param>
-        <param>
-            <name>STATIC_RATIO2_advancedPage</name>
-            <value>1</value>
-        </param>
-        <param>
-            <name>STATIC_RATIO3_basicPage</name>
-            <value>1</value>
-        </param>
-        <param>
-            <name>STATIC_PHASE2</name>
-            <value>0</value>
-        </param>
-        <param>
-            <name>ODIV3_CLKIN_SEL</name>
-            <value>0</value>
-        </param>
-        <param>
-            <name>APB_EN_advancedPage</name>
-            <value>false</value>
-        </param>
-        <param>
-            <name>DYNAMIC_CLKIN_EN_advancedPage</name>
+            <name>PHASE_APB_EN_advancedPage</name>
             <value>false</value>
         </param>
     </param_list>
@@ -618,6 +618,12 @@
         <pin>
             <name>clkout0</name>
             <text>clkout0</text>
+            <dir>output</dir>
+            <pos>right</pos>
+        </pin>
+        <pin>
+            <name>clkout1</name>
+            <text>clkout1</text>
             <dir>output</dir>
             <pos>right</pos>
         </pin>

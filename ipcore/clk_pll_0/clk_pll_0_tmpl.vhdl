@@ -9,6 +9,7 @@
 COMPONENT clk_pll_0
   PORT (
     clkout0 : OUT STD_LOGIC;
+    clkout1 : OUT STD_LOGIC;
     lock : OUT STD_LOGIC;
     clkin1 : IN STD_LOGIC;
     rst : IN STD_LOGIC
@@ -19,6 +20,7 @@ END COMPONENT;
 the_instance_name : clk_pll_0
   PORT MAP (
     clkout0 => clkout0,
+    clkout1 => clkout1,
     lock => lock,
     clkin1 => clkin1,
     rst => rst

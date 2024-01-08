@@ -20,6 +20,8 @@ module clk_pll_0 (
     
     clkout0,
     
+    clkout1,
+    
     clkin1,
     
     rst,
@@ -40,7 +42,7 @@ module clk_pll_0 (
     
     localparam integer STATIC_RATIO0   = 2; //@IPC int 1,128 
     
-    localparam integer STATIC_RATIO1   = 8; //@IPC int 1,128 
+    localparam integer STATIC_RATIO1   = 4; //@IPC int 1,128 
     
     localparam integer STATIC_RATIO2   = 8; //@IPC int 1,128 
     
@@ -119,6 +121,8 @@ module clk_pll_0 (
     localparam         RSTODIV3_EN     = "FALSE"; //@IPC bool 
     
     output      clkout0       ;
+    
+    output      clkout1       ;
     
     input       clkin1        ;
     
