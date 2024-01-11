@@ -40,14 +40,14 @@ Setup Summary(Fast Corner):
                                                                           TNS Failing      TNS Total
  Launch Clock           Capture Clock              WNS(ns)     TNS(ns)      Endpoints      Endpoints
 ----------------------------------------------------------------------------------------------------
- clock_50MHz            clock_50MHz                 13.227       0.000              0            304
- pll_200M               clock_50MHz                  0.700       0.000              0             38
- pll_200M               pll_200M                     0.203       0.000              0            801
- clock_50MHz            pll_200M                     1.161       0.000              0            214
- pll_100M               pll_200M                     3.643       0.000              0              2
- pll_200M               pll_100M                     0.949       0.000              0             82
- pll_100M               pll_100M                     6.185       0.000              0            113
- clock_50MHz            pll_100M                     7.023       0.000              0             18
+ clock_50MHz            clock_50MHz                 13.405       0.000              0            299
+ pll_200M               clock_50MHz                  0.567       0.000              0             39
+ clock_50MHz            pll_200M                    -0.016      -0.032              2            249
+ pll_200M               pll_200M                    -0.690     -15.143             63            862
+ pll_100M               pll_200M                     3.447       0.000              0              2
+ pll_200M               pll_100M                    -1.570    -145.899            157            432
+ pll_100M               pll_100M                     3.502       0.000              0            411
+ clock_50MHz            pll_100M                     7.421       0.000              0             70
 ====================================================================================================
 
 Hold Summary(Fast Corner):
@@ -55,14 +55,14 @@ Hold Summary(Fast Corner):
                                                                           THS Failing      THS Total
  Launch Clock           Capture Clock              WHS(ns)     THS(ns)      Endpoints      Endpoints
 ----------------------------------------------------------------------------------------------------
- clock_50MHz            clock_50MHz                  0.311       0.000              0            304
- pll_200M               clock_50MHz                  1.859       0.000              0             38
- pll_200M               pll_200M                     0.260       0.000              0            801
- clock_50MHz            pll_200M                     0.208       0.000              0            214
- pll_100M               pll_200M                     0.197       0.000              0              2
- pll_200M               pll_100M                     0.239       0.000              0             82
- pll_100M               pll_100M                     0.398       0.000              0            113
- clock_50MHz            pll_100M                     0.275       0.000              0             18
+ clock_50MHz            clock_50MHz                  0.365       0.000              0            299
+ pll_200M               clock_50MHz                  1.870       0.000              0             39
+ clock_50MHz            pll_200M                     0.108       0.000              0            249
+ pll_200M               pll_200M                     0.259       0.000              0            862
+ pll_100M               pll_200M                     0.250       0.000              0              2
+ pll_200M               pll_100M                     0.141       0.000              0            432
+ pll_100M               pll_100M                     0.365       0.000              0            411
+ clock_50MHz            pll_100M                     0.161       0.000              0             70
 ====================================================================================================
 
 Recovery Summary(Fast Corner):
@@ -70,9 +70,9 @@ Recovery Summary(Fast Corner):
                                                                           TNS Failing      TNS Total
  Launch Clock           Capture Clock              WNS(ns)     TNS(ns)      Endpoints      Endpoints
 ----------------------------------------------------------------------------------------------------
- clock_50MHz            clock_50MHz                 15.578       0.000              0             71
- clock_50MHz            pll_200M                     1.551       0.000              0            252
- clock_50MHz            pll_100M                     7.344       0.000              0             19
+ clock_50MHz            clock_50MHz                 15.675       0.000              0             71
+ clock_50MHz            pll_200M                     1.720       0.000              0            251
+ clock_50MHz            pll_100M                     7.505       0.000              0             57
 ====================================================================================================
 
 Removal Summary(Fast Corner):
@@ -80,9 +80,9 @@ Removal Summary(Fast Corner):
                                                                           THS Failing      THS Total
  Launch Clock           Capture Clock              WHS(ns)     THS(ns)      Endpoints      Endpoints
 ----------------------------------------------------------------------------------------------------
- clock_50MHz            clock_50MHz                  1.284       0.000              0             71
- clock_50MHz            pll_200M                    -0.303      -1.068              4            252
- clock_50MHz            pll_100M                     0.237       0.000              0             19
+ clock_50MHz            clock_50MHz                  0.761       0.000              0             71
+ clock_50MHz            pll_200M                    -1.015     -38.443             50            251
+ clock_50MHz            pll_100M                    -0.216      -0.648              3             57
 ====================================================================================================
 
 Minimum Pulse Width Summary(Fast Corner):

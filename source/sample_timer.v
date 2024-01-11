@@ -9,7 +9,7 @@ module sample_timer #(
     input en4,
     input en5,
     input [9:0] scp_period,    //scope sampling period, unit 10ns, max time = 2^32*10ns=42.9s
-    input [1:0] scp_unit,    //scope sampling unit
+    input [1:0] scp_unit,      //scope sampling unit
 
     output reg clk_o1,          //20kHz
     output reg clk_o2,          //10kHz
@@ -22,9 +22,9 @@ module sample_timer #(
     localparam div3 = freq * 1000000 / (5  * 1000) ;//5khz  200us
     localparam div4 = freq * 1000000 / (2  * 1000) ;//2khz  500us
 
-    reg [16:0] i1,i2,i3,i4;//16bit, max 65536
-    reg [31:0] i5;
-    reg [7:0] ns_cnt,us_cnt, ms_cnt,s_cnt;
+    reg [15:0] i1,i2,i3,i4;//16bit, max 65536
+    reg [63:0] i5;
+    reg [15:0] ns_cnt,us_cnt, ms_cnt,s_cnt;
     always @(posedge clk or negedge rst_n) begin
         if(~rst_n) begin
             i1 <= 0;
@@ -87,22 +87,40 @@ module sample_timer #(
             if(en5) begin
                 if(i5 < scp_period/2 ) begin
                     ns_cnt <= ns_cnt + 1;
-                    if(ns_cnt == 99) begin
-                        ns_cnt <= 0;
-                        us_cnt <= us_cnt + 1;
-                    end
-                    if(us_cnt == 999) begin
-                        us_cnt <= 0;
-                        ms_cnt <= ms_cnt + 1;
-                    end
-                    if(ms_cnt == 999) begin
-                        ms_cnt <= 0;
-                        s_cnt <= s_cnt + 1;
-                    end
                     case (scp_unit)
-                        00: i5 <= us_cnt;
-                        01: i5 <= ms_cnt;
-                        02: i5 <= s_cnt;
+                        00: begin //us, microsecond
+                            if(ns_cnt == (i5==(scp_period/2 -1) ? 98 :99)) begin // **(i5==(scp_period/2 -1) ? 98 :99)** 用于最后1us时，ns计数的调整，优化10ns误差
+                                ns_cnt <= 0;
+                                i5 <= i5 + 1;
+                            end
+                        end
+                        01: begin//ms, milisecond
+                            // ns_cnt <= ns_cnt + 1;
+                            if(us_cnt == 999 && ns_cnt == (i5==(scp_period/2 -1) ? 98 :99)) begin
+                                us_cnt <= 0;
+                                ns_cnt <= 0;
+                                i5 <= i5 + 1;
+                            end else if(ns_cnt == 99) begin
+                                ns_cnt <= 0;
+                                us_cnt <= us_cnt + 1;
+                            end
+
+                        end
+                        02: begin //s, sencond
+                            if(ms_cnt == 999 && us_cnt == 999 && ns_cnt == (i5==(scp_period/2 -1) ? 98 :99)) begin
+                                ms_cnt <= 0;
+                                us_cnt <= 0;
+                                ns_cnt <= 0;
+                                i5 <= i5 + 1;
+                            end else if(us_cnt == 999 && ns_cnt == 99) begin
+                                us_cnt <= 0;
+                                ns_cnt <= 0;
+                                ms_cnt <= ms_cnt + 1;
+                            end else if(ns_cnt == 99) begin
+                                ns_cnt <= 0;
+                                us_cnt <= us_cnt + 1;
+                            end
+                        end
                         default: i5 <= us_cnt;
                     endcase
                 end else begin

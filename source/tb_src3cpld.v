@@ -276,7 +276,7 @@ module tb_src3cpld;
             reset_data_para();
             # 50 
             data_checksum = 0;
-            data_len = 240;
+            data_len = 120;
             //预先计算checksum值
             for (i = 0;i<(data_len/2); i=i+1) begin
                 data_checksum = data_checksum ^ data_para[i];
@@ -412,8 +412,8 @@ module tb_src3cpld;
             write_operation(8'h40, {8'h03, 8'b0000_0000});
             if(dataR[4] == 1) begin
                 $display("*****scope Write OK  *****\n");
-                write_operation(8'h56,{4'b0, 2'b00, 10'h32});//write scope sampling period
-                write_operation(8'h42,{14'b0, 2'b01});//write scope sample enable
+                write_operation(8'h56,{4'b0, 2'b01, 10'h2});//write scope sampling period
+                write_operation(8'h42,{14'b0, 2'b11});//write scope sample enable
             end else begin
                 $display("*****scope Write Fail*****\n");
             end
@@ -476,18 +476,19 @@ module tb_src3cpld;
         #150
             // write_operation_period_data;
             // write_operation_frf_data;
-            // write_operation_scope_data;
-            write_operation_para_data;
+            write_operation_scope_data;
+            // read_operation_period_data;
+            // write_operation_para_data;
 
         // #100000
             // read_operation_frf_data;
             // read_operation_scope_data;
-        // #500000
+        #600000
         //     write_operation_period_data;
         //     read_operation_frf_data;
-        //     read_operation_scope_data;
+            read_operation_scope_data;
 
-        #200 $finish;
+        // #200 $finish;
     end
 
 

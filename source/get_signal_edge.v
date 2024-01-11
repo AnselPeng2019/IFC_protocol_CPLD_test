@@ -16,7 +16,7 @@ module get_signal_edge ( input clk,
         end
     end
 
-    assign pos_edge = sig_reg[0] == 1 && sig_reg[1] == 0;    
+    assign pos_edge = sig_reg[0] == 1 && sig_reg[1] == 0;
     assign neg_edge = sig_reg[0] == 0 && sig_reg[1] == 1;
 
 endmodule

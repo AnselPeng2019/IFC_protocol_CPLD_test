@@ -155,10 +155,13 @@ module src3cpld (
     reg [15:0] FPGA_COMM_DATALEN;                  //0x52, 设备通信通讯通道传输数据长度
     reg [15:0] FPGA_COMM_DATA;                     //0x54, 设备通信通讯通道传输数据
     reg [15:0] FPGA_APP_SCOPE_SAMPLING;            //0x56, 设备通信通讯通道传输数据长度；在FPGA中使用0x2000
+    reg [15:0] FPGA_APP_DEBUG00;             //0x58, 用于调试，查看中间变量
+    reg [15:0] FPGA_APP_DEBUG01;             //0x5A, 用于调试，查看中间变量
 
-    reg [7:0] freq_scp;
     wire [9:0] scp_period;
     wire [1:0] scp_unit;
+    reg [7:0] cnt_frf, cnt_scope;
+
 
     reg frf_data_avl,scope_data_avl;
 
@@ -503,6 +506,10 @@ module src3cpld (
                         regd[15:0] <= FPGA_COMM_DATA;
                     8'h56:
                         regd[15:0] <= FPGA_APP_SCOPE_SAMPLING;
+                    8'h58:
+                        regd[15:0] <= FPGA_APP_DEBUG00;
+                    8'h5A:
+                        regd[15:0] <= FPGA_APP_DEBUG01;
                     default:
                         regd[15:0] <= 0;
                 endcase
@@ -634,7 +641,6 @@ module src3cpld (
             FPGA_COMM_DATALEN                       <= 16'h0000;        //0x52
             FPGA_COMM_DATA                          <= 16'h0000;        //0x54
             FPGA_APP_SCOPE_SAMPLING                 <= {5'b0_0000, 2'b00, 9'd50}; //0x
-            freq_scp                                <= 16'h0001;        //scope frequency, kHz
             pi                                      <= 0; 
             checksum_clear                          <= 0;
             // scp_period                              <= 5000;            //50us
@@ -642,10 +648,12 @@ module src3cpld (
             reset_period_data;
         end
         else begin
-            if (~cpld_cs) begin//update registers
-                FPGA_SYS_STA_STATUS[2] <= frf_data_avl;
-                FPGA_SYS_STA_STATUS[3] <= scope_data_avl;
-            end
+            if (cs_ne) begin//update registers
+                FPGA_SYS_STA_STATUS[2]    <= frf_data_avl;
+                FPGA_SYS_STA_STATUS[3]    <= scope_data_avl;
+                FPGA_APP_DEBUG00          <= cnt_frf;
+                FPGA_APP_DEBUG01          <= cnt_scope;
+            end 
             if (write_status) begin       //写操作
                 case (cpld_addr[7:0]) 
                     8'h40:
@@ -660,10 +668,14 @@ module src3cpld (
                         FPGA_COMM_DATA              <= cpld_data[15:0];
                     8'h56:
                         FPGA_APP_SCOPE_SAMPLING     <= cpld_data[15:0];
+                    8'h58:
+                        FPGA_APP_DEBUG00            <= cpld_data[15:0];
+                    8'h5A:
+                        FPGA_APP_DEBUG01            <= cpld_data[15:0];
                     default:
                         ;
                 endcase
-            end
+            end 
             if(current_state == st_read_block && cs_ne && cpld_addr == 8'h54) begin
                 $display("read block.\n");
                 if(pi <= FPGA_COMM_DATALEN/2 - 1) begin
@@ -715,17 +727,17 @@ module src3cpld (
                     if(frf_data_avl == 1) begin
                         FPGA_HANDSHAKE_CHANNEL0[3] <= 1;//set ready bit
                         FPGA_COMM_DATALEN <= 120;
-                        $display(".....FPGA_COMM_DATALEN was assigned %d in period mode.....\n", 120);
+                        $display(".....FPGA_COMM_DATALEN was assigned %d in frf mode.....\n", 120);
                     end
                 end else if(hs_cmd == 8'h03) begin      //scope mode
                     $display(".....Check if scope data available.....\n");
                     if(scope_data_avl == 1) begin
                         FPGA_HANDSHAKE_CHANNEL0[3] <= 1;//set ready bit
                         FPGA_COMM_DATALEN <= 120;
-                        $display(".....FPGA_COMM_DATALEN was assigned %d in period mode.....\n", 120);
+                        $display(".....FPGA_COMM_DATALEN was assigned %d in scope mode.....\n", 120);
                     end
                 end else if(hs_cmd == 8'h04) begin      //para  mode
-                    // FPGA_HANDSHAKE_CHANNEL0[3] <= 1; //ready bit
+                    // FPGA_HANDSHAKE_CHANNEL0[3] <= 1;//ready bit
                     FPGA_COMM_DATALEN <= 120;
                     $display(".....Ready bit is assigned in para mode.....\n");
                     $display(".....FPGA_COMM_DATALEN was assigned %d in para mode.....\n", 120);
@@ -849,7 +861,6 @@ module src3cpld (
     .neg_edge                ( clk_o5_ne   )
     );
 
-    reg [7:0] cnt_frf, cnt_scope;
     always @(posedge high_cpld_clk or negedge rst_n) begin
         if(~rst_n) begin
             cnt_frf <= 0;
@@ -857,33 +868,38 @@ module src3cpld (
             frf_data_avl <= 0;
             scope_data_avl <= 0;
         end else begin
-            if(clk_o1_ne && HS1_FRF_FUN_EN) begin
-                if(cnt_frf == 9) begin
+            if(~HS1_FRF_FUN_EN) begin
+                frf_data_avl  <= 0;
+                cnt_frf       <= 0;
+            end else if(get_out_read_st && hs_cmd == 8'h02 && frf_data_avl) begin
+                frf_data_avl <= 0;
+                if(cnt_frf > 9) begin
+                    cnt_frf <= cnt_frf - 10;
+                end
+                // cnt_frf      <= 0;
+            end else if(clk_o1_ne && HS1_FRF_FUN_EN) begin
+                if(cnt_frf > 9) begin
                     frf_data_avl <= 1;
-                    cnt_frf <= 0;
+                    cnt_frf <= cnt_frf + 1;
                 end else begin
                     cnt_frf <= cnt_frf + 1;
                 end
-            end else if(~HS1_FRF_FUN_EN) begin
-                frf_data_avl <= 0;
-                cnt_frf <= 0;
-            end else if(get_out_read_st && hs_cmd == 8'h02 && frf_data_avl) begin
-                frf_data_avl <= 0;
-                cnt_frf <= 0;
             end
-            if(clk_o5_ne && HS1_SCOPE_FUN_EN) begin
-                if(cnt_scope == 9) begin
+            if(~HS1_SCOPE_FUN_EN) begin
+                scope_data_avl  <= 0;
+                cnt_scope       <= 0;
+            end else if(get_out_read_st && hs_cmd == 8'h03 && scope_data_avl) begin
+                scope_data_avl <= 0;
+                if(cnt_scope > 9) begin
+                    cnt_scope <= cnt_scope - 10;
+                end
+            end else if(clk_o5_ne && HS1_SCOPE_FUN_EN) begin
+                if(cnt_scope > 9) begin
                     scope_data_avl <= 1;
-                    cnt_scope <= 0;
+                    cnt_scope <= cnt_scope + 1;
                 end else begin
                     cnt_scope <= cnt_scope + 1;
                 end
-            end else if(~HS1_SCOPE_FUN_EN) begin
-                scope_data_avl <= 0;
-                cnt_scope <= 0;
-            end else if(get_out_read_st && hs_cmd == 8'h03 && scope_data_avl) begin
-                scope_data_avl <= 0;
-                cnt_scope <= 0;
             end
         end
     end
