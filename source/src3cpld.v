@@ -55,7 +55,7 @@ module src3cpld (
     parameter	[3:0]st_w_scp_block     = 4'b1001;	        		//9 write scope block data
 
     // uart_def Parameters
-    parameter BSN        = 6     ;
+    parameter BSN        = 10    ;//发送的字节数
     parameter BRN        = 4     ;
     parameter CLK_FRE    = 50    ;
     parameter BAUD_RATE  = 115200;
@@ -155,8 +155,10 @@ module src3cpld (
     reg [15:0] FPGA_COMM_DATALEN;                  //0x52, 设备通信通讯通道传输数据长度
     reg [15:0] FPGA_COMM_DATA;                     //0x54, 设备通信通讯通道传输数据
     reg [15:0] FPGA_APP_SCOPE_SAMPLING;            //0x56, 设备通信通讯通道传输数据长度；在FPGA中使用0x2000
-    reg [15:0] FPGA_APP_DEBUG00;             //0x58, 用于调试，查看中间变量
-    reg [15:0] FPGA_APP_DEBUG01;             //0x5A, 用于调试，查看中间变量
+    reg [15:0] FPGA_APP_DEBUG00;                   //0x58, 用于调试，查看中间变量
+    reg [15:0] FPGA_APP_DEBUG01;                   //0x5A, 用于调试，查看中间变量
+    reg [15:0] FPGA_BURST_BUF [0:3];               //0x60,用于调试burst mode的读写操作
+
 
     wire [9:0] scp_period;
     wire [1:0] scp_unit;
@@ -191,6 +193,9 @@ module src3cpld (
     wire   cb_read_enable;
     reg   [16-1:0]  cb_data_in;
     wire  [16-1:0]  cb_data_out;
+
+    wire rw_burst_flag;
+    wire [7:0] burst_cnt;
 
     //**************************************************************************
     //IRQ Assignment irq
@@ -552,15 +557,16 @@ module src3cpld (
     );
 
     wire write_status;
-    delay_cy #(
-        .cycles ( 1 ))
-    u_delay_cy_ws1 (
-        .clk                     ( high_cpld_clk          ),
-        .rst_n                   ( rst_n        ),
-        .signal_in               ( ~cpld_cs && we_ne    ),
+    // delay_cy #(
+    //     .cycles ( 1 ))
+    // u_delay_cy_ws1 (
+    //     .clk                     ( high_cpld_clk          ),
+    //     .rst_n                   ( rst_n        ),
+    //     .signal_in               ( ~cpld_cs && we_ne    ),
 
-        .signal_out              ( write_status   )
-    );
+    //     .signal_out              ( write_status   )
+    // );
+    assign write_status = ~cpld_cs && we_ne;
 
     wire write_status_1cy;
     delay_cy #(
@@ -654,7 +660,7 @@ module src3cpld (
                 FPGA_APP_DEBUG00          <= cnt_frf;
                 FPGA_APP_DEBUG01          <= cnt_scope;
             end 
-            if (write_status) begin       //写操作
+            if (write_status || rw_burst_flag) begin       //写操作
                 case (cpld_addr[7:0]) 
                     8'h40:
                         FPGA_HANDSHAKE_CHANNEL0     <= cpld_data[15:0];
@@ -672,6 +678,8 @@ module src3cpld (
                         FPGA_APP_DEBUG00            <= cpld_data[15:0];
                     8'h5A:
                         FPGA_APP_DEBUG01            <= cpld_data[15:0];
+                    8'h60:
+                        FPGA_BURST_BUF[burst_cnt]   <= cpld_data[15:0];
                     default:
                         ;
                 endcase
@@ -904,6 +912,16 @@ module src3cpld (
         end
     end
 
+    ifc_burst_timer #(
+        .freq ( 200 ))
+    u_ifc_burst_timer (
+        .clk                     ( high_cpld_clk             ),
+        .rst_n                   ( rst_n           ),
+        .en                      ( write_status              ),
+
+        .rw_burst_flag           ( rw_burst_flag   ),
+        .cnt                     ( burst_cnt       )
+    );
     /*******************end   protocol end  **********************/
 
     //捕捉statusled信号的下降沿作为定时发送数据的
@@ -935,11 +953,11 @@ module src3cpld (
                 else
                     uart_send_flag <= 1;
             end
-            else if (write_status_1cy) begin
-            // if (cs_pe) begin
+            else if (~ifc_we_b && burst_cnt == 3) begin
+            // else if (write_status_1cy) begin
                 if(uart_send_flag == 0) begin
                 // if(1) begin
-                    dataT <= {8'b0101_1010, cpld_addr,cpld_data[15:8], cpld_data[7:0], FPGA_COMM_DATA[15:8], FPGA_COMM_DATA[7:0]};
+                    dataT <= {8'b0101_1010, cpld_addr,FPGA_BURST_BUF[3],FPGA_BURST_BUF[2],FPGA_BURST_BUF[1],FPGA_BURST_BUF[0]};
                     uart_send_flag <= 1;
                 end
                 else

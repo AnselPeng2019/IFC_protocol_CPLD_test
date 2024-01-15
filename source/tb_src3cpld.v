@@ -30,7 +30,7 @@ module tb_src3cpld;
     reg   [1:0]  pcb_ver                       = 0 ;
     reg   voltage_drop                         = 0 ;
     reg   [15:0]  io_in                        = 0 ;
-    wire   pll_100M                             = 0 ;
+    wire   pll_100M                            = 0 ;
 
     // src3cpld Outputs
     wire  irq                                  ;
@@ -456,6 +456,39 @@ module tb_src3cpld;
         end
     endtask
 
+    task write_operation_burst2;
+        input [7:0] address;
+        // input data;
+        input [63:0] data;
+        reg [15:0] data0,data1,data2,data3;
+        begin
+            data0 = data[15: 0];
+            data1 = data[31:16];
+            data2 = data[47:32];
+            data3 = data[63:48];
+            #150        addr[7:0]     = address;
+                        ifc_ad_r[7:0] = {addr[0],addr[1],addr[2],addr[3],addr[4],addr[5],addr[6],addr[7]};
+                        ifc_ad_r[15:8] = 8'h00;
+                        ifc_avd <= 1;
+                        ifc_add_lt[7:0] = ifc_ad_r[7:0];
+            #teadc  ifc_avd <= 0;
+            #teahc  ifc_ad_r[15:0] = {data0[0],data0[1],data0[2], data0[3], data0[4], data0[5], data0[6], data0[7],
+                                      data0[8],data0[9],data0[10],data0[11],data0[12],data0[13],data0[14],data0[15]};
+            #tacse  ifc_cs  = 0;
+            #tcs    ifc_we_b = 0;
+            #twp    ifc_ad_r[15:0] = {data1[0],data1[1],data1[2], data1[3], data1[4], data1[5], data1[6], data1[7],
+                                      data1[8],data1[9],data1[10],data1[11],data1[12],data1[13],data1[14],data1[15]};
+            #twp    ifc_ad_r[15:0] = {data2[0],data2[1],data2[2], data2[3], data2[4], data2[5], data2[6], data2[7],
+                                      data2[8],data2[9],data2[10],data2[11],data2[12],data2[13],data2[14],data2[15]};
+            #twp    ifc_ad_r[15:0] = {data3[0],data3[1],data3[2], data3[3], data3[4], data3[5], data3[6], data3[7],
+                                      data3[8],data3[9],data3[10],data3[11],data3[12],data3[13],data3[14],data3[15]};
+            #twp    ifc_we_b = 1;
+            #tch    ifc_cs = 1;
+            #50     ifc_ad_r[15:0] = 16'bxxxx_xxxx_xxxx_xxxx;
+            end
+    endtask
+
+
     //模拟50MHz时钟输入
     initial begin
         forever
@@ -473,22 +506,25 @@ module tb_src3cpld;
 //     reg [7:0] i = 0;
     initial begin
         
-        #150
-            // write_operation_period_data;
-            // write_operation_frf_data;
-            write_operation_scope_data;
-            // read_operation_period_data;
-            // write_operation_para_data;
+        #150;
+        // write_operation_period_data;
+        // write_operation_frf_data;
+        // write_operation_scope_data;
+        // read_operation_period_data;
+        // write_operation_para_data;
+        // write_operation(8'h40, 16'b0000_0001_0000_0101);
+        // #300;
+        write_operation_burst2(8'h60, {16'h04,16'h03,16'h02,16'h01});
 
-        // #100000
+        // #100000;
             // read_operation_frf_data;
             // read_operation_scope_data;
-        #600000
+        // #600000;
         //     write_operation_period_data;
         //     read_operation_frf_data;
-            read_operation_scope_data;
+            // read_operation_scope_data;
 
-        // #200 $finish;
+        #200 $finish;
     end
 
 
