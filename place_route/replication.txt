@@ -1,38 +1,36 @@
 Instances in group:
-    gopA2 N470_0.fsub_1/gateop_A2
-    gopA2 N470_0.fsub_3/gateop_A2
-    gopA2 N470_0.fsub_5/gateop_A2
-    gopA2 N470_0.fsub_7/gateop_A2
-    gopA2 N470_0.fsub_9/gateop_A2
-    gopA2 N470_0.fsub_11/gateop_A2
-    gopA2 N470_0.fsub_13/gateop_A2
-    gopA N470_0.fsub_15/gateop
-    gopA2 N471.lt_0/gateop_A2
-    gopA2 N471.lt_2/gateop_A2
-    gopA2 N471.lt_4/gateop_A2
-    gopA2 N471.lt_6/gateop_A2
-    gopA N471.lt_8/gateop
-    gopA2 N500_0_1/gateop_A2
-    gopA2 N500_0_3/gateop_A2
-    gopA2 N500_0_5/gateop_A2
-    gopA2 N619.eq_0/gateop_A2
-    gopA2 N619.eq_2/gateop_A2
-    gopA2 N619.eq_4/gateop_A2
-    gopA2 N619.eq_6/gateop_A2
-    gopA2 N639.eq_0/gateop_A2
-    gopA2 N639.eq_2/gateop_A2
-    gopA2 N639.eq_4/gateop_A2
-    gopA2 N639.eq_6/gateop_A2
-    gopA2 N1639_7_1/gateop_A2
-    gopA2 N1639_7_3/gateop_A2
-    gopA2 N1639_7_5/gateop_A2
-    gopA2 N1639_7_7/gateop_A2
+    gopA2 N495_0.fsub_1/gateop_A2
+    gopA2 N495_0.fsub_3/gateop_A2
+    gopA2 N495_0.fsub_5/gateop_A2
+    gopA2 N495_0.fsub_7/gateop_A2
+    gopA2 N495_0.fsub_9/gateop_A2
+    gopA2 N495_0.fsub_11/gateop_A2
+    gopA2 N495_0.fsub_13/gateop_A2
+    gopA N495_0.fsub_15/gateop
+    gopA2 N496.lt_0/gateop_A2
+    gopA2 N496.lt_2/gateop_A2
+    gopA2 N496.lt_4/gateop_A2
+    gopA2 N496.lt_6/gateop_A2
+    gopA N496.lt_8/gateop
+    gopA2 N648.eq_0/gateop_A2
+    gopA2 N648.eq_2/gateop_A2
+    gopA2 N648.eq_4/gateop_A2
+    gopA2 N648.eq_6/gateop_A2
+    gopA2 N668.eq_0/gateop_A2
+    gopA2 N668.eq_2/gateop_A2
+    gopA2 N668.eq_4/gateop_A2
+    gopA2 N668.eq_6/gateop_A2
     gopIBUF clock_50MHz_ibuf/opit_0
     gopIBUFIOL clock_50MHz_ibuf/opit_1
     gopA2Q2 cnt_frf[1]/opit_0_inv_A2Q21
     gopA2Q2 cnt_frf[3]/opit_0_inv_A2Q21
     gopA2Q2 cnt_frf[5]/opit_0_inv_A2Q21
     gopA2Q2 cnt_frf[7]/opit_0_inv_A2Q21
+    gopA2Q1 cnt_scope[0]/opit_0_inv_A2Q1
+    gopA2Q2 cnt_scope[2]/opit_0_inv_A2Q21
+    gopA2Q2 cnt_scope[4]/opit_0_inv_A2Q21
+    gopA2Q2 cnt_scope[6]/opit_0_inv_A2Q21
+    gopAQ cnt_scope[7]/opit_0_inv_AQ
     gopA2Q2 delay2[2]/opit_0_A2Q21
     gopA2Q2 delay2[4]/opit_0_A2Q21
     gopA2Q2 delay2[6]/opit_0_A2Q21
@@ -213,13 +211,32 @@ Instances in group:
     gopIBUFIOL pcb_ver_ibuf[0]/opit_1
     gopIBUF pcb_ver_ibuf[1]/opit_0
     gopIBUFIOL pcb_ver_ibuf[1]/opit_1
-    gopA2Q1 pi[8]/opit_0_inv_A2Q1
+    gopA2Q2 pi[2]/opit_0_inv_A2Q21
+    gopA2Q2 pi[4]/opit_0_inv_A2Q21
+    gopA2Q2 pi[6]/opit_0_inv_A2Q21
+    gopA2Q2 pi[8]/opit_0_inv_A2Q21
     gopA2Q2 pi[10]/opit_0_inv_A2Q21
     gopA2Q2 pi[12]/opit_0_inv_A2Q21
     gopA2Q2 pi[14]/opit_0_inv_A2Q21
     gopAQ pi[15]/opit_0_inv_AQ
     gopOBUF status_led_obuf/opit_0
     gopOBUFIOL status_led_obuf/opit_1
+    gopA2Q2 sys_timer[2]/opit_0_inv_A2Q21
+    gopA2Q2 sys_timer[4]/opit_0_inv_A2Q21
+    gopA2Q2 sys_timer[6]/opit_0_inv_A2Q21
+    gopA2Q2 sys_timer[8]/opit_0_inv_A2Q21
+    gopA2Q2 sys_timer[10]/opit_0_inv_A2Q21
+    gopA2Q2 sys_timer[12]/opit_0_inv_A2Q21
+    gopA2Q2 sys_timer[14]/opit_0_inv_A2Q21
+    gopA2Q2 sys_timer[16]/opit_0_inv_A2Q21
+    gopA2Q2 sys_timer[18]/opit_0_inv_A2Q21
+    gopA2Q2 sys_timer[20]/opit_0_inv_A2Q21
+    gopA2Q2 sys_timer[22]/opit_0_inv_A2Q21
+    gopA2Q2 sys_timer[24]/opit_0_inv_A2Q21
+    gopA2Q2 sys_timer[26]/opit_0_inv_A2Q21
+    gopA2Q2 sys_timer[28]/opit_0_inv_A2Q21
+    gopA2Q2 sys_timer[30]/opit_0_inv_A2Q21
+    gopAQ sys_timer[31]/opit_0_inv_AQ
     gopOBUF tp13_obuf/opit_0
     gopOBUFIOL tp13_obuf/opit_1
     gopOBUF tp14_obuf/opit_0
@@ -236,107 +253,151 @@ Instances in group:
     gopA2Q1 u_led_light/timer[16]/opit_0_inv_A2Q1
     gopA2Q2 u_led_light/timer[18]/opit_0_inv_A2Q21
     gopA2Q2 u_led_light/timer[22]/opit_0_inv_A2Q21
-    gopA2 u_sample_timer/N70.lt_0/gateop_A2
-    gopA2 u_sample_timer/N70.lt_2/gateop_A2
-    gopA2 u_sample_timer/N70.lt_4/gateop_A2
-    gopA2 u_sample_timer/N70.lt_6/gateop_A2
-    gopA2 u_sample_timer/N70.lt_8/gateop_A2
-    gopA2 u_sample_timer/N70.lt_10/gateop_A2
-    gopA2 u_sample_timer/N70.lt_12/gateop_A2
-    gopA2 u_sample_timer/N70.lt_14/gateop_A2
-    gopA2 u_sample_timer/N70.lt_16/gateop_A2
-    gopA2 u_sample_timer/N70.lt_18/gateop_A2
-    gopA2 u_sample_timer/N70.lt_20/gateop_A2
-    gopA2 u_sample_timer/N70.lt_22/gateop_A2
-    gopA2 u_sample_timer/N70.lt_24/gateop_A2
-    gopA2 u_sample_timer/N70.lt_26/gateop_A2
-    gopA2 u_sample_timer/N70.lt_28/gateop_A2
-    gopA2 u_sample_timer/N70.lt_30/gateop_A2
-    gopA2 u_sample_timer/N80_1_0/gateop_A2
-    gopA2 u_sample_timer/N80_1_2/gateop_A2
-    gopA2 u_sample_timer/N80_1_4/gateop_A2
-    gopA2 u_sample_timer/N80_1_6/gateop_A2
-    gopA2 u_sample_timer/N80_1_8/gateop_A2
-    gopA2 u_sample_timer/N80_1_10/gateop_A2
-    gopA2 u_sample_timer/N80_1_12/gateop_A2
-    gopA2 u_sample_timer/N80_1_14/gateop_A2
-    gopA2 u_sample_timer/N90_1.fsub_1/gateop_A2
-    gopA2 u_sample_timer/N90_1.fsub_3/gateop_A2
-    gopA2 u_sample_timer/N90_1.fsub_5/gateop_A2
-    gopA2 u_sample_timer/N90_1.fsub_7/gateop_A2
-    gopA u_sample_timer/N90_1.fsub_9/gateop
-    gopA2 u_sample_timer/N91.eq_0/gateop_A2
-    gopA2 u_sample_timer/N91.eq_2/gateop_A2
-    gopA2 u_sample_timer/N91.eq_4/gateop_A2
-    gopA2 u_sample_timer/N91.eq_6/gateop_A2
-    gopA2 u_sample_timer/N91.eq_8/gateop_A2
-    gopA2 u_sample_timer/N91.eq_10/gateop_A2
-    gopA2 u_sample_timer/N91.eq_12/gateop_A2
-    gopA2 u_sample_timer/N91.eq_14/gateop_A2
-    gopA2 u_sample_timer/N91.eq_16/gateop_A2
-    gopA2 u_sample_timer/N91.eq_18/gateop_A2
-    gopA2 u_sample_timer/N91.eq_20/gateop_A2
-    gopA2 u_sample_timer/N91.eq_22/gateop_A2
-    gopA2 u_sample_timer/N91.eq_24/gateop_A2
-    gopA2 u_sample_timer/N91.eq_26/gateop_A2
-    gopA2 u_sample_timer/N91.eq_28/gateop_A2
-    gopA2 u_sample_timer/N91.eq_30/gateop_A2
-    gopA2 u_sample_timer/N219_1_1/gateop_A2
-    gopA2 u_sample_timer/N219_1_3/gateop_A2
-    gopA2 u_sample_timer/N219_1_5/gateop_A2
-    gopA2 u_sample_timer/N219_1_7/gateop_A2
-    gopA2 u_sample_timer/N219_1_9/gateop_A2
-    gopA2 u_sample_timer/N219_1_11/gateop_A2
-    gopA2 u_sample_timer/N219_1_13/gateop_A2
-    gopA u_sample_timer/N219_1_15/gateop
-    gopA2 u_sample_timer/N316_1_1/gateop_A2
-    gopA2 u_sample_timer/N316_1_3/gateop_A2
-    gopA2 u_sample_timer/N316_1_5/gateop_A2
-    gopA2 u_sample_timer/N316_1_7/gateop_A2
-    gopA2 u_sample_timer/N316_1_9/gateop_A2
-    gopA2 u_sample_timer/N316_1_11/gateop_A2
-    gopA2 u_sample_timer/N316_1_13/gateop_A2
-    gopA u_sample_timer/N316_1_15/gateop
-    gopA2Q1 u_sample_timer/i1[1]/opit_0_inv_A2Q1
-    gopA2Q2 u_sample_timer/i1[3]/opit_0_inv_A2Q21
-    gopA2Q2 u_sample_timer/i1[5]/opit_0_inv_A2Q21
-    gopA2Q2 u_sample_timer/i1[7]/opit_0_inv_A2Q21
-    gopA2Q2 u_sample_timer/i1[9]/opit_0_inv_A2Q21
-    gopA2Q2 u_sample_timer/i1[11]/opit_0_inv_A2Q21
-    gopAQ u_sample_timer/i1[12]/opit_0_inv_AQ
-    gopA2Q1 u_sample_timer/i5[1]/opit_0_A2Q1
-    gopA2Q2 u_sample_timer/i5[3]/opit_0_A2Q21
-    gopA2Q2 u_sample_timer/i5[5]/opit_0_A2Q21
-    gopA2Q2 u_sample_timer/i5[7]/opit_0_A2Q21
-    gopA2Q2 u_sample_timer/i5[9]/opit_0_A2Q21
-    gopA2Q2 u_sample_timer/i5[11]/opit_0_A2Q21
-    gopA2Q2 u_sample_timer/i5[13]/opit_0_A2Q21
-    gopA2Q2 u_sample_timer/i5[15]/opit_0_A2Q21
-    gopA2Q2 u_sample_timer/i5[17]/opit_0_A2Q21
-    gopA2Q2 u_sample_timer/i5[19]/opit_0_A2Q21
-    gopA2Q2 u_sample_timer/i5[21]/opit_0_A2Q21
-    gopA2Q2 u_sample_timer/i5[23]/opit_0_A2Q21
-    gopA2Q2 u_sample_timer/i5[25]/opit_0_A2Q21
-    gopA2Q2 u_sample_timer/i5[27]/opit_0_A2Q21
-    gopA2Q2 u_sample_timer/i5[29]/opit_0_A2Q21
-    gopA2Q2 u_sample_timer/i5[31]/opit_0_A2Q21
-    gopA2Q2 u_sample_timer/i5[33]/opit_0_A2Q21
-    gopA2Q0 u_sample_timer/i5[34]/opit_0_A2Q0
-    gopA2Q1 u_sample_timer/i5[35]/opit_0_A2Q1
-    gopA2Q2 u_sample_timer/i5[37]/opit_0_A2Q21
-    gopA2Q2 u_sample_timer/i5[39]/opit_0_A2Q21
-    gopA2Q2 u_sample_timer/i5[41]/opit_0_A2Q21
-    gopA2Q2 u_sample_timer/i5[43]/opit_0_A2Q21
-    gopA2Q2 u_sample_timer/i5[45]/opit_0_A2Q21
-    gopA2Q2 u_sample_timer/i5[47]/opit_0_A2Q21
-    gopA2Q2 u_sample_timer/i5[49]/opit_0_A2Q21
-    gopA2Q2 u_sample_timer/i5[51]/opit_0_A2Q21
-    gopA2Q2 u_sample_timer/i5[53]/opit_0_A2Q21
-    gopA2Q2 u_sample_timer/i5[55]/opit_0_A2Q21
-    gopA2Q2 u_sample_timer/i5[57]/opit_0_A2Q21
-    gopA2Q2 u_sample_timer/i5[59]/opit_0_A2Q21
-    gopA2Q2 u_sample_timer/i5[61]/opit_0_A2Q21
-    gopA2Q2 u_sample_timer/i5[63]/opit_0_A2Q21
+    gopA2 u_sample_timer1/N70.lt_0/gateop_A2
+    gopA2 u_sample_timer1/N70.lt_2/gateop_A2
+    gopA2 u_sample_timer1/N70.lt_4/gateop_A2
+    gopA2 u_sample_timer1/N70.lt_6/gateop_A2
+    gopA2 u_sample_timer1/N70.lt_8/gateop_A2
+    gopA2 u_sample_timer1/N70.lt_10/gateop_A2
+    gopA2 u_sample_timer1/N70.lt_12/gateop_A2
+    gopA2 u_sample_timer1/N70.lt_14/gateop_A2
+    gopA2 u_sample_timer1/N70.lt_16/gateop_A2
+    gopA2 u_sample_timer1/N70.lt_18/gateop_A2
+    gopA2 u_sample_timer1/N70.lt_20/gateop_A2
+    gopA2 u_sample_timer1/N70.lt_22/gateop_A2
+    gopA2 u_sample_timer1/N70.lt_24/gateop_A2
+    gopA2 u_sample_timer1/N70.lt_26/gateop_A2
+    gopA2 u_sample_timer1/N70.lt_28/gateop_A2
+    gopA2 u_sample_timer1/N70.lt_30/gateop_A2
+    gopA2 u_sample_timer1/N80_1_0/gateop_A2
+    gopA2 u_sample_timer1/N80_1_2/gateop_A2
+    gopA2 u_sample_timer1/N80_1_4/gateop_A2
+    gopA2 u_sample_timer1/N80_1_6/gateop_A2
+    gopA2 u_sample_timer1/N80_1_8/gateop_A2
+    gopA2 u_sample_timer1/N80_1_10/gateop_A2
+    gopA2 u_sample_timer1/N80_1_12/gateop_A2
+    gopA2 u_sample_timer1/N80_1_14/gateop_A2
+    gopA2 u_sample_timer1/N90_1.fsub_1/gateop_A2
+    gopA2 u_sample_timer1/N90_1.fsub_3/gateop_A2
+    gopA2 u_sample_timer1/N90_1.fsub_5/gateop_A2
+    gopA2 u_sample_timer1/N90_1.fsub_7/gateop_A2
+    gopA u_sample_timer1/N90_1.fsub_9/gateop
+    gopA2 u_sample_timer1/N91.eq_0/gateop_A2
+    gopA2 u_sample_timer1/N91.eq_2/gateop_A2
+    gopA2 u_sample_timer1/N91.eq_4/gateop_A2
+    gopA2 u_sample_timer1/N91.eq_6/gateop_A2
+    gopA2 u_sample_timer1/N91.eq_8/gateop_A2
+    gopA2 u_sample_timer1/N91.eq_10/gateop_A2
+    gopA2 u_sample_timer1/N91.eq_12/gateop_A2
+    gopA2 u_sample_timer1/N91.eq_14/gateop_A2
+    gopA2 u_sample_timer1/N91.eq_16/gateop_A2
+    gopA2 u_sample_timer1/N91.eq_18/gateop_A2
+    gopA2 u_sample_timer1/N91.eq_20/gateop_A2
+    gopA2 u_sample_timer1/N91.eq_22/gateop_A2
+    gopA2 u_sample_timer1/N91.eq_24/gateop_A2
+    gopA2 u_sample_timer1/N91.eq_26/gateop_A2
+    gopA2 u_sample_timer1/N91.eq_28/gateop_A2
+    gopA2 u_sample_timer1/N91.eq_30/gateop_A2
+    gopA2 u_sample_timer1/N219_1_1/gateop_A2
+    gopA2 u_sample_timer1/N219_1_3/gateop_A2
+    gopA2 u_sample_timer1/N219_1_5/gateop_A2
+    gopA2 u_sample_timer1/N219_1_7/gateop_A2
+    gopA2 u_sample_timer1/N219_1_9/gateop_A2
+    gopA2 u_sample_timer1/N219_1_11/gateop_A2
+    gopA2 u_sample_timer1/N219_1_13/gateop_A2
+    gopA u_sample_timer1/N219_1_15/gateop
+    gopA2 u_sample_timer1/N316_1_1/gateop_A2
+    gopA2 u_sample_timer1/N316_1_3/gateop_A2
+    gopA2 u_sample_timer1/N316_1_5/gateop_A2
+    gopA2 u_sample_timer1/N316_1_7/gateop_A2
+    gopA2 u_sample_timer1/N316_1_9/gateop_A2
+    gopA2 u_sample_timer1/N316_1_11/gateop_A2
+    gopA2 u_sample_timer1/N316_1_13/gateop_A2
+    gopA u_sample_timer1/N316_1_15/gateop
+    gopA2Q1 u_sample_timer1/i1[1]/opit_0_inv_A2Q1
+    gopA2Q2 u_sample_timer1/i1[3]/opit_0_inv_A2Q21
+    gopA2Q2 u_sample_timer1/i1[5]/opit_0_inv_A2Q21
+    gopA2Q2 u_sample_timer1/i1[7]/opit_0_inv_A2Q21
+    gopA2Q2 u_sample_timer1/i1[9]/opit_0_inv_A2Q21
+    gopA2Q2 u_sample_timer1/i1[11]/opit_0_inv_A2Q21
+    gopAQ u_sample_timer1/i1[12]/opit_0_inv_AQ
+    gopA2Q1 u_sample_timer1/i5[1]/opit_0_A2Q1
+    gopA2Q2 u_sample_timer1/i5[3]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer1/i5[5]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer1/i5[7]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer1/i5[9]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer1/i5[11]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer1/i5[13]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer1/i5[15]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer1/i5[17]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer1/i5[19]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer1/i5[21]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer1/i5[23]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer1/i5[25]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer1/i5[27]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer1/i5[29]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer1/i5[31]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer1/i5[33]/opit_0_A2Q21
+    gopA2Q0 u_sample_timer1/i5[34]/opit_0_A2Q0
+    gopA2Q1 u_sample_timer1/i5[35]/opit_0_A2Q1
+    gopA2Q2 u_sample_timer1/i5[37]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer1/i5[39]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer1/i5[41]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer1/i5[43]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer1/i5[45]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer1/i5[47]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer1/i5[49]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer1/i5[51]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer1/i5[53]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer1/i5[55]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer1/i5[57]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer1/i5[59]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer1/i5[61]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer1/i5[63]/opit_0_A2Q21
+    gopA2 u_sample_timer2/N80_1_1/gateop_A2
+    gopA2 u_sample_timer2/N80_1_3/gateop_A2
+    gopA2 u_sample_timer2/N80_1_5/gateop_A2
+    gopA2 u_sample_timer2/N219_1_1/gateop_A2
+    gopA2 u_sample_timer2/N219_1_3/gateop_A2
+    gopA2 u_sample_timer2/N219_1_5/gateop_A2
+    gopA2 u_sample_timer2/N219_1_7/gateop_A2
+    gopA2 u_sample_timer2/N219_1_9/gateop_A2
+    gopA2 u_sample_timer2/N219_1_11/gateop_A2
+    gopA2 u_sample_timer2/N219_1_13/gateop_A2
+    gopA u_sample_timer2/N219_1_15/gateop
+    gopA2Q2 u_sample_timer2/i5[2]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer2/i5[4]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer2/i5[6]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer2/i5[8]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer2/i5[10]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer2/i5[12]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer2/i5[14]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer2/i5[16]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer2/i5[18]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer2/i5[20]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer2/i5[22]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer2/i5[24]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer2/i5[26]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer2/i5[28]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer2/i5[30]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer2/i5[32]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer2/i5[34]/opit_0_A2Q21
+    gopA2Q0 u_sample_timer2/i5[35]/opit_0_A2Q0
+    gopA2Q1 u_sample_timer2/i5[36]/opit_0_A2Q1
+    gopA2Q2 u_sample_timer2/i5[38]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer2/i5[40]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer2/i5[42]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer2/i5[44]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer2/i5[46]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer2/i5[48]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer2/i5[50]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer2/i5[52]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer2/i5[54]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer2/i5[56]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer2/i5[58]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer2/i5[60]/opit_0_A2Q21
+    gopA2Q2 u_sample_timer2/i5[62]/opit_0_A2Q21
+    gopAQ u_sample_timer2/i5[63]/opit_0_AQ
     gopA2 u_uart_def/u_uart_send_nbytes/N80_1_1/gateop_A2
     gopA2 u_uart_def/u_uart_send_nbytes/N134_1.fsub_2/gateop_A2
     gopA2 u_uart_def/u_uart_send_nbytes/N134_1.fsub_4/gateop_A2
@@ -382,34 +443,26 @@ Instances is not target:
     gopMUX4TO1Q FPGA_COMM_DATA[1]/opit_0_inv_MUX4TO1Q
     gopMUX4TO1Q FPGA_COMM_DATA[2]/opit_0_inv_MUX4TO1Q
     gopMUX4TO1Q FPGA_COMM_DATA[12]/opit_0_inv_MUX4TO1Q
-    gopMUX8TO1 N246[7:0]_21[0]_muxf6
-    gopMUX8TO1 N246[7:0]_21[1]_muxf6
-    gopMUX8TO1 N246[7:0]_21[2]_muxf6
-    gopMUX8TO1 N246[7:0]_21[3]_muxf6
-    gopMUX8TO1 N246[7:0]_21[4]_muxf6
-    gopMUX8TO1 N246[7:0]_21[5]_muxf6
-    gopMUX8TO1 N246[7:0]_21[6]_muxf6
-    gopMUX8TO1 N246[7:0]_21[7]_muxf6
+    gopMUX4TO1Q FPGA_HANDSHAKE_CHANNEL0[4]/opit_0_inv_MUX4TO1Q
+    gopMUX8TO1 N255[7:0]_14[0]_muxf6
+    gopMUX8TO1 N255[7:0]_14[1]_muxf6
+    gopMUX8TO1 N255[7:0]_14[2]_muxf6
+    gopMUX8TO1 N255[7:0]_14[3]_muxf6
+    gopMUX8TO1 N255[7:0]_14[4]_muxf6
+    gopMUX8TO1 N255[7:0]_14[5]_muxf6
+    gopMUX8TO1 N255[7:0]_14[6]_muxf6
+    gopMUX8TO1 N255[7:0]_14[7]_muxf6
+    gopMUX8TO1 N1380_16[0]_muxf6
+    gopMUX8TO1 N1380_16[1]_muxf6
+    gopMUX8TO1 N1380_16[2]_muxf6
+    gopMUX8TO1 N1380_16[3]_muxf6
+    gopMUX8TO1 N1380_16[4]_muxf6
+    gopMUX8TO1 N1380_16[5]_muxf6
+    gopMUX8TO1 N1380_16[6]_muxf6
+    gopMUX8TO1 N1380_16[7]_muxf6
     gopMUX4TO1Q cpld_poweron/opit_0_MUX4TO1Q
     gopMUX4TO1Q current_state_5/opit_0_MUX4TO1Q
     gopPLLINMUXD pll/u_pll_e2/goppllinmuxd
-    gopMUX4TO1Q regd[0]/opit_0_inv_MUX4TO1Q
-    gopMUX4TO1Q regd[1]/opit_0_inv_MUX4TO1Q
-    gopMUX4TO1Q regd[2]/opit_0_inv_MUX4TO1Q
-    gopMUX4TO1Q regd[3]/opit_0_inv_MUX4TO1Q
-    gopMUX4TO1Q regd[4]/opit_0_inv_MUX4TO1Q
-    gopMUX4TO1Q regd[5]/opit_0_inv_MUX4TO1Q
-    gopMUX4TO1Q regd[6]/opit_0_inv_MUX4TO1Q
-    gopMUX4TO1Q regd[7]/opit_0_inv_MUX4TO1Q
-    gopMUX4TO1Q regd[8]/opit_0_inv_MUX4TO1Q
-    gopMUX4TO1Q regd[9]/opit_0_inv_MUX4TO1Q
-    gopMUX4TO1Q regd[10]/opit_0_inv_MUX4TO1Q
-    gopMUX4TO1Q regd[11]/opit_0_inv_MUX4TO1Q
-    gopMUX4TO1Q regd[12]/opit_0_inv_MUX4TO1Q
-    gopMUX4TO1Q regd[13]/opit_0_inv_MUX4TO1Q
-    gopMUX4TO1Q regd[14]/opit_0_inv_MUX4TO1Q
-    gopMUX4TO1Q regd[15]/opit_0_inv_MUX4TO1Q
-    gopMUX4TO1Q u_sample_timer/ns_cnt[1]/opit_0_inv_MUX4TO1Q
     gopLATCH u_uart_def/u_uart_send_nbytes/ns[0]/opit_0
     gopLATCH u_uart_def/u_uart_send_nbytes/ns[1]/opit_0
     gopMUX4TO1Q u_uart_def/u_uart_send_nbytes/tx_str[0]/opit_0_inv_MUX4TO1Q
@@ -419,74 +472,46 @@ Instances is not target:
     gopMUX8TO1 u_uart_def/u_uart_send_nbytes/uart_tx_inst/N135_17_muxf6
     gopMUX4TO1Q u_uart_def/u_uart_send_nbytes/uart_tx_inst/state_3/opit_0_inv_MUX4TO1Q
 Pin whose loads are focus:
-    Q gopQ FPGA_APP_SCOPE_SAMPLING[2]/opit_0_inv
-    F gopMUX4TO1 u_sample_timer/N545_2/gateop
-    Z gopLUT5 u_sample_timer/N554_5/gateop
     Q gopQ FPGA_APP_SCOPE_SAMPLING[3]/opit_0_inv
-    Q gopQ FPGA_APP_SCOPE_SAMPLING[4]/opit_0_inv
-    Q gopQ FPGA_APP_SCOPE_SAMPLING[1]/opit_0_inv
-    Q gopL5Q u_sample_timer/ms_cnt[3]/opit_0_inv_L5Q
-    Z gopLUT5 u_sample_timer/N482_1/gateop
-    Z gopLUT5 u_sample_timer/N518_2/gateop
-    Q gopQ FPGA_APP_SCOPE_SAMPLING[5]/opit_0_inv
-    Q gopQ FPGA_APP_SCOPE_SAMPLING[7]/opit_0_inv
-    Q gopL5Q u_sample_timer/ns_cnt[0]/opit_0_inv_L5Q
-    Z gopLUT5 u_sample_timer/N102_eq0/gateop
-    F gopMUX4TO1 u_sample_timer/N469_14[0]_2/gateop
-    Q gopL5Q u_sample_timer/ms_cnt[8]/opit_0_inv_L5Q
-    Q gopL5Q u_sample_timer/us_cnt[3]/opit_0_inv_L5Q
-    Q gopL5Q u_sample_timer/us_cnt[6]/opit_0_inv_L5Q
-    Q gopL5Q u_sample_timer/us_cnt[7]/opit_0_inv_L5Q
-    Q gopL5Q u_sample_timer/us_cnt[8]/opit_0_inv_L5Q
-    Z gopLUT5 u_sample_timer/N505/gateop
-    Q gopQ FPGA_APP_SCOPE_SAMPLING[8]/opit_0_inv
+    Z gopLUT5 u_sample_timer1/N512_1/gateop
+    Z gopLUT5 u_sample_timer1/N554_5/gateop
     Q gopQ FPGA_APP_SCOPE_SAMPLING[6]/opit_0_inv
-    Q gopL5Q u_sample_timer/i5[0]/opit_0_L5Q
-    Z gopLUT5 u_sample_timer/N490_1/gateop
-    Q gopL5Q u_sample_timer/us_cnt[0]/opit_0_inv_L5Q
-    Q gopL5Q u_sample_timer/us_cnt[13]/opit_0_inv_L5Q
-    Q gopL5Q u_sample_timer/us_cnt[14]/opit_0_inv_L5Q
-    Q gopL5Q u_sample_timer/us_cnt[15]/opit_0_inv_L5Q
-    Q gopL5Q u_sample_timer/us_cnt[1]/opit_0_inv_L5Q
-    Q gopL5Q u_sample_timer/us_cnt[2]/opit_0_inv_L5Q
-    Q gopL5Q u_sample_timer/us_cnt[4]/opit_0_inv_L5Q
-    Q gopL5Q u_sample_timer/us_cnt[5]/opit_0_inv_L5Q
-    F gopMUX4TO1 u_sample_timer/N493_4/gateop
+    Q gopQ FPGA_APP_SCOPE_SAMPLING[2]/opit_0_inv
+    Q gopQ FPGA_APP_SCOPE_SAMPLING[1]/opit_0_inv
+    Q gopL5Q u_sample_timer1/i5[0]/opit_0_L5Q
+    Q gopQ FPGA_APP_SCOPE_SAMPLING[4]/opit_0_inv
+    Q gopQ FPGA_APP_SCOPE_SAMPLING[5]/opit_0_inv
+    Z gopLUT5 u_sample_timer1/N540_3/gateop
+    Q gopQ FPGA_APP_SCOPE_SAMPLING[7]/opit_0_inv
+    Q gopL5Q u_sample_timer1/ns_cnt[1]/opit_0_inv_L5Q
+    Z gopLUT5 u_sample_timer1/N102_eq0/gateop
+    F gopMUX4TO1 u_sample_timer1/N469_14[1]_2/gateop
+    Q gopQ FPGA_APP_SCOPE_SAMPLING[8]/opit_0_inv
+    Z gopLUT5 u_sample_timer1/N542_1/gateop
     Q gopQ FPGA_APP_SCOPE_SAMPLING[9]/opit_0_inv
-    Z gopLUT5 u_sample_timer/N554_6/gateop
-    Q gopL5Q u_sample_timer/ms_cnt[7]/opit_0_inv_L5Q
-    Z gopLUT5 u_sample_timer/N524_1[3]_4/gateop
-    Q gopL5Q u_sample_timer/ms_cnt[9]/opit_0_inv_L5Q
-    Q gopL5Q u_sample_timer/ns_cnt[14]/opit_0_inv_L5Q
-    Q gopL5Q u_sample_timer/us_cnt[9]/opit_0_inv_L5Q
-    Q gopL5Q u_sample_timer/us_cnt[10]/opit_0_inv_L5Q
-    Q gopL5Q u_sample_timer/us_cnt[11]/opit_0_inv_L5Q
-    Q gopL5Q u_sample_timer/us_cnt[12]/opit_0_inv_L5Q
-    Q gopL5Q u_sample_timer/ns_cnt[10]/opit_0_inv_L5Q
-    Z gopLUT5 u_sample_timer/N469_13[1]_2/gateop
-    Q gopL5Q u_sample_timer/ms_cnt[6]/opit_0_inv_L5Q
-    Q gopL5Q u_sample_timer/ms_cnt[5]/opit_0_inv_L5Q
-    Q gopL5Q u_sample_timer/ns_cnt[12]/opit_0_inv_L5Q
-    Q gopL5Q u_sample_timer/ms_cnt[10]/opit_0_inv_L5Q
-    Q gopL5Q u_sample_timer/ns_cnt[8]/opit_0_inv_L5Q
-    Z gopLUT5 u_sample_timer/N487_2/gateop
-    Q gopL5Q u_sample_timer/ms_cnt[14]/opit_0_inv_L5Q
-    Q gopL5Q u_sample_timer/ms_cnt[13]/opit_0_inv_L5Q
-    Q gopL5Q u_sample_timer/ms_cnt[1]/opit_0_inv_L5Q
-    Q gopL5Q u_sample_timer/ns_cnt[9]/opit_0_inv_L5Q
-    Q gopL5Q u_sample_timer/ns_cnt[13]/opit_0_inv_L5Q
-    Q gopL5Q u_sample_timer/ms_cnt[11]/opit_0_inv_L5Q
-    Q gopL5Q u_sample_timer/ms_cnt[12]/opit_0_inv_L5Q
-    Q gopL5Q u_sample_timer/ms_cnt[15]/opit_0_inv_L5Q
-    Z gopLUT5 u_sample_timer/N554_2/gateop
-    Q gopL5Q u_sample_timer/ns_cnt[4]/opit_0_inv_L5Q
-    Q gopL5Q u_sample_timer/ms_cnt[2]/opit_0_inv_L5Q
-    Q gopL5Q u_sample_timer/ms_cnt[0]/opit_0_inv_L5Q
-    Q gopL5Q u_sample_timer/ns_cnt[15]/opit_0_inv_L5Q
-    Q gopL5Q u_sample_timer/ns_cnt[7]/opit_0_inv_L5Q
-    Z gopLUT5 u_sample_timer/N523/gateop
-    Q gopL5Q u_sample_timer/ms_cnt[4]/opit_0_inv_L5Q
-    Q gopL5Q u_sample_timer/ns_cnt[5]/opit_0_inv_L5Q
-    Z gopLUT6 u_sample_timer/N469_14[2]_2_muxf6
+    Z gopLUT5 u_sample_timer1/N482_1/gateop
+    Q gopL5Q u_sample_timer1/us_cnt[9]/opit_0_inv_L5Q
+    Q gopL5Q u_sample_timer1/us_cnt[10]/opit_0_inv_L5Q
+    Q gopL5Q u_sample_timer1/us_cnt[11]/opit_0_inv_L5Q
+    F gopMUX4TO1 u_sample_timer1/N505_2/gateop
+    Q gopL5Q u_sample_timer1/ms_cnt[6]/opit_0_inv_L5Q
+    Z gopLUT5 u_sample_timer1/N518_2/gateop
+    Q gopL5Q u_sample_timer1/ms_cnt[7]/opit_0_inv_L5Q
+    Q gopL5Q u_sample_timer1/us_cnt[5]/opit_0_inv_L5Q
+    Q gopL5Q u_sample_timer1/us_cnt[6]/opit_0_inv_L5Q
+    Q gopL5Q u_sample_timer1/us_cnt[7]/opit_0_inv_L5Q
+    Q gopL5Q u_sample_timer1/us_cnt[8]/opit_0_inv_L5Q
+    Q gopL5Q u_sample_timer1/ns_cnt[0]/opit_0_inv_L5Q
+    Z gopLUT5 N1677_0/gateop
+    F gopMUX4TO1 u_sample_timer1/N469_14[0]_2/gateop
+    Q gopL5Q u_sample_timer1/us_cnt[12]/opit_0_inv_L5Q
+    Q gopL5Q u_sample_timer1/us_cnt[13]/opit_0_inv_L5Q
+    Q gopL5Q u_sample_timer1/us_cnt[14]/opit_0_inv_L5Q
+    Q gopL5Q u_sample_timer1/us_cnt[15]/opit_0_inv_L5Q
+    Q gopL5Q u_sample_timer1/us_cnt[1]/opit_0_inv_L5Q
+    Q gopL5Q u_sample_timer1/us_cnt[2]/opit_0_inv_L5Q
+    Q gopL5Q u_sample_timer1/us_cnt[3]/opit_0_inv_L5Q
+    Q gopL5Q u_sample_timer1/us_cnt[4]/opit_0_inv_L5Q
+    Q gopL5Q u_sample_timer1/ms_cnt[8]/opit_0_inv_L5Q
 
 Reduce:

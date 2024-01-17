@@ -148,7 +148,8 @@ module src3cpld (
     reg [15:0] FPGA_SYS_INFO_SOFTREVISION;         //0x04, 软件版本号
     reg [15:0] FPGA_SYS_STA_STATUS;                //0x10, FPGA 状态寄存器
     reg [15:0] FPGA_SYS_STA_ERROR;                 //0x12, 运行错误码
-    reg [15:0] FPGA_SYS_STA_TIMESINCESTART;        //0x14, 设备运行时间
+    reg [15:0] FPGA_SYS_STA_TIMESINCESTART_UIL;    //0x14, 设备运行时间
+    reg [15:0] FPGA_SYS_STA_TIMESINCESTART_UIH;    //0x16, 设备运行时间
     reg [15:0] FPGA_HANDSHAKE_CHANNEL0;            //0x40, FPGA 握手同步寄存器
     reg [15:0] FPGA_HANDSHAKE_CHANNEL1;            //0x42, FPGA 握手同步寄存器
     reg [15:0] FPGA_COMM_CHECKSUM;                 //0x50, 设备通信通讯通道校验码
@@ -157,12 +158,13 @@ module src3cpld (
     reg [15:0] FPGA_APP_SCOPE_SAMPLING;            //0x56, 设备通信通讯通道传输数据长度；在FPGA中使用0x2000
     reg [15:0] FPGA_APP_DEBUG00;             //0x58, 用于调试，查看中间变量
     reg [15:0] FPGA_APP_DEBUG01;             //0x5A, 用于调试，查看中间变量
+    reg [15:0] FPGA_APP_DEBUG02;             //0x5C, 用于调试，查看中间变量
 
     wire [9:0] scp_period;
     wire [1:0] scp_unit;
     reg [7:0] cnt_frf, cnt_scope;
 
-
+    reg [31:0] sys_timer;
     reg frf_data_avl,scope_data_avl;
 
     wire [63:0] sampling_cnt;
@@ -172,6 +174,7 @@ module src3cpld (
     wire [7:0] hs_cmd;
 
     wire HS1_SCOPE_FUN_EN, HS1_FRF_FUN_EN;
+    wire clk_second_ne;
 
     assign hs_lock                   =     FPGA_HANDSHAKE_CHANNEL0[0];
     assign hs_read                   =     FPGA_HANDSHAKE_CHANNEL0[1];
@@ -494,6 +497,10 @@ module src3cpld (
                         regd[7:0] <= {7'b0,  system_rst};
                     16:
                         regd[15:0] <= {FPGA_SYS_STA_STATUS[15:0]};//0x10
+                    8'h14:
+                        regd[15:0] <= FPGA_SYS_STA_TIMESINCESTART_UIL;
+                    8'h16:
+                        regd[15:0] <= FPGA_SYS_STA_TIMESINCESTART_UIH;
                     8'h40:
                         regd[15:0] <= FPGA_HANDSHAKE_CHANNEL0;
                     8'h42:
@@ -510,6 +517,8 @@ module src3cpld (
                         regd[15:0] <= FPGA_APP_DEBUG00;
                     8'h5A:
                         regd[15:0] <= FPGA_APP_DEBUG01;
+                    8'h5C:
+                        regd[15:0] <= FPGA_APP_DEBUG02;
                     default:
                         regd[15:0] <= 0;
                 endcase
@@ -634,7 +643,8 @@ module src3cpld (
             FPGA_SYS_INFO_SOFTREVISION              <= 16'h0000;
             FPGA_SYS_STA_STATUS                     <= 16'h0003;        //0000_0000_0000_0011
             FPGA_SYS_STA_ERROR                      <= 16'h0000;
-            FPGA_SYS_STA_TIMESINCESTART             <= 16'h0000;
+            FPGA_SYS_STA_TIMESINCESTART_UIL         <= 16'h0000;
+            FPGA_SYS_STA_TIMESINCESTART_UIH         <= 16'h0000;
             FPGA_HANDSHAKE_CHANNEL0                 <= 16'h0000;        //0x40
             FPGA_HANDSHAKE_CHANNEL1                 <= 16'h0000;        //0x42
             FPGA_COMM_CHECKSUM                      <= 16'h0000;        //0x50
@@ -643,6 +653,7 @@ module src3cpld (
             FPGA_APP_SCOPE_SAMPLING                 <= {5'b0_0000, 2'b00, 9'd50}; //0x
             pi                                      <= 0; 
             checksum_clear                          <= 0;
+            sys_timer                               <= 0;
             // scp_period                              <= 5000;            //50us
             // reset_data_block;
             reset_period_data;
@@ -653,9 +664,19 @@ module src3cpld (
                 FPGA_SYS_STA_STATUS[3]    <= scope_data_avl;
                 FPGA_APP_DEBUG00          <= cnt_frf;
                 FPGA_APP_DEBUG01          <= cnt_scope;
+                FPGA_APP_DEBUG02          <= pi;
             end 
+            if(clk_second_ne) begin //系统计时，单位为秒
+                sys_timer <= sys_timer + 1;
+                FPGA_SYS_STA_TIMESINCESTART_UIL <= sys_timer[15: 0];
+                FPGA_SYS_STA_TIMESINCESTART_UIH <= sys_timer[31:16];
+            end
             if (write_status) begin       //写操作
                 case (cpld_addr[7:0]) 
+                    8'h14:
+                        FPGA_SYS_STA_TIMESINCESTART_UIL     <= cpld_data[15:0];
+                    8'h16:
+                        FPGA_SYS_STA_TIMESINCESTART_UIH     <= cpld_data[15:0];
                     8'h40:
                         FPGA_HANDSHAKE_CHANNEL0     <= cpld_data[15:0];
                     8'h42:
@@ -715,7 +736,7 @@ module src3cpld (
                     pi <= pi + 1;
                 end
             end
-            else if(get_in_read_st) begin
+            if(get_in_read_st) begin
                 if(hs_cmd == 8'h01)begin        //period mode
                     // reset_data_block();
                     FPGA_HANDSHAKE_CHANNEL0[3] <= 1;//ready bit
@@ -826,7 +847,7 @@ module src3cpld (
 
     sample_timer #(
         .freq ( 100 )
-    ) u_sample_timer (
+    ) u_sample_timer1 (
         .clk                     ( pll_100M          ),
         .rst_n                   ( rst_n        ),
         .en1                     ( HS1_FRF_FUN_EN          ),
@@ -842,6 +863,25 @@ module src3cpld (
         .clk_o3                  ( clk_o3       ),
         .clk_o4                  ( clk_o4       ),
         .clk_o5                  ( clk_o5       )
+    );
+    sample_timer #(
+        .freq ( 100 )
+    ) u_sample_timer2 (
+        .clk                     ( pll_100M          ),
+        .rst_n                   ( rst_n        ),
+        .en1                     (           ),
+        .en2                     (           ),
+        .en3                     (           ),
+        .en4                     (           ),
+        .en5                     ( rst_n          ),
+        .scp_period              ( 1000   ),
+        .scp_unit                ( 1   ),
+
+        .clk_o1                  (        ),
+        .clk_o2                  (        ),
+        .clk_o3                  (        ),
+        .clk_o4                  (        ),
+        .clk_o5                  ( clk_second       )
     );
 
     get_signal_edge  u_get_signal_edge_clko1 (
@@ -859,6 +899,14 @@ module src3cpld (
 
     .pos_edge                ( clk_o5_pe   ),
     .neg_edge                ( clk_o5_ne   )
+    );
+    get_signal_edge  u_get_signal_edge_clk_sencond (
+    .clk                     ( high_cpld_clk        ),
+    .rst_n                   ( rst_n      ),
+    .signal                  ( clk_second     ),
+
+    .pos_edge                ( clk_second_pe   ),
+    .neg_edge                ( clk_second_ne   )
     );
 
     always @(posedge high_cpld_clk or negedge rst_n) begin

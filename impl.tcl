@@ -586,3 +586,38 @@ dev_map
 pnr 
 report_timing 
 gen_bit_stream -feature_value {28141} 
+set_arch -family Compact -device PGC4KD -speedgrade -6 -package LPG144
+compile -top_module src3cpld
+synthesize -dir {imports/pango/PDS_2021.4-SP1.2/syn/bin/synplify_pro.exe} -ads -frequency {100} -top_module {src3cpld} -selected_syn_tool_opt 2 
+dev_map 
+pnr 
+report_timing 
+gen_bit_stream -feature_value {28141} 
+set_arch -family Compact -device PGC4KD -speedgrade -6 -package LPG144
+compile -top_module src3cpld
+synthesize -dir {imports/pango/PDS_2021.4-SP1.2/syn/bin/synplify_pro.exe} -ads -frequency {100} -top_module {src3cpld} -selected_syn_tool_opt 2 
+dev_map 
+pnr 
+report_timing 
+gen_bit_stream -feature_value {28141} 
+set_arch -family Compact -device PGC4KD -speedgrade -6 -package LPG144
+compile -top_module src3cpld
+synthesize -dir {imports/pango/PDS_2021.4-SP1.2/syn/bin/synplify_pro.exe} -ads -frequency {100} -top_module {src3cpld} -selected_syn_tool_opt 2 
+dev_map 
+pnr 
+report_timing 
+gen_bit_stream -feature_value {28141} 
+set_arch -family Compact -device PGC4KD -speedgrade -6 -package LPG144
+compile -top_module src3cpld
+synthesize -dir {imports/pango/PDS_2021.4-SP1.2/syn/bin/synplify_pro.exe} -ads -frequency {100} -top_module {src3cpld} -selected_syn_tool_opt 2 
+dev_map 
+pnr 
+report_timing 
+gen_bit_stream -feature_value {28141} 
+set_arch -family Compact -device PGC4KD -speedgrade -6 -package LPG144
+compile -top_module src3cpld
+synthesize -dir {imports/pango/PDS_2021.4-SP1.2/syn/bin/synplify_pro.exe} -ads -frequency {100} -top_module {src3cpld} -selected_syn_tool_opt 2 
+dev_map 
+pnr 
+report_timing 
+gen_bit_stream -feature_value {28141} 
