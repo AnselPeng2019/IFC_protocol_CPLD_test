@@ -1,0 +1,754 @@
+#-----------------------------------------------------------
+# Vivado v2019.1.3 (64-bit)
+# SW Build 2644227 on Wed Sep  4 09:45:24 MDT 2019
+# IP Build 2633630 on Wed Sep  4 12:30:14 MDT 2019
+# Start of session at: Fri Jan 26 11:45:05 2024
+# Process ID: 15652
+# Current directory: D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.runs/synth_1
+# Command line: vivado.exe -log top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top.tcl
+# Log file: D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.runs/synth_1/top.vds
+# Journal file: D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source top.tcl -notrace
+create_project: Time (s): cpu = 00:00:04 ; elapsed = 00:00:06 . Memory (MB): peak = 355.758 ; gain = 58.039
+Command: synth_design -top top -part xc7k325tffg900-2
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7k325t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7k325t'
+INFO: [Device 21-403] Loading part xc7k325tffg900-2
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 2592 
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:09 . Memory (MB): peak = 883.707 ; gain = 178.551
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'top' [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/top.v:3]
+	Parameter IDLE bound to: 3'b000 
+	Parameter GENRST bound to: 3'b001 
+	Parameter INITIAL bound to: 3'b010 
+	Parameter SYSTEM_ON bound to: 3'b011 
+INFO: [Synth 8-6157] synthesizing module 'clk_wiz_0' [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.runs/synth_1/.Xil/Vivado-15652-PXFNB78001111/realtime/clk_wiz_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_0' (1#1) [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.runs/synth_1/.Xil/Vivado-15652-PXFNB78001111/realtime/clk_wiz_0_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'ifc_top' [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:1]
+	Parameter st_idle bound to: 4'b0000 
+	Parameter st_pwr_on bound to: 4'b0001 
+	Parameter st_system_up bound to: 4'b0010 
+	Parameter st_swr_assert bound to: 4'b0011 
+	Parameter st_read_block bound to: 4'b0100 
+	Parameter st_write_block bound to: 4'b0101 
+	Parameter st_r_frf_block bound to: 4'b0110 
+	Parameter st_w_frf_block bound to: 4'b0111 
+	Parameter st_r_scp_block bound to: 4'b1000 
+	Parameter st_w_scp_block bound to: 4'b1001 
+INFO: [Synth 8-6157] synthesizing module 'get_signal_edge' [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/get_signal_edge.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'get_signal_edge' (2#1) [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/get_signal_edge.v:1]
+INFO: [Synth 8-6157] synthesizing module 'delay_cy' [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/delay_cy.v:12]
+	Parameter cycles bound to: 1 - type: integer 
+WARNING: [Synth 8-5788] Register signal_out_reg in module delay_cy is has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/delay_cy.v:28]
+INFO: [Synth 8-6155] done synthesizing module 'delay_cy' (3#1) [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/delay_cy.v:12]
+INFO: [Synth 8-6157] synthesizing module 'delay_cy__parameterized0' [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/delay_cy.v:12]
+	Parameter cycles bound to: 5 - type: integer 
+WARNING: [Synth 8-5788] Register signal_out_reg in module delay_cy__parameterized0 is has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/delay_cy.v:28]
+INFO: [Synth 8-6155] done synthesizing module 'delay_cy__parameterized0' (3#1) [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/delay_cy.v:12]
+INFO: [Synth 8-6157] synthesizing module 'delay_cy__parameterized1' [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/delay_cy.v:12]
+	Parameter cycles bound to: 2 - type: integer 
+WARNING: [Synth 8-5788] Register signal_out_reg in module delay_cy__parameterized1 is has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/delay_cy.v:28]
+INFO: [Synth 8-6155] done synthesizing module 'delay_cy__parameterized1' (3#1) [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/delay_cy.v:12]
+INFO: [Synth 8-251] read block.
+ [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:609]
+INFO: [Synth 8-251] .....Read data in period mode: id = x, FPGA_COMM_DATA = xxxx.....
+ [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:613]
+INFO: [Synth 8-251] .....Read data in frf   mode: id = x, FPGA_COMM_DATA = xxxx.....
+ [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:616]
+INFO: [Synth 8-251] .....Read data in scope mode: id = x, FPGA_COMM_DATA = xxxx.....
+ [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:619]
+INFO: [Synth 8-251] .....Here should assign FPGA_COMM_DATA with patameter data.....
+ [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:621]
+INFO: [Synth 8-251] .....Write data in period mode: id = x, FPGA_COMM_DATA = xxxx.....
+ [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:630]
+INFO: [Synth 8-251] .....Write data in frf    mode: id = x, FPGA_COMM_DATA = xxxx.....
+ [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:632]
+INFO: [Synth 8-251] .....Write data in scope  mode: id = x, FPGA_COMM_DATA = xxxx.....
+ [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:634]
+INFO: [Synth 8-251] .....Write data in para   mode: id = x, FPGA_COMM_DATA = xxxx.....
+ [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:636]
+INFO: [Synth 8-251] .....Ready bit is assigned 120 in period mode.....
+ [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:652]
+INFO: [Synth 8-251] .....FPGA_COMM_DATALEN was assigned 120 in period mode.....
+ [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:653]
+INFO: [Synth 8-251] .....Check if frf data available.....
+ [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:655]
+INFO: [Synth 8-251] .....FPGA_COMM_DATALEN was assigned 120 in frf mode.....
+ [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:659]
+INFO: [Synth 8-251] .....Check if scope data available.....
+ [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:662]
+INFO: [Synth 8-251] .....FPGA_COMM_DATALEN was assigned 120 in scope mode.....
+ [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:666]
+INFO: [Synth 8-251] .....Ready bit is assigned in para mode.....
+ [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:671]
+INFO: [Synth 8-251] .....FPGA_COMM_DATALEN was assigned 120 in para mode.....
+ [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:672]
+INFO: [Synth 8-251] .....start to sample frf data, enable 20kHz timer..... [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:697]
+INFO: [Synth 8-251] .....start to sample scope data..... [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:701]
+INFO: [Synth 8-6157] synthesizing module 'ifc_checksum' [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_checksum.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'ifc_checksum' (4#1) [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_checksum.v:1]
+INFO: [Synth 8-6157] synthesizing module 'sample_timer' [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/sample_timer.v:1]
+	Parameter freq bound to: 100 - type: integer 
+	Parameter div1 bound to: 5000 - type: integer 
+	Parameter div2 bound to: 10000 - type: integer 
+	Parameter div3 bound to: 20000 - type: integer 
+	Parameter div4 bound to: 50000 - type: integer 
+WARNING: [Synth 8-6014] Unused sequential element s_cnt_reg was removed.  [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/sample_timer.v:41]
+WARNING: [Synth 8-5788] Register i5_reg in module sample_timer is has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/sample_timer.v:88]
+WARNING: [Synth 8-5788] Register clk_o5_reg in module sample_timer is has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/sample_timer.v:128]
+INFO: [Synth 8-6155] done synthesizing module 'sample_timer' (5#1) [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/sample_timer.v:1]
+WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:836]
+INFO: [Synth 8-6157] synthesizing module 'ila_0' [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.runs/synth_1/.Xil/Vivado-15652-PXFNB78001111/realtime/ila_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'ila_0' (6#1) [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.runs/synth_1/.Xil/Vivado-15652-PXFNB78001111/realtime/ila_0_stub.v:6]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'u_ila_0'. This will prevent further optimization [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:836]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'u_ifc_checksum'. This will prevent further optimization [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:719]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'u_sample_timer1'. This will prevent further optimization [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:736]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'u_delay_cy_cs_5'. This will prevent further optimization [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:193]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'u_get_signal_edge_cs'. This will prevent further optimization [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:132]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'u_get_signal_edge_we'. This will prevent further optimization [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:220]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'u_get_signal_edge_oe'. This will prevent further optimization [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:183]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'u_get_signal_edge_avd'. This will prevent further optimization [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:149]
+WARNING: [Synth 8-6014] Unused sequential element pwr_hrst_n_reg was removed.  [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:424]
+WARNING: [Synth 8-6014] Unused sequential element pmic_pwron_reg was removed.  [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:426]
+WARNING: [Synth 8-6014] Unused sequential element FPGA_SYS_INFO_SERIALNUMBER_reg was removed.  [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:549]
+WARNING: [Synth 8-6014] Unused sequential element FPGA_SYS_INFO_HWREVISION_reg was removed.  [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:550]
+WARNING: [Synth 8-6014] Unused sequential element FPGA_SYS_INFO_SOFTREVISION_reg was removed.  [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:551]
+WARNING: [Synth 8-6014] Unused sequential element FPGA_SYS_STA_ERROR_reg was removed.  [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:553]
+WARNING: [Synth 8-5788] Register system_rst_reg in module ifc_top is has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:528]
+WARNING: [Synth 8-5788] Register FPGA_APP_DEBUG00_reg in module ifc_top is has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:573]
+WARNING: [Synth 8-5788] Register FPGA_APP_DEBUG01_reg in module ifc_top is has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:574]
+WARNING: [Synth 8-5788] Register FPGA_APP_DEBUG02_reg in module ifc_top is has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:575]
+WARNING: [Synth 8-3848] Net irq in module/entity ifc_top does not have driver. [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:11]
+WARNING: [Synth 8-3848] Net en2 in module/entity ifc_top does not have driver. [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:740]
+WARNING: [Synth 8-3848] Net en3 in module/entity ifc_top does not have driver. [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:741]
+WARNING: [Synth 8-3848] Net en4 in module/entity ifc_top does not have driver. [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:742]
+WARNING: [Synth 8-3848] Net uart_send_comlete in module/entity ifc_top does not have driver. [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:239]
+INFO: [Synth 8-6155] done synthesizing module 'ifc_top' (7#1) [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:1]
+WARNING: [Synth 8-3848] Net spi1_cs in module/entity top does not have driver. [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/top.v:13]
+WARNING: [Synth 8-3848] Net spi1_clk in module/entity top does not have driver. [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/top.v:14]
+WARNING: [Synth 8-3848] Net spi1_mosi in module/entity top does not have driver. [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/top.v:16]
+WARNING: [Synth 8-3848] Net spi2_cs in module/entity top does not have driver. [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/top.v:17]
+WARNING: [Synth 8-3848] Net spi2_clk in module/entity top does not have driver. [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/top.v:18]
+WARNING: [Synth 8-3848] Net spi2_mosi in module/entity top does not have driver. [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/top.v:19]
+INFO: [Synth 8-6155] done synthesizing module 'top' (8#1) [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/top.v:3]
+WARNING: [Synth 8-3331] design ifc_checksum has unconnected port r_or_w
+WARNING: [Synth 8-3331] design ifc_top has unconnected port irq
+WARNING: [Synth 8-3331] design top has unconnected port spi1_cs
+WARNING: [Synth 8-3331] design top has unconnected port spi1_clk
+WARNING: [Synth 8-3331] design top has unconnected port spi1_mosi
+WARNING: [Synth 8-3331] design top has unconnected port spi2_cs
+WARNING: [Synth 8-3331] design top has unconnected port spi2_clk
+WARNING: [Synth 8-3331] design top has unconnected port spi2_mosi
+WARNING: [Synth 8-3331] design top has unconnected port spi1_miso
+WARNING: [Synth 8-3331] design top has unconnected port spi2_miso
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:10 ; elapsed = 00:00:12 . Memory (MB): peak = 950.371 ; gain = 245.215
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 950.371 ; gain = 245.215
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 950.371 ; gain = 245.215
+---------------------------------------------------------------------------------
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [d:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc] for cell 'clk_mmcm_0'
+Finished Parsing XDC File [d:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc] for cell 'clk_mmcm_0'
+Parsing XDC File [d:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/ip/ila_0/ila_0/ila_0_in_context.xdc] for cell 'u_ifc_top/u_ila_0'
+Finished Parsing XDC File [d:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/ip/ila_0/ila_0/ila_0_in_context.xdc] for cell 'u_ifc_top/u_ila_0'
+Parsing XDC File [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/constrs_1/imports/hpcs_fpga_dev.srcs/constrains01.xdc]
+Finished Parsing XDC File [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/constrs_1/imports/hpcs_fpga_dev.srcs/constrains01.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/constrs_1/imports/hpcs_fpga_dev.srcs/constrains01.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/top_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1094.742 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.119 . Memory (MB): peak = 1094.742 ; gain = 0.000
+WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'u_ifc_top/u_ila_0' at clock pin 'clk' is different from the actual clock period '5.000', this can lead to different synthesis results.
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:26 ; elapsed = 00:00:30 . Memory (MB): peak = 1096.441 ; gain = 391.285
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7k325tffg900-2
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:26 ; elapsed = 00:00:31 . Memory (MB): peak = 1096.441 ; gain = 391.285
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property IO_BUFFER_TYPE = NONE for sys_clk_n. (constraint file  d:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc, line 4).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for sys_clk_n. (constraint file  d:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc, line 5).
+Applied set_property IO_BUFFER_TYPE = NONE for sys_clk_p. (constraint file  d:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc, line 6).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for sys_clk_p. (constraint file  d:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc, line 7).
+Applied set_property DONT_TOUCH = true for clk_mmcm_0. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for u_ifc_top/u_ila_0. (constraint file  auto generated constraint, line ).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:26 ; elapsed = 00:00:31 . Memory (MB): peak = 1096.441 ; gain = 391.285
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'cs_reg' in module 'ifc_top'
+INFO: [Synth 8-5546] ROM "regd" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "FPGA_COMM_CHECKSUM" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "FPGA_COMM_DATALEN" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "FPGA_COMM_DATA" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "FPGA_APP_SCOPE_SAMPLING" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "regd" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "FPGA_COMM_CHECKSUM" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "FPGA_COMM_DATALEN" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "FPGA_COMM_DATA" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "FPGA_APP_SCOPE_SAMPLING" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-802] inferred FSM for state register 'cs_reg' in module 'top'
+INFO: [Synth 8-5544] ROM "ns" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "ns" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 st_idle |                         00000001 |                             0000
+               st_pwr_on |                         10000000 |                             0001
+            st_system_up |                         00001000 |                             0010
+           st_read_block |                         01000000 |                             0100
+          st_write_block |                         00100000 |                             0101
+           st_swr_assert |                         00000100 |                             0011
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'cs_reg' using encoding 'one-hot' in module 'ifc_top'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    IDLE |                             0001 |                              000
+                  GENRST |                             0010 |                              001
+                 INITIAL |                             0100 |                              010
+               SYSTEM_ON |                             1000 |                              011
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'cs_reg' using encoding 'one-hot' in module 'top'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:28 ; elapsed = 00:00:33 . Memory (MB): peak = 1096.441 ; gain = 391.285
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     64 Bit       Adders := 4     
+	   2 Input     32 Bit       Adders := 1     
+	   2 Input     16 Bit       Adders := 9     
+	   2 Input     15 Bit       Adders := 2     
+	   2 Input     14 Bit       Adders := 2     
+	   2 Input     13 Bit       Adders := 2     
+	   2 Input     12 Bit       Adders := 2     
+	   2 Input      7 Bit       Adders := 1     
++---XORs : 
+	   2 Input     16 Bit         XORs := 1     
++---Registers : 
+	               64 Bit    Registers := 2     
+	               16 Bit    Registers := 91    
+	                7 Bit    Registers := 1     
+	                6 Bit    Registers := 1     
+	                3 Bit    Registers := 3     
+	                2 Bit    Registers := 17    
+	                1 Bit    Registers := 28    
++---Muxes : 
+	   2 Input     64 Bit        Muxes := 4     
+	   4 Input     64 Bit        Muxes := 2     
+	   2 Input     16 Bit        Muxes := 58    
+	   4 Input     16 Bit        Muxes := 4     
+	  15 Input     16 Bit        Muxes := 1     
+	   5 Input     16 Bit        Muxes := 1     
+	   6 Input     16 Bit        Muxes := 1     
+	  14 Input     16 Bit        Muxes := 1     
+	   2 Input     15 Bit        Muxes := 4     
+	   2 Input     14 Bit        Muxes := 4     
+	   2 Input     13 Bit        Muxes := 4     
+	   2 Input     12 Bit        Muxes := 4     
+	   6 Input      8 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 9     
+	   2 Input      7 Bit        Muxes := 2     
+	   2 Input      5 Bit        Muxes := 1     
+	   4 Input      4 Bit        Muxes := 1     
+	   4 Input      3 Bit        Muxes := 1     
+	   3 Input      3 Bit        Muxes := 4     
+	   6 Input      3 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 2     
+	   4 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 76    
+	   4 Input      1 Bit        Muxes := 13    
+	  11 Input      1 Bit        Muxes := 8     
+	   5 Input      1 Bit        Muxes := 2     
+	   6 Input      1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module top 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   4 Input      4 Bit        Muxes := 1     
+	   4 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 2     
+	   4 Input      1 Bit        Muxes := 2     
+Module get_signal_edge 
+Detailed RTL Component Info : 
++---Registers : 
+	                2 Bit    Registers := 1     
+Module delay_cy 
+Detailed RTL Component Info : 
++---Registers : 
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
+Module delay_cy__parameterized0 
+Detailed RTL Component Info : 
++---Registers : 
+	                6 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
+Module delay_cy__parameterized1 
+Detailed RTL Component Info : 
++---Registers : 
+	                3 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
+Module ifc_checksum 
+Detailed RTL Component Info : 
++---XORs : 
+	   2 Input     16 Bit         XORs := 1     
++---Registers : 
+	               16 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     16 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 1     
+Module sample_timer 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     64 Bit       Adders := 2     
+	   2 Input     16 Bit       Adders := 3     
+	   2 Input     15 Bit       Adders := 1     
+	   2 Input     14 Bit       Adders := 1     
+	   2 Input     13 Bit       Adders := 1     
+	   2 Input     12 Bit       Adders := 1     
++---Registers : 
+	               64 Bit    Registers := 1     
+	               16 Bit    Registers := 7     
+	                1 Bit    Registers := 5     
++---Muxes : 
+	   2 Input     64 Bit        Muxes := 2     
+	   4 Input     64 Bit        Muxes := 1     
+	   2 Input     16 Bit        Muxes := 14    
+	   4 Input     16 Bit        Muxes := 2     
+	   2 Input     15 Bit        Muxes := 2     
+	   2 Input     14 Bit        Muxes := 2     
+	   2 Input     13 Bit        Muxes := 2     
+	   2 Input     12 Bit        Muxes := 2     
+	   2 Input      7 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 15    
+	   4 Input      1 Bit        Muxes := 3     
+Module ifc_top 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
+	   2 Input     16 Bit       Adders := 3     
+	   2 Input      7 Bit       Adders := 1     
++---Registers : 
+	               16 Bit    Registers := 76    
+	                7 Bit    Registers := 1     
+	                1 Bit    Registers := 7     
++---Muxes : 
+	  15 Input     16 Bit        Muxes := 1     
+	   2 Input     16 Bit        Muxes := 29    
+	   5 Input     16 Bit        Muxes := 1     
+	   6 Input     16 Bit        Muxes := 1     
+	  14 Input     16 Bit        Muxes := 1     
+	   6 Input      8 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 9     
+	   2 Input      5 Bit        Muxes := 1     
+	   4 Input      3 Bit        Muxes := 1     
+	   3 Input      3 Bit        Muxes := 4     
+	   6 Input      3 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 43    
+	   4 Input      1 Bit        Muxes := 5     
+	  11 Input      1 Bit        Muxes := 8     
+	   5 Input      1 Bit        Muxes := 2     
+	   6 Input      1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 840 (col length:140)
+BRAMs: 890 (col length: RAMB18 140 RAMB36 70)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+Warning: Parallel synthesis criteria is not met 
+INFO: [Synth 8-5546] ROM "FPGA_COMM_DATALEN" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "FPGA_COMM_CHECKSUM" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "FPGA_APP_SCOPE_SAMPLING" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "FPGA_COMM_DATA" won't be mapped to RAM because it is too sparse
+WARNING: [Synth 8-3331] design sample_timer has unconnected port scp_period[0]
+WARNING: [Synth 8-3331] design ifc_checksum has unconnected port r_or_w
+WARNING: [Synth 8-3331] design ifc_top has unconnected port irq
+WARNING: [Synth 8-3331] design top has unconnected port spi1_cs
+WARNING: [Synth 8-3331] design top has unconnected port spi1_clk
+WARNING: [Synth 8-3331] design top has unconnected port spi1_mosi
+WARNING: [Synth 8-3331] design top has unconnected port spi2_cs
+WARNING: [Synth 8-3331] design top has unconnected port spi2_clk
+WARNING: [Synth 8-3331] design top has unconnected port spi2_mosi
+WARNING: [Synth 8-3331] design top has unconnected port spi1_miso
+WARNING: [Synth 8-3331] design top has unconnected port spi2_miso
+INFO: [Synth 8-3886] merging instance 'sample_timer:/i4_reg[15]' (FDC) to 'sample_timer:/i1_reg[12]'
+INFO: [Synth 8-3886] merging instance 'sample_timer:/i3_reg[14]' (FDC) to 'sample_timer:/i1_reg[12]'
+INFO: [Synth 8-3886] merging instance 'sample_timer:/i3_reg[15]' (FDC) to 'sample_timer:/i1_reg[12]'
+INFO: [Synth 8-3886] merging instance 'sample_timer:/i2_reg[13]' (FDC) to 'sample_timer:/i1_reg[12]'
+INFO: [Synth 8-3886] merging instance 'sample_timer:/i2_reg[14]' (FDC) to 'sample_timer:/i1_reg[12]'
+INFO: [Synth 8-3886] merging instance 'sample_timer:/i2_reg[15]' (FDC) to 'sample_timer:/i1_reg[12]'
+INFO: [Synth 8-3886] merging instance 'sample_timer:/i1_reg[12]' (FDC) to 'sample_timer:/i1_reg[13]'
+INFO: [Synth 8-3886] merging instance 'sample_timer:/i1_reg[13]' (FDC) to 'sample_timer:/i1_reg[14]'
+INFO: [Synth 8-3886] merging instance 'sample_timer:/i1_reg[14]' (FDC) to 'sample_timer:/i1_reg[15]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (sample_timer:/\i1_reg[15] )
+INFO: [Synth 8-3886] merging instance 'u_ifc_top/FSM_onehot_cs_reg[1]' (FD) to 'u_ifc_top/FSM_onehot_cs_reg[4]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\FSM_onehot_cs_reg[4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[47][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[46][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[45][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[44][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[43][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[42][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[41][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[40][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[39][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[38][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[37][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[36][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[35][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[34][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[33][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[32][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[59][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[58][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[57][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[56][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[55][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[54][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[53][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[52][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[51][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[50][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[49][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[48][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[31][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[30][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[29][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[28][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[27][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[26][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[25][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[24][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[23][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[22][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[21][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[20][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[19][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[18][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[17][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[16][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[15][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[14][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[13][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[12][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[11][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[10][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[9][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[8][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[7][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[6][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[5][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[4][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[3][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[2][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[1][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[0][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[47][14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[46][14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[45][14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[44][14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[43][14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[42][14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[41][14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[40][14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[39][14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[38][14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[37][14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[36][14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[35][14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[34][14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[33][14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[32][14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[59][14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[58][14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[57][14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[56][14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[55][14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[54][14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[53][14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[52][14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[51][14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[50][14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[49][14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[48][14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[31][14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[30][14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[29][14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[28][14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[27][14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[26][14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[25][14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[24][14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[23][14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_ifc_top/\data_period_reg[22][14] )
+INFO: [Common 17-14] Message 'Synth 8-3333' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+WARNING: [Synth 8-3332] Sequential element (FSM_onehot_cs_reg[4]) is unused and will be removed from module ifc_top.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:46 ; elapsed = 00:00:52 . Memory (MB): peak = 1096.441 ; gain = 391.285
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5578] Moved timing constraint from pin 'clk_mmcm_0/clk_out1' to pin 'clk_mmcm_0/bbstub_clk_out1/O'
+INFO: [Synth 8-5578] Moved timing constraint from pin 'clk_mmcm_0/clk_out2' to pin 'clk_mmcm_0/bbstub_clk_out2/O'
+INFO: [Synth 8-5819] Moved 2 constraints on hierarchical pins to their respective driving/loading pins
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:03 ; elapsed = 00:01:09 . Memory (MB): peak = 1096.441 ; gain = 391.285
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:01:05 ; elapsed = 00:01:11 . Memory (MB): peak = 1096.441 ; gain = 391.285
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:01:07 ; elapsed = 00:01:13 . Memory (MB): peak = 1096.441 ; gain = 391.285
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-3295] tying undriven pin u_sample_timer1:en2 to constant 0
+WARNING: [Synth 8-3295] tying undriven pin u_sample_timer1:en3 to constant 0
+WARNING: [Synth 8-3295] tying undriven pin u_sample_timer1:en4 to constant 0
+WARNING: [Synth 8-3295] tying undriven pin probe9_inferred:in0[15] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin probe9_inferred:in0[14] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin probe9_inferred:in0[13] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin probe9_inferred:in0[12] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin probe9_inferred:in0[11] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin probe9_inferred:in0[10] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin probe9_inferred:in0[9] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin probe9_inferred:in0[8] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin probe9_inferred:in0[7] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin probe9_inferred:in0[6] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin probe9_inferred:in0[5] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin probe9_inferred:in0[4] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin probe9_inferred:in0[3] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin probe9_inferred:in0[2] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin probe9_inferred:in0[1] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin probe9_inferred:in0[0] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin probe15_inferred:in0 to constant 0
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:01:11 ; elapsed = 00:01:18 . Memory (MB): peak = 1097.453 ; gain = 392.297
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:11 ; elapsed = 00:01:18 . Memory (MB): peak = 1097.453 ; gain = 392.297
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:11 ; elapsed = 00:01:18 . Memory (MB): peak = 1097.453 ; gain = 392.297
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:11 ; elapsed = 00:01:18 . Memory (MB): peak = 1097.453 ; gain = 392.297
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:11 ; elapsed = 00:01:18 . Memory (MB): peak = 1097.453 ; gain = 392.297
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:11 ; elapsed = 00:01:18 . Memory (MB): peak = 1097.453 ; gain = 392.297
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++------+--------------+----------+
+|      |BlackBox name |Instances |
++------+--------------+----------+
+|1     |ila_0         |         1|
+|2     |clk_wiz_0     |         1|
++------+--------------+----------+
+
+Report Cell Usage: 
++------+----------+------+
+|      |Cell      |Count |
++------+----------+------+
+|1     |clk_wiz_0 |     1|
+|2     |ila_0     |     1|
+|3     |CARRY4    |   134|
+|4     |LUT1      |    70|
+|5     |LUT2      |   142|
+|6     |LUT3      |   231|
+|7     |LUT4      |   147|
+|8     |LUT5      |    90|
+|9     |LUT6      |   203|
+|10    |FDCE      |   451|
+|11    |FDPE      |     5|
+|12    |FDRE      |   208|
+|13    |IBUF      |    20|
+|14    |IOBUF     |    16|
+|15    |OBUFT     |     7|
++------+----------+------+
+
+Report Instance Areas: 
++------+----------------------------------+---------------------------+------+
+|      |Instance                          |Module                     |Cells |
++------+----------------------------------+---------------------------+------+
+|1     |top                               |                           |  1727|
+|2     |  u_ifc_top                       |ifc_top                    |  1689|
+|3     |    u_get_signal_edge_cs          |get_signal_edge__8         |     5|
+|4     |    u_get_signal_edge_avd         |get_signal_edge__9         |     5|
+|5     |    u_get_signal_edge_oe          |get_signal_edge__10        |     5|
+|6     |    u_delay_cy_cs_5               |delay_cy__parameterized0   |     9|
+|7     |    u_get_signal_edge_we          |get_signal_edge            |     5|
+|8     |    u_ifc_checksum                |ifc_checksum               |    34|
+|9     |    u_sample_timer1               |sample_timer__1            |   468|
+|10    |    u_delay_cy_checksum_r_2cy     |delay_cy__parameterized1   |     9|
+|11    |    u_delay_cy_checksum_w_1cy     |delay_cy                   |     7|
+|12    |    u_delay_cy_checksum_w_2cy     |delay_cy__parameterized1_0 |     4|
+|13    |    u_delay_cy_cs_pe_1            |delay_cy_1                 |     4|
+|14    |    u_delay_cy_oe_ne_1            |delay_cy__parameterized1_2 |     6|
+|15    |    u_delay_cy_rs_1               |delay_cy_3                 |     4|
+|16    |    u_delay_cy_ws1                |delay_cy_4                 |    87|
+|17    |    u_get_signal_edge_clk_sencond |get_signal_edge__11        |     5|
+|18    |    u_get_signal_edge_clko1       |get_signal_edge_5          |     3|
+|19    |    u_get_signal_edge_clko5       |get_signal_edge_6          |     8|
+|20    |    u_get_signal_edge_read_st     |get_signal_edge_7          |    89|
+|21    |    u_get_signal_edge_sw          |get_signal_edge_8          |     4|
+|22    |    u_get_signal_edge_write_st    |get_signal_edge_9          |    21|
+|23    |    u_sample_timer2               |sample_timer               |   247|
++------+----------------------------------+---------------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:11 ; elapsed = 00:01:18 . Memory (MB): peak = 1097.453 ; gain = 392.297
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 32 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:53 ; elapsed = 00:01:09 . Memory (MB): peak = 1097.453 ; gain = 246.227
+Synthesis Optimization Complete : Time (s): cpu = 00:01:12 ; elapsed = 00:01:18 . Memory (MB): peak = 1097.453 ; gain = 392.297
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Netlist 29-17] Analyzing 150 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 1 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1110.680 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 16 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 16 instances
+
+INFO: [Common 17-83] Releasing license: Synthesis
+193 Infos, 71 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:01:23 ; elapsed = 00:01:33 . Memory (MB): peak = 1110.680 ; gain = 707.965
+INFO: [Common 17-600] The following parameters have non-default value.
+tcl.collectionResultDisplayLimit
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1110.680 ; gain = 0.000
+WARNING: [Constraints 18-5210] No constraints selected for write.
+Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
+INFO: [Common 17-1381] The checkpoint 'D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.runs/synth_1/top.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file top_utilization_synth.rpt -pb top_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Fri Jan 26 11:47:01 2024...
