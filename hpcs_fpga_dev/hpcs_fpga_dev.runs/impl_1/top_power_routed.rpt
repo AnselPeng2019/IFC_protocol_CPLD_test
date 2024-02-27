@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
-| Date             : Mon Feb 26 15:30:46 2024
+| Date             : Tue Feb 27 16:46:06 2024
 | Host             : ZNKZBHF-GY running 64-bit major release  (build 9200)
 | Command          : report_power -file top_power_routed.rpt -pb top_power_summary_routed.pb -rpx top_power_routed.rpx
 | Design           : top
@@ -30,11 +30,11 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.308        |
+| Total On-Chip Power (W)  | 0.307        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.148        |
-| Device Static (W)        | 0.161        |
+| Dynamic (W)              | 0.146        |
+| Device Static (W)        | 0.160        |
 | Effective TJA (C/W)      | 1.8          |
 | Max Ambient (C)          | 84.5         |
 | Junction Temperature (C) | 25.5         |
@@ -52,20 +52,20 @@ Table of Contents
 +-------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                 | Power (W) | Used     | Available | Utilization (%) |
 +-------------------------+-----------+----------+-----------+-----------------+
-| Clocks                  |     0.019 |        6 |       --- |             --- |
-| Slice Logic             |     0.002 |     4236 |       --- |             --- |
-|   LUT as Logic          |     0.002 |     1536 |    203800 |            0.75 |
-|   Register              |    <0.001 |     2125 |    407600 |            0.52 |
+| Clocks                  |     0.018 |        6 |       --- |             --- |
+| Slice Logic             |     0.002 |     4227 |       --- |             --- |
+|   LUT as Logic          |     0.002 |     1531 |    203800 |            0.75 |
+|   Register              |    <0.001 |     2128 |    407600 |            0.52 |
 |   CARRY4                |    <0.001 |      149 |     50950 |            0.29 |
-|   LUT as Shift Register |    <0.001 |        8 |     64000 |            0.01 |
+|   LUT as Shift Register |    <0.001 |        4 |     64000 |           <0.01 |
 |   F7/F8 Muxes           |    <0.001 |       72 |    203800 |            0.04 |
-|   Others                |     0.000 |       71 |       --- |             --- |
-| Signals                 |     0.006 |     3291 |       --- |             --- |
+|   Others                |     0.000 |       67 |       --- |             --- |
+| Signals                 |     0.006 |     3298 |       --- |             --- |
 | Block RAM               |     0.002 |      0.5 |       445 |            0.11 |
 | MMCM                    |     0.108 |        1 |        10 |           10.00 |
 | I/O                     |     0.011 |       45 |       500 |            9.00 |
-| Static Power            |     0.161 |          |           |                 |
-| Total                   |     0.308 |          |           |                 |
+| Static Power            |     0.160 |          |           |                 |
+| Total                   |     0.307 |          |           |                 |
 +-------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -75,7 +75,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.101 |       0.032 |      0.069 |
+| Vccint    |       1.000 |     0.099 |       0.030 |      0.069 |
 | Vccaux    |       1.800 |     0.089 |       0.061 |      0.028 |
 | Vcco33    |       3.300 |     0.003 |       0.002 |      0.001 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
@@ -148,16 +148,16 @@ Table of Contents
 +---------------------+-----------+
 | Name                | Power (W) |
 +---------------------+-----------+
-| top                 |     0.148 |
+| top                 |     0.146 |
 |   clk_mmcm_0        |     0.115 |
 |     inst            |     0.115 |
-|   period_wr_fifo    |     0.007 |
-|     U0              |     0.007 |
-|       inst_fifo_gen |     0.007 |
+|   period_wr_fifo    |     0.006 |
+|     U0              |     0.006 |
+|       inst_fifo_gen |     0.006 |
 |   u_analog_top      |     0.005 |
 |     u_adc_ads8688   |     0.002 |
 |     u_dac_ad5676    |     0.002 |
-|   u_ifc_top         |     0.013 |
+|   u_ifc_top         |     0.012 |
 |     u_sample_timer1 |     0.001 |
 +---------------------+-----------+
 

@@ -154,8 +154,8 @@ assign fifo_wdata      =   FPGA_COMM_DATA;
         .neg_edge                ( cs_ne   )
     );    
     delay_cy #(
-        .cycles ( 3 ))
-    u_delay_cy_cs_pe_1 (
+        .cycles ( 2 ))
+    u_delay_cy_cs_pe_2 (
         .clk                     ( clk_200M          ),
         .rst_n                   ( rst_n        ),
         .signal_in               ( cs_pe    ),
@@ -171,8 +171,8 @@ assign fifo_wdata      =   FPGA_COMM_DATA;
         .neg_edge                ( avd_ne   )
     );    
     delay_cy #(
-        .cycles ( 3 ))
-    u_delay_cy_avd_1 (
+        .cycles ( 2 ))
+    u_delay_cy_avd_2 (
         .clk                     ( clk_200M          ),
         .rst_n                   ( rst_n        ),
         .signal_in               ( avd_ne    ),
@@ -205,8 +205,8 @@ assign fifo_wdata      =   FPGA_COMM_DATA;
         .neg_edge                ( oe_ne   )
     );    
     delay_cy #(
-        .cycles ( 7 ))
-    u_delay_cy_cs_5 (
+        .cycles ( 6 ))
+    u_delay_cy_cs_6 (
         .clk                     ( clk_200M          ),
         .rst_n                   ( rst_n        ),
         .signal_in               (  ifc_cs    ),
@@ -215,8 +215,8 @@ assign fifo_wdata      =   FPGA_COMM_DATA;
     );
 
     delay_cy #(
-        .cycles ( 3 ))
-    u_delay_cy_rs_1 (
+        .cycles ( 2 ))
+    u_delay_cy_rs_2 (
         .clk                     ( clk_200M          ),
         .rst_n                   ( rst_n        ),
         .signal_in               (  ~cpld_cs_5cy && oe_pe    ),
@@ -225,8 +225,8 @@ assign fifo_wdata      =   FPGA_COMM_DATA;
     );
 
     delay_cy #(
-        .cycles ( 4 ))
-    u_delay_cy_oe_ne_1 (
+        .cycles ( 3 ))
+    u_delay_cy_oe_ne_3 (
         .clk                     ( clk_200M          ),
         .rst_n                   ( rst_n        ),
         .signal_in               ( oe_ne    ),
@@ -259,8 +259,8 @@ assign fifo_wdata      =   FPGA_COMM_DATA;
     );
 
     delay_cy #(
-        .cycles ( 3 ))
-    u_delay_cy_ws1 (
+        .cycles ( 2 ))
+    u_delay_cy_ws_2 (
         .clk                     ( clk_200M          ),
         .rst_n                   ( rst_n        ),
         .signal_in               ( ~ifc_cs && we_ne    ),
@@ -269,8 +269,8 @@ assign fifo_wdata      =   FPGA_COMM_DATA;
     );
 
     delay_cy #(
-        .cycles ( 3 ))
-    u_delay_cy_ws2 (
+        .cycles ( 2 ))
+    u_delay_cy_ws_4 (
         .clk                     ( clk_200M          ),
         .rst_n                   ( rst_n        ),
         .signal_in               ( write_status    ),
@@ -278,8 +278,8 @@ assign fifo_wdata      =   FPGA_COMM_DATA;
         .signal_out              ( write_status_1cy   )
     );
     delay_cy #(
-        .cycles ( 4 ))
-    u_delay_cy_checksum_r_2cy (
+        .cycles ( 3 ))
+    u_delay_cy_checksum_r_3 (
         .clk                     ( clk_200M          ),
         .rst_n                   ( rst_n                  ),
         .signal_in               ( cs == st_read_block && cs_ne && ifc_addr_r == 16'h54    ),
@@ -287,8 +287,8 @@ assign fifo_wdata      =   FPGA_COMM_DATA;
         .signal_out              ( checksum_en_r   )
     );
     delay_cy #(
-        .cycles ( 3 ))
-    u_delay_cy_checksum_w_1cy (
+        .cycles ( 2 ))
+    u_delay_cy_checksum_w_2 (
         .clk                     ( clk_200M          ),
         .rst_n                   ( rst_n        ),
         .signal_in               ( cs == st_write_block && cs_pe_1cy && ifc_addr_r == 16'h54    ),
@@ -296,8 +296,8 @@ assign fifo_wdata      =   FPGA_COMM_DATA;
         .signal_out              ( checksum_en_w   )
     );
     delay_cy #(
-        .cycles ( 4 ))
-    u_delay_cy_checksum_w_2cy (
+        .cycles ( 3 ))
+    u_delay_cy_checksum_w_3 (
         .clk                     ( clk_200M          ),
         .rst_n                   ( rst_n        ),
         .signal_in               ( checksum_en_w),
@@ -334,7 +334,7 @@ assign fifo_wdata      =   FPGA_COMM_DATA;
     assign	ifc_data_r[15:0] = {ifc_ad_bus[0], ifc_ad_bus[1], ifc_ad_bus[2],  ifc_ad_bus[3],  ifc_ad_bus[4],  ifc_ad_bus[5],  ifc_ad_bus[6],  ifc_ad_bus[7],
                                ifc_ad_bus[8], ifc_ad_bus[9], ifc_ad_bus[10], ifc_ad_bus[11], ifc_ad_bus[12], ifc_ad_bus[13], ifc_ad_bus[14], ifc_ad_bus[15]};//
     assign  ifc_ad_bus[15:0] = (ifc_cs==0 && ifc_oe_b==0) ? {regd[0], regd[1], regd[2],  regd[3],  regd[4],  regd[5],  regd[6],  regd[7],
-                                                          regd[8], regd[9], regd[10], regd[11], regd[12], regd[13], regd[14], regd[15]} : 16'bzzzz_zzzz_zzzz_zzzz;
+                                                             regd[8], regd[9], regd[10], regd[11], regd[12], regd[13], regd[14], regd[15]} : 16'bzzzz_zzzz_zzzz_zzzz;
     always @(posedge clk_200M or negedge rst_n) begin
         if(rst_n == 0) begin
             ifc_addr_r <= 0;

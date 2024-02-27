@@ -2,8 +2,8 @@
 # Vivado v2019.1 (64-bit)
 # SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
 # IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
-# Start of session at: Mon Feb 26 15:29:13 2024
-# Process ID: 625776
+# Start of session at: Tue Feb 27 16:44:29 2024
+# Process ID: 987656
 # Current directory: D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.runs/synth_1
 # Command line: vivado.exe -log top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top.tcl
 # Log file: D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.runs/synth_1/top.vds
@@ -16,17 +16,17 @@ Attempting to get a license for feature 'Synthesis' and/or device 'xc7k325t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7k325t'
 INFO: [Device 21-403] Loading part xc7k325tffg900-2
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 626628 
+INFO: Helper process launched with PID 987788 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 870.145 ; gain = 178.574
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 869.828 ; gain = 177.715
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'top' [D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/top.v:3]
 	Parameter IDLE bound to: 3'b000 
 	Parameter GENRST bound to: 3'b001 
 	Parameter INITIAL bound to: 3'b010 
 	Parameter SYSTEM_ON bound to: 3'b011 
-INFO: [Synth 8-6157] synthesizing module 'clk_wiz_0' [D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.runs/synth_1/.Xil/Vivado-625776-ZNKZBHF-GY/realtime/clk_wiz_0_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_0' (1#1) [D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.runs/synth_1/.Xil/Vivado-625776-ZNKZBHF-GY/realtime/clk_wiz_0_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'clk_wiz_0' [D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.runs/synth_1/.Xil/Vivado-987656-ZNKZBHF-GY/realtime/clk_wiz_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_0' (1#1) [D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.runs/synth_1/.Xil/Vivado-987656-ZNKZBHF-GY/realtime/clk_wiz_0_stub.v:5]
 INFO: [Synth 8-6157] synthesizing module 'ifc_top' [D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:1]
 	Parameter st_idle bound to: 4'b0000 
 	Parameter st_pwr_on bound to: 4'b0001 
@@ -41,13 +41,13 @@ INFO: [Synth 8-6157] synthesizing module 'ifc_top' [D:/Temp/HardwareGroup/pengxi
 INFO: [Synth 8-6157] synthesizing module 'get_signal_edge' [D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/get_signal_edge.v:1]
 INFO: [Synth 8-6155] done synthesizing module 'get_signal_edge' (2#1) [D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/get_signal_edge.v:1]
 INFO: [Synth 8-6157] synthesizing module 'delay_cy' [D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/delay_cy.v:12]
-	Parameter cycles bound to: 3 - type: integer 
+	Parameter cycles bound to: 2 - type: integer 
 INFO: [Synth 8-6155] done synthesizing module 'delay_cy' (3#1) [D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/delay_cy.v:12]
 INFO: [Synth 8-6157] synthesizing module 'delay_cy__parameterized0' [D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/delay_cy.v:12]
-	Parameter cycles bound to: 7 - type: integer 
+	Parameter cycles bound to: 6 - type: integer 
 INFO: [Synth 8-6155] done synthesizing module 'delay_cy__parameterized0' (3#1) [D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/delay_cy.v:12]
 INFO: [Synth 8-6157] synthesizing module 'delay_cy__parameterized1' [D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/delay_cy.v:12]
-	Parameter cycles bound to: 4 - type: integer 
+	Parameter cycles bound to: 3 - type: integer 
 INFO: [Synth 8-6155] done synthesizing module 'delay_cy__parameterized1' (3#1) [D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/delay_cy.v:12]
 INFO: [Synth 8-251] .....Read data in period mode: id = x, FPGA_COMM_DATA = xxxx.....
  [D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:632]
@@ -111,8 +111,8 @@ WARNING: [Synth 8-3848] Net en3 in module/entity ifc_top does not have driver. [
 WARNING: [Synth 8-3848] Net en4 in module/entity ifc_top does not have driver. [D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:772]
 WARNING: [Synth 8-3848] Net uart_send_comlete in module/entity ifc_top does not have driver. [D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:255]
 INFO: [Synth 8-6155] done synthesizing module 'ifc_top' (6#1) [D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v:1]
-INFO: [Synth 8-6157] synthesizing module 'afifo_16i_16o_256' [D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.runs/synth_1/.Xil/Vivado-625776-ZNKZBHF-GY/realtime/afifo_16i_16o_256_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'afifo_16i_16o_256' (7#1) [D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.runs/synth_1/.Xil/Vivado-625776-ZNKZBHF-GY/realtime/afifo_16i_16o_256_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'afifo_16i_16o_256' [D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.runs/synth_1/.Xil/Vivado-987656-ZNKZBHF-GY/realtime/afifo_16i_16o_256_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'afifo_16i_16o_256' (7#1) [D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.runs/synth_1/.Xil/Vivado-987656-ZNKZBHF-GY/realtime/afifo_16i_16o_256_stub.v:6]
 INFO: [Synth 8-6157] synthesizing module 'fifo_wr' [D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/fifo_wr.v:5]
 	Parameter WIDTH bound to: 16 - type: integer 
 	Parameter st_wait_triger bound to: 2'b00 
@@ -240,7 +240,7 @@ WARNING: [Synth 8-3331] design fifo_wr has unconnected port almost_empty
 WARNING: [Synth 8-3331] design ifc_checksum has unconnected port r_or_w
 WARNING: [Synth 8-3331] design ifc_top has unconnected port irq
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 944.148 ; gain = 252.578
+Finished RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 944.629 ; gain = 252.516
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -253,10 +253,10 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 944.148 ; gain = 252.578
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 944.629 ; gain = 252.516
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 944.148 ; gain = 252.578
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 944.629 ; gain = 252.516
 ---------------------------------------------------------------------------------
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
@@ -272,21 +272,21 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1110.750 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1109.402 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.033 . Memory (MB): peak = 1110.750 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.031 . Memory (MB): peak = 1109.402 ; gain = 0.000
 WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'period_wr_fifo' at clock pin 'rd_clk' is different from the actual clock period '5.000', this can lead to different synthesis results.
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1113.313 ; gain = 421.742
+Finished Constraint Validation : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1111.988 ; gain = 419.875
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7k325tffg900-2
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1113.313 ; gain = 421.742
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1111.988 ; gain = 419.875
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -298,7 +298,7 @@ Applied set_property CLOCK_BUFFER_TYPE = NONE for sys_clk_p. (constraint file  d
 Applied set_property DONT_TOUCH = true for clk_mmcm_0. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for period_wr_fifo. (constraint file  auto generated constraint, line ).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1113.313 ; gain = 421.742
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1111.988 ; gain = 419.875
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'cs_reg' in module 'ifc_top'
 INFO: [Synth 8-5546] ROM "regd" won't be mapped to RAM because it is too sparse
@@ -439,7 +439,7 @@ INFO: [Synth 8-3354] encoded FSM with state register 'cs_reg' using encoding 'se
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'cs_reg' using encoding 'one-hot' in module 'top'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1113.313 ; gain = 421.742
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1111.988 ; gain = 419.875
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -474,10 +474,11 @@ Detailed RTL Component Info :
 	               24 Bit    Registers := 30    
 	               16 Bit    Registers := 238   
 	                8 Bit    Registers := 10    
-	                7 Bit    Registers := 2     
-	                4 Bit    Registers := 7     
-	                3 Bit    Registers := 6     
-	                2 Bit    Registers := 18    
+	                7 Bit    Registers := 1     
+	                6 Bit    Registers := 1     
+	                4 Bit    Registers := 4     
+	                3 Bit    Registers := 3     
+	                2 Bit    Registers := 24    
 	                1 Bit    Registers := 59    
 +---Muxes : 
 	   2 Input     64 Bit        Muxes := 4     
@@ -545,17 +546,17 @@ Detailed RTL Component Info :
 Module delay_cy 
 Detailed RTL Component Info : 
 +---Registers : 
-	                3 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
 	                1 Bit    Registers := 1     
 Module delay_cy__parameterized0 
 Detailed RTL Component Info : 
 +---Registers : 
-	                7 Bit    Registers := 1     
+	                6 Bit    Registers := 1     
 	                1 Bit    Registers := 1     
 Module delay_cy__parameterized1 
 Detailed RTL Component Info : 
 +---Registers : 
-	                4 Bit    Registers := 1     
+	                3 Bit    Registers := 1     
 	                1 Bit    Registers := 1     
 Module ifc_checksum 
 Detailed RTL Component Info : 
@@ -1020,7 +1021,6 @@ INFO: [Synth 8-3886] merging instance 'u_analog_top/dac_val_reg[4][12]' (FDPE) t
 INFO: [Synth 8-3886] merging instance 'u_analog_top/dac_val_reg[3][12]' (FDPE) to 'u_analog_top/dac_val_reg[0][12]'
 INFO: [Synth 8-3886] merging instance 'u_analog_top/dac_val_reg[2][12]' (FDPE) to 'u_analog_top/dac_val_reg[0][12]'
 INFO: [Synth 8-3886] merging instance 'u_analog_top/dac_val_reg[1][12]' (FDPE) to 'u_analog_top/dac_val_reg[0][12]'
-INFO: [Synth 8-3886] merging instance 'u_ifc_top/u_delay_cy_cs_5/prev_data_reg[0]' (FDC) to 'u_ifc_top/u_get_signal_edge_cs/sig_reg_reg[0]'
 INFO: [Synth 8-3886] merging instance 'u_analog_top/dac_val_reg[7][13]' (FDCE) to 'u_analog_top/dac_val_reg[0][13]'
 INFO: [Synth 8-3886] merging instance 'u_analog_top/dac_val_reg[6][13]' (FDCE) to 'u_analog_top/dac_val_reg[0][13]'
 INFO: [Synth 8-3886] merging instance 'u_analog_top/dac_val_reg[5][13]' (FDCE) to 'u_analog_top/dac_val_reg[0][13]'
@@ -1028,15 +1028,16 @@ INFO: [Synth 8-3886] merging instance 'u_analog_top/dac_val_reg[4][13]' (FDCE) t
 INFO: [Synth 8-3886] merging instance 'u_analog_top/dac_val_reg[3][13]' (FDCE) to 'u_analog_top/dac_val_reg[0][13]'
 INFO: [Synth 8-3886] merging instance 'u_analog_top/dac_val_reg[2][13]' (FDCE) to 'u_analog_top/dac_val_reg[0][13]'
 INFO: [Synth 8-3886] merging instance 'u_analog_top/dac_val_reg[1][13]' (FDCE) to 'u_analog_top/dac_val_reg[0][13]'
-INFO: [Synth 8-3886] merging instance 'u_ifc_top/u_delay_cy_cs_5/prev_data_reg[1]' (FDC) to 'u_ifc_top/u_get_signal_edge_cs/sig_reg_reg[1]'
 INFO: [Synth 8-3886] merging instance 'u_analog_top/dac_val_reg[7][14]' (FDCE) to 'u_analog_top/dac_val_reg[0][14]'
 INFO: [Synth 8-3886] merging instance 'u_analog_top/dac_val_reg[6][14]' (FDCE) to 'u_analog_top/dac_val_reg[0][14]'
 INFO: [Synth 8-3886] merging instance 'u_analog_top/dac_val_reg[5][14]' (FDCE) to 'u_analog_top/dac_val_reg[0][14]'
+INFO: [Synth 8-3886] merging instance 'u_analog_top/dac_val_reg[4][14]' (FDCE) to 'u_analog_top/dac_val_reg[0][14]'
+INFO: [Synth 8-3886] merging instance 'u_analog_top/dac_val_reg[3][14]' (FDCE) to 'u_analog_top/dac_val_reg[0][14]'
 INFO: [Common 17-14] Message 'Synth 8-3886' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 WARNING: [Synth 8-3332] Sequential element (FSM_onehot_cs_reg[4]) is unused and will be removed from module ifc_top.
 WARNING: [Synth 8-3332] Sequential element (FSM_onehot_cs_reg[1]) is unused and will be removed from module ifc_top.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 1113.313 ; gain = 421.742
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 1111.988 ; gain = 419.875
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -1051,13 +1052,13 @@ INFO: [Synth 8-5578] Moved timing constraint from pin 'clk_mmcm_0/clk_out1' to p
 INFO: [Synth 8-5578] Moved timing constraint from pin 'clk_mmcm_0/clk_out2' to pin 'clk_mmcm_0/bbstub_clk_out2/O'
 INFO: [Synth 8-5819] Moved 2 constraints on hierarchical pins to their respective driving/loading pins
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1113.313 ; gain = 421.742
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:22 ; elapsed = 00:00:23 . Memory (MB): peak = 1111.988 ; gain = 419.875
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:22 ; elapsed = 00:00:23 . Memory (MB): peak = 1113.313 ; gain = 421.742
+Finished Timing Optimization : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 1111.988 ; gain = 419.875
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -1069,7 +1070,7 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 1119.941 ; gain = 428.371
+Finished Technology Mapping : Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 1121.523 ; gain = 429.410
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -1093,7 +1094,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 1125.539 ; gain = 433.969
+Finished IO Insertion : Time (s): cpu = 00:00:25 ; elapsed = 00:00:26 . Memory (MB): peak = 1126.051 ; gain = 433.938
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -1106,7 +1107,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 1125.539 ; gain = 433.969
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:25 ; elapsed = 00:00:26 . Memory (MB): peak = 1126.051 ; gain = 433.938
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -1118,43 +1119,39 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 1125.539 ; gain = 433.969
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:25 ; elapsed = 00:00:26 . Memory (MB): peak = 1126.051 ; gain = 433.938
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 1125.539 ; gain = 433.969
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:25 ; elapsed = 00:00:26 . Memory (MB): peak = 1126.051 ; gain = 433.938
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 1125.539 ; gain = 433.969
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:25 ; elapsed = 00:00:26 . Memory (MB): peak = 1126.051 ; gain = 433.938
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 1125.539 ; gain = 433.969
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:25 ; elapsed = 00:00:26 . Memory (MB): peak = 1126.051 ; gain = 433.938
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
 ---------------------------------------------------------------------------------
 
 Static Shift Register Report:
-+------------+----------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
-|Module Name | RTL Name                                           | Length | Width | Reset Signal | Pull out first Reg | Pull out last Reg | SRL16E | SRLC32E | 
-+------------+----------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
-|top         | u_ifc_top/u_delay_cy_ws1/signal_out_reg            | 4      | 1     | YES          | NO                 | YES               | 1      | 0       | 
-|top         | u_ifc_top/u_delay_cy_cs_pe_1/signal_out_reg        | 4      | 1     | YES          | NO                 | YES               | 1      | 0       | 
-|top         | u_ifc_top/u_delay_cy_cs_5/signal_out_reg           | 6      | 1     | YES          | NO                 | YES               | 1      | 0       | 
-|top         | u_ifc_top/u_delay_cy_rs_1/signal_out_reg           | 4      | 1     | YES          | NO                 | YES               | 1      | 0       | 
-|top         | u_ifc_top/u_delay_cy_oe_ne_1/signal_out_reg        | 5      | 1     | YES          | NO                 | YES               | 1      | 0       | 
-|top         | u_ifc_top/u_delay_cy_checksum_r_2cy/signal_out_reg | 5      | 1     | YES          | NO                 | YES               | 1      | 0       | 
-|top         | u_ifc_top/u_delay_cy_checksum_w_1cy/signal_out_reg | 4      | 1     | YES          | NO                 | YES               | 1      | 0       | 
-|top         | u_ifc_top/u_delay_cy_checksum_w_2cy/signal_out_reg | 5      | 1     | YES          | NO                 | YES               | 1      | 0       | 
-+------------+----------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
++------------+--------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|Module Name | RTL Name                                         | Length | Width | Reset Signal | Pull out first Reg | Pull out last Reg | SRL16E | SRLC32E | 
++------------+--------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|top         | u_ifc_top/u_delay_cy_cs_6/signal_out_reg         | 5      | 1     | YES          | NO                 | YES               | 1      | 0       | 
+|top         | u_ifc_top/u_delay_cy_oe_ne_3/signal_out_reg      | 4      | 1     | YES          | NO                 | YES               | 1      | 0       | 
+|top         | u_ifc_top/u_delay_cy_checksum_r_3/signal_out_reg | 4      | 1     | YES          | NO                 | YES               | 1      | 0       | 
+|top         | u_ifc_top/u_delay_cy_checksum_w_3/signal_out_reg | 4      | 1     | YES          | NO                 | YES               | 1      | 0       | 
++------------+--------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
 
 ---------------------------------------------------------------------------------
 Finished ROM, RAM, DSP and Shift Register Reporting
@@ -1179,17 +1176,17 @@ Report Cell Usage:
 |2     |clk_wiz_0         |     1|
 |3     |CARRY4            |   149|
 |4     |LUT1              |    35|
-|5     |LUT2              |   268|
+|5     |LUT2              |   264|
 |6     |LUT3              |   232|
 |7     |LUT4              |   302|
 |8     |LUT5              |   175|
 |9     |LUT6              |   725|
 |10    |MUXF7             |    65|
 |11    |MUXF8             |     7|
-|12    |SRL16E            |     8|
-|13    |FDCE              |  1706|
+|12    |SRL16E            |     4|
+|13    |FDCE              |  1713|
 |14    |FDPE              |    29|
-|15    |FDRE              |   245|
+|15    |FDRE              |   241|
 |16    |FDSE              |     1|
 |17    |IBUF              |    20|
 |18    |IOBUF             |    16|
@@ -1201,7 +1198,7 @@ Report Instance Areas:
 +------+----------------------------------+-------------------------------+------+
 |      |Instance                          |Module                         |Cells |
 +------+----------------------------------+-------------------------------+------+
-|1     |top                               |                               |  4029|
+|1     |top                               |                               |  4024|
 |2     |  u_analog_top                    |analog_top                     |   886|
 |3     |    u_adc_ads8688                 |adc_ads8688                    |   380|
 |4     |      u_get_signal_edge           |get_signal_edge_16             |     2|
@@ -1216,15 +1213,15 @@ Report Instance Areas:
 |13    |    u_delay_cy_32us               |delay_cy_cnt                   |    91|
 |14    |  u_fifo_rd                       |fifo_rd                        |    24|
 |15    |  u_fifo_wr                       |fifo_wr                        |    51|
-|16    |  u_ifc_top                       |ifc_top                        |  2977|
-|17    |    u_delay_cy_checksum_r_2cy     |delay_cy__parameterized1       |    21|
-|18    |    u_delay_cy_checksum_w_1cy     |delay_cy                       |    10|
-|19    |    u_delay_cy_checksum_w_2cy     |delay_cy__parameterized1_0     |     4|
-|20    |    u_delay_cy_cs_5               |delay_cy__parameterized0       |     9|
-|21    |    u_delay_cy_cs_pe_1            |delay_cy_1                     |     6|
-|22    |    u_delay_cy_oe_ne_1            |delay_cy__parameterized1_2     |     6|
-|23    |    u_delay_cy_rs_1               |delay_cy_3                     |     4|
-|24    |    u_delay_cy_ws1                |delay_cy_4                     |    82|
+|16    |  u_ifc_top                       |ifc_top                        |  2972|
+|17    |    u_delay_cy_checksum_r_3       |delay_cy__parameterized1       |    21|
+|18    |    u_delay_cy_checksum_w_2       |delay_cy                       |     9|
+|19    |    u_delay_cy_checksum_w_3       |delay_cy__parameterized1_0     |     4|
+|20    |    u_delay_cy_cs_6               |delay_cy__parameterized0       |     8|
+|21    |    u_delay_cy_cs_pe_2            |delay_cy_1                     |     5|
+|22    |    u_delay_cy_oe_ne_3            |delay_cy__parameterized1_2     |     6|
+|23    |    u_delay_cy_rs_2               |delay_cy_3                     |     3|
+|24    |    u_delay_cy_ws_2               |delay_cy_4                     |    81|
 |25    |    u_get_signal_edge_avd         |get_signal_edge                |     3|
 |26    |    u_get_signal_edge_clk_sencond |get_signal_edge_5              |     5|
 |27    |    u_get_signal_edge_clko1       |get_signal_edge_6              |     3|
@@ -1240,17 +1237,17 @@ Report Instance Areas:
 |37    |    u_sample_timer2               |sample_timer_14                |   247|
 +------+----------------------------------+-------------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 1125.539 ; gain = 433.969
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:25 ; elapsed = 00:00:26 . Memory (MB): peak = 1126.051 ; gain = 433.938
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 6 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:19 ; elapsed = 00:00:23 . Memory (MB): peak = 1125.539 ; gain = 264.805
-Synthesis Optimization Complete : Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 1125.539 ; gain = 433.969
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:20 ; elapsed = 00:00:24 . Memory (MB): peak = 1126.051 ; gain = 266.578
+Synthesis Optimization Complete : Time (s): cpu = 00:00:25 ; elapsed = 00:00:27 . Memory (MB): peak = 1126.051 ; gain = 433.938
 INFO: [Project 1-571] Translating synthesized netlist
 INFO: [Netlist 29-17] Analyzing 237 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1141.621 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1142.871 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 16 instances were transformed.
   IOBUF => IOBUF (IBUF, OBUFT): 16 instances
@@ -1258,10 +1255,10 @@ INFO: [Project 1-111] Unisim Transformation Summary:
 INFO: [Common 17-83] Releasing license: Synthesis
 325 Infos, 72 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 1141.621 ; gain = 749.566
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1141.621 ; gain = 0.000
+synth_design: Time (s): cpu = 00:00:29 ; elapsed = 00:00:32 . Memory (MB): peak = 1142.871 ; gain = 750.113
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1142.871 ; gain = 0.000
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
 INFO: [Common 17-1381] The checkpoint 'D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.runs/synth_1/top.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file top_utilization_synth.rpt -pb top_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Mon Feb 26 15:29:47 2024...
+INFO: [Common 17-206] Exiting Vivado at Tue Feb 27 16:45:04 2024...
