@@ -18,14 +18,15 @@ module delay_cy #(
 
     output reg signal_out
 );
-reg [cycles:0] prev_data;
+  reg [cycles-1:0] prev_data;
 
   always @(posedge clk or negedge rst_n) begin
     if (rst_n == 0) begin
       prev_data <= 0;  // 初始化前 100 个时钟周期的数据为 0
+      signal_out <= 0;
     end else begin
       prev_data <= {prev_data[cycles-1:0], signal_in};  // 将当前时钟周期的输入数据存储到 prev_data 中
-      signal_out <= prev_data[cycles];  // 输出前 100 个时钟周期之前的数据
+      signal_out <= prev_data[cycles-1];  // 输出前 100 个时钟周期之前的数据
     end
   end
 

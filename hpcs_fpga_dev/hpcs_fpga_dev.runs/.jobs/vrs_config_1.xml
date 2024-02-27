@@ -1,6 +1,19 @@
 <?xml version="1.0"?>
 <Runs Version="1" Minor="0">
-	<Run Id="clk_wiz_0_synth_1" LaunchDir="D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.runs/clk_wiz_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="clk_wiz_0_synth_1" LaunchDir="D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.runs/clk_wiz_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="ila_0_synth_1" LaunchDir="D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.runs/ila_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="afifo_16i_16o_256_synth_1" LaunchDir="D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.runs/afifo_16i_16o_256_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="synth_1" LaunchDir="D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.runs/synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado">
+		<Parent Id="clk_wiz_0_synth_1"/>
+		<Parent Id="ila_0_synth_1"/>
+		<Parent Id="afifo_16i_16o_256_synth_1"/>
+	</Run>
+	<Run Id="impl_1" LaunchDir="D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.runs/impl_1" FlowId="Vivado_Implementation" FromStepId="init_design" ToStepId="route_design">
+		<Parent Id="synth_1"/>
+		<Parent Id="clk_wiz_0_synth_1"/>
+		<Parent Id="ila_0_synth_1"/>
+		<Parent Id="afifo_16i_16o_256_synth_1"/>
+	</Run>
 	<Parameters>
 		<Parameter Name="runs.monitorLSFJobs" Val="true" Type="bool"/>
 	</Parameters>

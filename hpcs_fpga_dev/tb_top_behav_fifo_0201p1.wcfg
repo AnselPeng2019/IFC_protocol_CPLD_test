@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_top_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb_top" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="17915633334fs"></ZoomStartTime>
+      <ZoomEndTime time="18041433335fs"></ZoomEndTime>
+      <Cursor1Time time="17977500000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="230"></NameColumnWidth>
+      <ValueColumnWidth column_width="113"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="36" />
+   <wvobject fp_name="/tb_top/ifc_cs" type="logic">
+      <obj_property name="ElementShortName">ifc_cs</obj_property>
+      <obj_property name="ObjectShortName">ifc_cs</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/ifc_we_b" type="logic">
+      <obj_property name="ElementShortName">ifc_we_b</obj_property>
+      <obj_property name="ObjectShortName">ifc_we_b</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/ifc_oe_b" type="logic">
+      <obj_property name="ElementShortName">ifc_oe_b</obj_property>
+      <obj_property name="ObjectShortName">ifc_oe_b</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/ifc_avd" type="logic">
+      <obj_property name="ElementShortName">ifc_avd</obj_property>
+      <obj_property name="ObjectShortName">ifc_avd</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/ifc_ad" type="array">
+      <obj_property name="ElementShortName">ifc_ad[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ifc_ad[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/ifc_ad_r" type="array">
+      <obj_property name="ElementShortName">ifc_ad_r[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ifc_ad_r[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/ifc_add_lt" type="array">
+      <obj_property name="ElementShortName">ifc_add_lt[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ifc_add_lt[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/addr" type="array">
+      <obj_property name="ElementShortName">addr[15:0]</obj_property>
+      <obj_property name="ObjectShortName">addr[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/dataT" type="array">
+      <obj_property name="ElementShortName">dataT[15:0]</obj_property>
+      <obj_property name="ObjectShortName">dataT[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/dataR" type="array">
+      <obj_property name="ElementShortName">dataR[15:0]</obj_property>
+      <obj_property name="ObjectShortName">dataR[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/data_len" type="array">
+      <obj_property name="ElementShortName">data_len[15:0]</obj_property>
+      <obj_property name="ObjectShortName">data_len[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/data_checksum" type="array">
+      <obj_property name="ElementShortName">data_checksum[15:0]</obj_property>
+      <obj_property name="ObjectShortName">data_checksum[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/data_period" type="array">
+      <obj_property name="ElementShortName">data_period[0:119][15:0]</obj_property>
+      <obj_property name="ObjectShortName">data_period[0:119][15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/rst_n" type="logic">
+      <obj_property name="ElementShortName">rst_n</obj_property>
+      <obj_property name="ObjectShortName">rst_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_ifc_top/checksum_out" type="array">
+      <obj_property name="ElementShortName">checksum_out[15:0]</obj_property>
+      <obj_property name="ObjectShortName">checksum_out[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_ifc_top/read_status" type="logic">
+      <obj_property name="ElementShortName">read_status</obj_property>
+      <obj_property name="ObjectShortName">read_status</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_ifc_top/write_status" type="logic">
+      <obj_property name="ElementShortName">write_status</obj_property>
+      <obj_property name="ObjectShortName">write_status</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_ifc_top/checksum_datain" type="array">
+      <obj_property name="ElementShortName">checksum_datain[15:0]</obj_property>
+      <obj_property name="ObjectShortName">checksum_datain[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_ifc_top/FPGA_COMM_DATA" type="array">
+      <obj_property name="ElementShortName">FPGA_COMM_DATA[15:0]</obj_property>
+      <obj_property name="ObjectShortName">FPGA_COMM_DATA[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_ifc_top/ifc_ad_bus" type="array">
+      <obj_property name="ElementShortName">ifc_ad_bus[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ifc_ad_bus[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_ifc_top/ifc_addr_lat" type="array">
+      <obj_property name="ElementShortName">ifc_addr_lat[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ifc_addr_lat[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_ifc_top/FPGA_HANDSHAKE_CHANNEL0" type="array">
+      <obj_property name="ElementShortName">FPGA_HANDSHAKE_CHANNEL0[15:0]</obj_property>
+      <obj_property name="ObjectShortName">FPGA_HANDSHAKE_CHANNEL0[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_ifc_top/clk_200M" type="logic">
+      <obj_property name="ElementShortName">clk_200M</obj_property>
+      <obj_property name="ObjectShortName">clk_200M</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_ifc_top/ifc_addr_r" type="array">
+      <obj_property name="ElementShortName">ifc_addr_r[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ifc_addr_r[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_ifc_top/ifc_data_r" type="array">
+      <obj_property name="ElementShortName">ifc_data_r[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ifc_data_r[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_ifc_top/get_in_read_st" type="logic">
+      <obj_property name="ElementShortName">get_in_read_st</obj_property>
+      <obj_property name="ObjectShortName">get_in_read_st</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_ifc_top/fifo_en" type="array">
+      <obj_property name="ElementShortName">fifo_en[1:0]</obj_property>
+      <obj_property name="ObjectShortName">fifo_en[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_ifc_top/fifo_wdata" type="array">
+      <obj_property name="ElementShortName">fifo_wdata[15:0]</obj_property>
+      <obj_property name="ObjectShortName">fifo_wdata[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_fifo_rd/fifo_dout" type="array">
+      <obj_property name="ElementShortName">fifo_dout[15:0]</obj_property>
+      <obj_property name="ObjectShortName">fifo_dout[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_ifc_top/fifo_rdata" type="array">
+      <obj_property name="ElementShortName">fifo_rdata[15:0]</obj_property>
+      <obj_property name="ObjectShortName">fifo_rdata[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_fifo_rd/state" type="array">
+      <obj_property name="ElementShortName">state[1:0]</obj_property>
+      <obj_property name="ObjectShortName">state[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_fifo_rd/fifo_rd_en" type="logic">
+      <obj_property name="ElementShortName">fifo_rd_en</obj_property>
+      <obj_property name="ObjectShortName">fifo_rd_en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_ifc_top/data_period" type="array">
+      <obj_property name="ElementShortName">data_period[0:59][15:0]</obj_property>
+      <obj_property name="ObjectShortName">data_period[0:59][15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_fifo_rd/cnt" type="array">
+      <obj_property name="ElementShortName">cnt[7:0]</obj_property>
+      <obj_property name="ObjectShortName">cnt[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_ifc_top/read_fifo_flag" type="logic">
+      <obj_property name="ElementShortName">read_fifo_flag</obj_property>
+      <obj_property name="ObjectShortName">read_fifo_flag</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_ifc_top/pi" type="array">
+      <obj_property name="ElementShortName">pi[15:0]</obj_property>
+      <obj_property name="ObjectShortName">pi[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+</wave_config>

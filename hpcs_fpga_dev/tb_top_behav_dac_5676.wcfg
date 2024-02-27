@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_top_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb_top" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="100166666666fs"></ZoomStartTime>
+      <ZoomEndTime time="701166666667fs"></ZoomEndTime>
+      <Cursor1Time time="601000000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="230"></NameColumnWidth>
+      <ValueColumnWidth column_width="109"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="27" />
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_dac_ad5676/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_dac_ad5676/rst_n" type="logic">
+      <obj_property name="ElementShortName">rst_n</obj_property>
+      <obj_property name="ObjectShortName">rst_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_dac_ad5676/sync" type="logic">
+      <obj_property name="ElementShortName">sync</obj_property>
+      <obj_property name="ObjectShortName">sync</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_dac_ad5676/dac_data" type="array">
+      <obj_property name="ElementShortName">dac_data[127:0]</obj_property>
+      <obj_property name="ObjectShortName">dac_data[127:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_dac_ad5676/isInitialized" type="logic">
+      <obj_property name="ElementShortName">isInitialized</obj_property>
+      <obj_property name="ObjectShortName">isInitialized</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_dac_ad5676/cs_ad5676_o" type="logic">
+      <obj_property name="ElementShortName">cs_ad5676_o</obj_property>
+      <obj_property name="ObjectShortName">cs_ad5676_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_dac_ad5676/spi_clk" type="logic">
+      <obj_property name="ElementShortName">spi_clk</obj_property>
+      <obj_property name="ObjectShortName">spi_clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_dac_ad5676/spi_mosi" type="logic">
+      <obj_property name="ElementShortName">spi_mosi</obj_property>
+      <obj_property name="ObjectShortName">spi_mosi</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_dac_ad5676/wr_req" type="logic">
+      <obj_property name="ElementShortName">wr_req</obj_property>
+      <obj_property name="ObjectShortName">wr_req</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_dac_ad5676/cs_ad5676" type="logic">
+      <obj_property name="ElementShortName">cs_ad5676</obj_property>
+      <obj_property name="ObjectShortName">cs_ad5676</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_dac_ad5676/sync_pe" type="logic">
+      <obj_property name="ElementShortName">sync_pe</obj_property>
+      <obj_property name="ObjectShortName">sync_pe</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_dac_ad5676/cs" type="array">
+      <obj_property name="ElementShortName">cs[2:0]</obj_property>
+      <obj_property name="ObjectShortName">cs[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_dac_ad5676/ns" type="array">
+      <obj_property name="ElementShortName">ns[2:0]</obj_property>
+      <obj_property name="ObjectShortName">ns[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_dac_ad5676/data_in_i" type="array">
+      <obj_property name="ElementShortName">data_in_i[23:0]</obj_property>
+      <obj_property name="ObjectShortName">data_in_i[23:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_dac_ad5676/data_in_gen" type="array">
+      <obj_property name="ElementShortName">data_in_gen[23:0]</obj_property>
+      <obj_property name="ObjectShortName">data_in_gen[23:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_dac_ad5676/data_in" type="array">
+      <obj_property name="ElementShortName">data_in[23:0]</obj_property>
+      <obj_property name="ObjectShortName">data_in[23:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_dac_ad5676/wr_req_i" type="logic">
+      <obj_property name="ElementShortName">wr_req_i</obj_property>
+      <obj_property name="ObjectShortName">wr_req_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_dac_ad5676/cs0" type="logic">
+      <obj_property name="ElementShortName">cs0</obj_property>
+      <obj_property name="ObjectShortName">cs0</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_dac_ad5676/cs1" type="logic">
+      <obj_property name="ElementShortName">cs1</obj_property>
+      <obj_property name="ObjectShortName">cs1</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_dac_ad5676/wr_ack" type="logic">
+      <obj_property name="ElementShortName">wr_ack</obj_property>
+      <obj_property name="ObjectShortName">wr_ack</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_dac_ad5676/wr_req_gen" type="logic">
+      <obj_property name="ElementShortName">wr_req_gen</obj_property>
+      <obj_property name="ObjectShortName">wr_req_gen</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_dac_ad5676/cs_ad5676_i" type="logic">
+      <obj_property name="ElementShortName">cs_ad5676_i</obj_property>
+      <obj_property name="ObjectShortName">cs_ad5676_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_dac_ad5676/cs_ad5676_gen" type="logic">
+      <obj_property name="ElementShortName">cs_ad5676_gen</obj_property>
+      <obj_property name="ObjectShortName">cs_ad5676_gen</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_dac_ad5676/IDLE" type="array">
+      <obj_property name="ElementShortName">IDLE[2:0]</obj_property>
+      <obj_property name="ObjectShortName">IDLE[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_dac_ad5676/SYSTEM_ON" type="array">
+      <obj_property name="ElementShortName">SYSTEM_ON[2:0]</obj_property>
+      <obj_property name="ObjectShortName">SYSTEM_ON[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_dac_ad5676/INITIAL" type="array">
+      <obj_property name="ElementShortName">INITIAL[2:0]</obj_property>
+      <obj_property name="ObjectShortName">INITIAL[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_dac_ad5676/GENWAVE" type="array">
+      <obj_property name="ElementShortName">GENWAVE[2:0]</obj_property>
+      <obj_property name="ObjectShortName">GENWAVE[2:0]</obj_property>
+   </wvobject>
+</wave_config>

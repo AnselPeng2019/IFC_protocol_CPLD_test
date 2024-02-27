@@ -17,42 +17,49 @@ proc create_report { reportName command } {
     send_msg_id runtcl-5 warning "$msg"
   }
 }
-set_param tcl.collectionResultDisplayLimit 0
-set_param chipscope.maxJobs 2
-set_param xicom.use_bs_reader 1
-set_msg_config -id {Common 17-41} -limit 10000000
+set_param chipscope.maxJobs 8
 create_project -in_memory -part xc7k325tffg900-2
 
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
 set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
-set_property webtalk.parent_dir D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.cache/wt [current_project]
-set_property parent.project_path D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.xpr [current_project]
+set_property webtalk.parent_dir D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.cache/wt [current_project]
+set_property parent.project_path D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.xpr [current_project]
 set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
-set_property ip_output_repo d:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.cache/ip [current_project]
+set_property ip_output_repo d:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 read_verilog -library xil_defaultlib {
-  D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/delay_cy.v
-  D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/get_signal_edge.v
-  D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_checksum.v
-  D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v
-  D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/sample_timer.v
-  D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/top.v
+  D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/adc_ads8688.v
+  D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/analog_top.v
+  D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/dac_ad5676.v
+  D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/delay_cy.v
+  D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/delay_cy_cnt.v
+  D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/fifo_rd.v
+  D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/fifo_wr.v
+  D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/genwave_ad5676.v
+  D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/get_signal_edge.v
+  D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_checksum.v
+  D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v
+  D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/initial_ad5676.v
+  D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/initial_ads8688.v
+  D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/sample_ads8688.v
+  D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/sample_timer.v
+  D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/spi_master_cus.v
+  D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/imports/source/top.v
 }
-read_ip -quiet d:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
-set_property used_in_implementation false [get_files -all d:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc]
-set_property used_in_implementation false [get_files -all d:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc]
-set_property used_in_implementation false [get_files -all d:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0_late.xdc]
-set_property used_in_implementation false [get_files -all d:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0_ooc.xdc]
+read_ip -quiet D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
+set_property used_in_implementation false [get_files -all d:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc]
+set_property used_in_implementation false [get_files -all d:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc]
+set_property used_in_implementation false [get_files -all d:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0_late.xdc]
+set_property used_in_implementation false [get_files -all d:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0_ooc.xdc]
 
-read_ip -quiet d:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/ip/ila_0/ila_0.xci
-set_property used_in_synthesis false [get_files -all d:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/ip/ila_0/ila_v6_2/constraints/ila_impl.xdc]
-set_property used_in_implementation false [get_files -all d:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/ip/ila_0/ila_v6_2/constraints/ila_impl.xdc]
-set_property used_in_implementation false [get_files -all d:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/ip/ila_0/ila_v6_2/constraints/ila.xdc]
-set_property used_in_implementation false [get_files -all d:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/ip/ila_0/ila_0_ooc.xdc]
+read_ip -quiet D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/ip/afifo_16i_16o_256/afifo_16i_16o_256.xci
+set_property used_in_implementation false [get_files -all d:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/ip/afifo_16i_16o_256/afifo_16i_16o_256.xdc]
+set_property used_in_implementation false [get_files -all d:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/ip/afifo_16i_16o_256/afifo_16i_16o_256_clocks.xdc]
+set_property used_in_implementation false [get_files -all d:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/ip/afifo_16i_16o_256/afifo_16i_16o_256_ooc.xdc]
 
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the
@@ -62,8 +69,8 @@ set_property used_in_implementation false [get_files -all d:/FPGAProjects/SRC3/I
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/constrs_1/imports/hpcs_fpga_dev.srcs/constrains01.xdc
-set_property used_in_implementation false [get_files D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/constrs_1/imports/hpcs_fpga_dev.srcs/constrains01.xdc]
+read_xdc D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.srcs/constrs_1/imports/hpcs_fpga_dev.srcs/constrains01.xdc
+set_property used_in_implementation false [get_files D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.srcs/constrs_1/imports/hpcs_fpga_dev.srcs/constrains01.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]

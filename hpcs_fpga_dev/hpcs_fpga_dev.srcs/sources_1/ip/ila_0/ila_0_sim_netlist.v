@@ -1,10 +1,10 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
-// Tool Version: Vivado v.2019.1.3 (win64) Build 2644227 Wed Sep  4 09:45:24 MDT 2019
-// Date        : Wed Jan 24 14:52:02 2024
-// Host        : PXFNB78001111 running 64-bit major release  (build 9200)
+// Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
+// Date        : Tue Feb 20 11:52:34 2024
+// Host        : ZNKZBHF-GY running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
-//               d:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/ip/ila_0/ila_0_sim_netlist.v
+//               D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/ip/ila_0/ila_0_sim_netlist.v
 // Design      : ila_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -12,7 +12,7 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CHECK_LICENSE_TYPE = "ila_0,ila,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* X_CORE_INFO = "ila,Vivado 2019.1.3" *) 
+(* CHECK_LICENSE_TYPE = "ila_0,ila,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* X_CORE_INFO = "ila,Vivado 2019.1" *) 
 (* NotValidForBitStream *)
 module ila_0
    (clk,

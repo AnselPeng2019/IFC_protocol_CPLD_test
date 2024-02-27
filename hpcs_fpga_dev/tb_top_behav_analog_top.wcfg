@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_top_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb_top" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="601000000001fs"></ZoomEndTime>
+      <Cursor1Time time="296120635000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="230"></NameColumnWidth>
+      <ValueColumnWidth column_width="109"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="27" />
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/clk_100M" type="logic">
+      <obj_property name="ElementShortName">clk_100M</obj_property>
+      <obj_property name="ObjectShortName">clk_100M</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/rst_n" type="logic">
+      <obj_property name="ElementShortName">rst_n</obj_property>
+      <obj_property name="ObjectShortName">rst_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/clk_20k" type="logic">
+      <obj_property name="ElementShortName">clk_20k</obj_property>
+      <obj_property name="ObjectShortName">clk_20k</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/spi1_cs" type="logic">
+      <obj_property name="ElementShortName">spi1_cs</obj_property>
+      <obj_property name="ObjectShortName">spi1_cs</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/spi1_clk" type="logic">
+      <obj_property name="ElementShortName">spi1_clk</obj_property>
+      <obj_property name="ObjectShortName">spi1_clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/spi1_miso" type="logic">
+      <obj_property name="ElementShortName">spi1_miso</obj_property>
+      <obj_property name="ObjectShortName">spi1_miso</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/spi1_mosi" type="logic">
+      <obj_property name="ElementShortName">spi1_mosi</obj_property>
+      <obj_property name="ObjectShortName">spi1_mosi</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/spi2_cs" type="logic">
+      <obj_property name="ElementShortName">spi2_cs</obj_property>
+      <obj_property name="ObjectShortName">spi2_cs</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/spi2_clk" type="logic">
+      <obj_property name="ElementShortName">spi2_clk</obj_property>
+      <obj_property name="ObjectShortName">spi2_clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/spi2_mosi" type="logic">
+      <obj_property name="ElementShortName">spi2_mosi</obj_property>
+      <obj_property name="ObjectShortName">spi2_mosi</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/spi2_miso" type="logic">
+      <obj_property name="ElementShortName">spi2_miso</obj_property>
+      <obj_property name="ObjectShortName">spi2_miso</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/dac_data" type="array">
+      <obj_property name="ElementShortName">dac_data[127:0]</obj_property>
+      <obj_property name="ObjectShortName">dac_data[127:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/dac_val" type="array">
+      <obj_property name="ElementShortName">dac_val[7:0][15:0]</obj_property>
+      <obj_property name="ObjectShortName">dac_val[7:0][15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/enable_sync" type="logic">
+      <obj_property name="ElementShortName">enable_sync</obj_property>
+      <obj_property name="ObjectShortName">enable_sync</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/sine_data" type="array">
+      <obj_property name="ElementShortName">sine_data[63:0][15:0]</obj_property>
+      <obj_property name="ObjectShortName">sine_data[63:0][15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/spl_data" type="array">
+      <obj_property name="ElementShortName">spl_data[127:0]</obj_property>
+      <obj_property name="ObjectShortName">spl_data[127:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/adc_val" type="array">
+      <obj_property name="ElementShortName">adc_val[7:0][15:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_val[7:0][15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/cs" type="array">
+      <obj_property name="ElementShortName">cs[2:0]</obj_property>
+      <obj_property name="ObjectShortName">cs[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/ns" type="array">
+      <obj_property name="ElementShortName">ns[2:0]</obj_property>
+      <obj_property name="ObjectShortName">ns[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/isInitialized" type="logic">
+      <obj_property name="ElementShortName">isInitialized</obj_property>
+      <obj_property name="ObjectShortName">isInitialized</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/sync_out" type="logic">
+      <obj_property name="ElementShortName">sync_out</obj_property>
+      <obj_property name="ObjectShortName">sync_out</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/i" type="array">
+      <obj_property name="ElementShortName">i[7:0]</obj_property>
+      <obj_property name="ObjectShortName">i[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/isInitialized_o" type="logic">
+      <obj_property name="ElementShortName">isInitialized_o</obj_property>
+      <obj_property name="ObjectShortName">isInitialized_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/IDLE" type="array">
+      <obj_property name="ElementShortName">IDLE[2:0]</obj_property>
+      <obj_property name="ObjectShortName">IDLE[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/GENRST" type="array">
+      <obj_property name="ElementShortName">GENRST[2:0]</obj_property>
+      <obj_property name="ObjectShortName">GENRST[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/INITIAL" type="array">
+      <obj_property name="ElementShortName">INITIAL[2:0]</obj_property>
+      <obj_property name="ObjectShortName">INITIAL[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/SYSTEM_ON" type="array">
+      <obj_property name="ElementShortName">SYSTEM_ON[2:0]</obj_property>
+      <obj_property name="ObjectShortName">SYSTEM_ON[2:0]</obj_property>
+   </wvobject>
+</wave_config>

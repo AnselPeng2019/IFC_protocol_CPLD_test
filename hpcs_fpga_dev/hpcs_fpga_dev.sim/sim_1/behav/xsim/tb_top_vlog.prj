@@ -1,13 +1,24 @@
 # compile verilog/system verilog design source files
-verilog xil_defaultlib  --include "../../../../hpcs_fpga_dev.srcs/sources_1/ip/clk_wiz_0" \
-"../../../../hpcs_fpga_dev.srcs/sources_1/ip/ila_0/sim/ila_0.v" \
-"../../../../hpcs_fpga_dev.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0_clk_wiz.v" \
-"../../../../hpcs_fpga_dev.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.v" \
+verilog xil_defaultlib  \
+"../../../../hpcs_fpga_dev.srcs/sources_1/ip/afifo_16i_16o_256/afifo_16i_16o_256_sim_netlist.v" \
+"../../../../hpcs_fpga_dev.srcs/sources_1/ip/ila_0/ila_0_sim_netlist.v" \
+"../../../../hpcs_fpga_dev.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0_sim_netlist.v" \
+"../../../../hpcs_fpga_dev.srcs/sources_1/imports/source/adc_ads8688.v" \
+"../../../../hpcs_fpga_dev.srcs/sources_1/imports/source/analog_top.v" \
+"../../../../hpcs_fpga_dev.srcs/sources_1/imports/source/dac_ad5676.v" \
 "../../../../hpcs_fpga_dev.srcs/sources_1/imports/source/delay_cy.v" \
+"../../../../hpcs_fpga_dev.srcs/sources_1/imports/source/delay_cy_cnt.v" \
+"../../../../hpcs_fpga_dev.srcs/sources_1/imports/source/fifo_rd.v" \
+"../../../../hpcs_fpga_dev.srcs/sources_1/imports/source/fifo_wr.v" \
+"../../../../hpcs_fpga_dev.srcs/sources_1/imports/source/genwave_ad5676.v" \
 "../../../../hpcs_fpga_dev.srcs/sources_1/imports/source/get_signal_edge.v" \
 "../../../../hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_checksum.v" \
 "../../../../hpcs_fpga_dev.srcs/sources_1/imports/source/ifc_top.v" \
+"../../../../hpcs_fpga_dev.srcs/sources_1/imports/source/initial_ad5676.v" \
+"../../../../hpcs_fpga_dev.srcs/sources_1/imports/source/initial_ads8688.v" \
+"../../../../hpcs_fpga_dev.srcs/sources_1/imports/source/sample_ads8688.v" \
 "../../../../hpcs_fpga_dev.srcs/sources_1/imports/source/sample_timer.v" \
+"../../../../hpcs_fpga_dev.srcs/sources_1/imports/source/spi_master_cus.v" \
 "../../../../hpcs_fpga_dev.srcs/sources_1/imports/source/top.v" \
 "../../../../hpcs_fpga_dev.srcs/sim_1/imports/source/tb_top.v" \
 

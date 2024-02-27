@@ -60,27 +60,24 @@ proc step_failed { step } {
   close $ch
 }
 
-set_msg_config -id {Common 17-41} -limit 10000000
 
 start_step init_design
 set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
-  set_param tcl.collectionResultDisplayLimit 0
-  set_param chipscope.maxJobs 2
-  set_param xicom.use_bs_reader 1
+  set_param chipscope.maxJobs 8
   create_project -in_memory -part xc7k325tffg900-2
   set_property design_mode GateLvl [current_fileset]
   set_param project.singleFileAddWarning.threshold 0
-  set_property webtalk.parent_dir D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.cache/wt [current_project]
-  set_property parent.project_path D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.xpr [current_project]
-  set_property ip_output_repo D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.cache/ip [current_project]
+  set_property webtalk.parent_dir D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.cache/wt [current_project]
+  set_property parent.project_path D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.xpr [current_project]
+  set_property ip_output_repo D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
   set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
-  add_files -quiet D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.runs/synth_1/top.dcp
-  read_ip -quiet d:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
-  read_ip -quiet d:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/ip/ila_0/ila_0.xci
-  read_xdc D:/FPGAProjects/SRC3/IOB_4K_IFC_protocol_git/hpcs_fpga_dev/hpcs_fpga_dev.srcs/constrs_1/imports/hpcs_fpga_dev.srcs/constrains01.xdc
+  add_files -quiet D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.runs/synth_1/top.dcp
+  read_ip -quiet D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
+  read_ip -quiet D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.srcs/sources_1/ip/afifo_16i_16o_256/afifo_16i_16o_256.xci
+  read_xdc D:/Temp/HardwareGroup/pengxiaofei/05.FPGA_Projects/hpcs_fpga_dev/hpcs_fpga_dev.srcs/constrs_1/imports/hpcs_fpga_dev.srcs/constrains01.xdc
   link_design -top top -part xc7k325tffg900-2
   close_msg_db -file init_design.pb
 } RESULT]

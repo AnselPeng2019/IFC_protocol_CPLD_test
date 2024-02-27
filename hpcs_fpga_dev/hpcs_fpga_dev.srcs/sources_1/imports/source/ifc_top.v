@@ -8,7 +8,12 @@ module ifc_top (
     input          ifc_we_b,       //IFC WE and POR pin
     input          ifc_oe_b,       //IFC OE
     input          ifc_avd,        //IFC AVD
-    output         irq             //IRQ input of LS1046A
+    output         irq,            //IRQ input of LS1046A
+    output         clk_20k,
+    //period fifo
+    output [1:0]   fifo_en,        //[0]:wen;[1]:ren
+    output [15:0]  fifo_wdata,
+    input  [15:0]  fifo_rdata
 );
     
 /**************************************statemachine parameters******************************************/
@@ -76,7 +81,7 @@ module ifc_top (
     wire HS1_SCOPE_FUN_EN, HS1_FRF_FUN_EN;
     reg [15:0] cnt_frf, cnt_scope;
     reg [31:0] sys_timer;
-    reg frf_data_avl,scope_data_avl;
+    reg frf_data_avl,scope_data_avl,read_fifo_flag;
     reg [15:0]  pi;
     //checksum 相关变量定义
     reg checksum_clear;
@@ -119,13 +124,24 @@ module ifc_top (
     reg [15:0] data_period    [0:59];
     task reset_period_data;
         begin
-            data_period[ 0] <= 16'h0003;data_period[ 1] <= 16'h1122;data_period[ 2] <= 16'h3344;data_period[ 3] <= 16'h0004;data_period[ 4] <= 16'h1122;data_period[ 5] <= 16'h3344;data_period[ 6] <= 16'h0005; data_period[ 7] <= 16'h1122; data_period[ 8] <= 16'h3344; data_period[ 9] <= 16'h0006;data_period[10] <= 16'h1122;data_period[11] <= 16'h3344;data_period[12] <= 16'h0007; data_period[13] <= 16'h1122; data_period[14] <= 16'h3344;
-            data_period[15] <= 16'h1003;data_period[16] <= 16'h1122;data_period[17] <= 16'h3344;data_period[18] <= 16'h1004;data_period[19] <= 16'h1122;data_period[20] <= 16'h3344;data_period[21] <= 16'h0005; data_period[22] <= 16'h1122; data_period[23] <= 16'h3344; data_period[24] <= 16'h0006;data_period[25] <= 16'h1122;data_period[26] <= 16'h3344;data_period[27] <= 16'h0007; data_period[28] <= 16'h1122; data_period[29] <= 16'h3344;
-            data_period[30] <= 16'h2003;data_period[31] <= 16'h1122;data_period[32] <= 16'h3344;data_period[33] <= 16'h2004;data_period[34] <= 16'h1122;data_period[35] <= 16'h3344;data_period[36] <= 16'h0005; data_period[37] <= 16'h1122; data_period[38] <= 16'h3344; data_period[39] <= 16'h0006;data_period[40] <= 16'h1122;data_period[41] <= 16'h3344;data_period[42] <= 16'h0007; data_period[43] <= 16'h1122; data_period[44] <= 16'h3344;
-            data_period[45] <= 16'h3003;data_period[46] <= 16'h1122;data_period[47] <= 16'h3344;data_period[48] <= 16'h3004;data_period[49] <= 16'h1122;data_period[50] <= 16'h3344;data_period[51] <= 16'h0005; data_period[52] <= 16'h1122; data_period[53] <= 16'h3344; data_period[54] <= 16'h0006;data_period[55] <= 16'h1122;data_period[56] <= 16'h3344;data_period[57] <= 16'h0007; data_period[58] <= 16'h1122; data_period[59] <= 16'h3344;
+            // data_period[ 0] <= 16'h0003;data_period[ 1] <= 16'h1122;data_period[ 2] <= 16'h3344;data_period[ 3] <= 16'h0004;data_period[ 4] <= 16'h1122;data_period[ 5] <= 16'h3344;data_period[ 6] <= 16'h0005; data_period[ 7] <= 16'h1122; data_period[ 8] <= 16'h3344; data_period[ 9] <= 16'h0006;data_period[10] <= 16'h1122;data_period[11] <= 16'h3344;data_period[12] <= 16'h0007; data_period[13] <= 16'h1122; data_period[14] <= 16'h3344;
+            // data_period[15] <= 16'h1003;data_period[16] <= 16'h1122;data_period[17] <= 16'h3344;data_period[18] <= 16'h1004;data_period[19] <= 16'h1122;data_period[20] <= 16'h3344;data_period[21] <= 16'h0005; data_period[22] <= 16'h1122; data_period[23] <= 16'h3344; data_period[24] <= 16'h0006;data_period[25] <= 16'h1122;data_period[26] <= 16'h3344;data_period[27] <= 16'h0007; data_period[28] <= 16'h1122; data_period[29] <= 16'h3344;
+            // data_period[30] <= 16'h2003;data_period[31] <= 16'h1122;data_period[32] <= 16'h3344;data_period[33] <= 16'h2004;data_period[34] <= 16'h1122;data_period[35] <= 16'h3344;data_period[36] <= 16'h0005; data_period[37] <= 16'h1122; data_period[38] <= 16'h3344; data_period[39] <= 16'h0006;data_period[40] <= 16'h1122;data_period[41] <= 16'h3344;data_period[42] <= 16'h0007; data_period[43] <= 16'h1122; data_period[44] <= 16'h3344;
+            // data_period[45] <= 16'h3003;data_period[46] <= 16'h1122;data_period[47] <= 16'h3344;data_period[48] <= 16'h3004;data_period[49] <= 16'h1122;data_period[50] <= 16'h3344;data_period[51] <= 16'h0005; data_period[52] <= 16'h1122; data_period[53] <= 16'h3344; data_period[54] <= 16'h0006;data_period[55] <= 16'h1122;data_period[56] <= 16'h3344;data_period[57] <= 16'h0007; data_period[58] <= 16'h1122; data_period[59] <= 16'h3344;
+            data_period[ 0] <= 16'h0000;data_period[ 1] <= 16'h0000;data_period[ 2] <= 16'h0000;data_period[ 3] <= 16'h0000;data_period[ 4] <= 16'h0000;data_period[ 5] <= 16'h0000;data_period[ 6] <= 16'h0000; data_period[ 7] <= 16'h0000; data_period[ 8] <= 16'h0000; data_period[ 9] <= 16'h0000;data_period[10] <= 16'h0000;data_period[11] <= 16'h0000;data_period[12] <= 16'h0000; data_period[13] <= 16'h0000; data_period[14] <= 16'h0000;
+            data_period[15] <= 16'h0000;data_period[16] <= 16'h0000;data_period[17] <= 16'h0000;data_period[18] <= 16'h0000;data_period[19] <= 16'h0000;data_period[20] <= 16'h0000;data_period[21] <= 16'h0000; data_period[22] <= 16'h0000; data_period[23] <= 16'h0000; data_period[24] <= 16'h0000;data_period[25] <= 16'h0000;data_period[26] <= 16'h0000;data_period[27] <= 16'h0000; data_period[28] <= 16'h0000; data_period[29] <= 16'h0000;
+            data_period[30] <= 16'h0000;data_period[31] <= 16'h0000;data_period[32] <= 16'h0000;data_period[33] <= 16'h0000;data_period[34] <= 16'h0000;data_period[35] <= 16'h0000;data_period[36] <= 16'h0000; data_period[37] <= 16'h0000; data_period[38] <= 16'h0000; data_period[39] <= 16'h0000;data_period[40] <= 16'h0000;data_period[41] <= 16'h0000;data_period[42] <= 16'h0000; data_period[43] <= 16'h0000; data_period[44] <= 16'h0000;
+            data_period[45] <= 16'h0000;data_period[46] <= 16'h0000;data_period[47] <= 16'h0000;data_period[48] <= 16'h0000;data_period[49] <= 16'h0000;data_period[50] <= 16'h0000;data_period[51] <= 16'h0000; data_period[52] <= 16'h0000; data_period[53] <= 16'h0000; data_period[54] <= 16'h0000;data_period[55] <= 16'h0000;data_period[56] <= 16'h0000;data_period[57] <= 16'h0000; data_period[58] <= 16'h0000; data_period[59] <= 16'h0000;
         end
     endtask
 /*******************************周期数据制造，仅用于模拟测试***********************************************/
+
+
+/*******************************wire变量赋值*************************************************************/
+assign fifo_en[1]      =   read_fifo_flag && hs_cmd == 8'h01;   //读周期fifo使能信号
+assign fifo_en[0]      =   checksum_en_w  && hs_cmd == 8'h01;   //写周期fifo使能信号
+assign fifo_wdata      =   FPGA_COMM_DATA;
+/*******************************wire变量赋值*************************************************************/
 
 
 /*******************************各种信号边沿的提取和延时***************************************************/
@@ -138,7 +154,7 @@ module ifc_top (
         .neg_edge                ( cs_ne   )
     );    
     delay_cy #(
-        .cycles ( 1 ))
+        .cycles ( 3 ))
     u_delay_cy_cs_pe_1 (
         .clk                     ( clk_200M          ),
         .rst_n                   ( rst_n        ),
@@ -155,7 +171,7 @@ module ifc_top (
         .neg_edge                ( avd_ne   )
     );    
     delay_cy #(
-        .cycles ( 1 ))
+        .cycles ( 3 ))
     u_delay_cy_avd_1 (
         .clk                     ( clk_200M          ),
         .rst_n                   ( rst_n        ),
@@ -178,7 +194,7 @@ module ifc_top (
         .signal                  ( cs == st_write_block     ),
 
         .pos_edge                ( get_in_write_st   ),
-        .neg_edge                ( get_out_write_st   )
+        .neg_edge                ( get_out_write_st  )
         );
     get_signal_edge  u_get_signal_edge_oe (
         .clk                     ( clk_200M        ),
@@ -189,7 +205,7 @@ module ifc_top (
         .neg_edge                ( oe_ne   )
     );    
     delay_cy #(
-        .cycles ( 5 ))
+        .cycles ( 7 ))
     u_delay_cy_cs_5 (
         .clk                     ( clk_200M          ),
         .rst_n                   ( rst_n        ),
@@ -199,7 +215,7 @@ module ifc_top (
     );
 
     delay_cy #(
-        .cycles ( 1 ))
+        .cycles ( 3 ))
     u_delay_cy_rs_1 (
         .clk                     ( clk_200M          ),
         .rst_n                   ( rst_n        ),
@@ -209,7 +225,7 @@ module ifc_top (
     );
 
     delay_cy #(
-        .cycles ( 2 ))
+        .cycles ( 4 ))
     u_delay_cy_oe_ne_1 (
         .clk                     ( clk_200M          ),
         .rst_n                   ( rst_n        ),
@@ -243,7 +259,7 @@ module ifc_top (
     );
 
     delay_cy #(
-        .cycles ( 1 ))
+        .cycles ( 3 ))
     u_delay_cy_ws1 (
         .clk                     ( clk_200M          ),
         .rst_n                   ( rst_n        ),
@@ -253,7 +269,7 @@ module ifc_top (
     );
 
     delay_cy #(
-        .cycles ( 1 ))
+        .cycles ( 3 ))
     u_delay_cy_ws2 (
         .clk                     ( clk_200M          ),
         .rst_n                   ( rst_n        ),
@@ -262,7 +278,7 @@ module ifc_top (
         .signal_out              ( write_status_1cy   )
     );
     delay_cy #(
-        .cycles ( 2 ))
+        .cycles ( 4 ))
     u_delay_cy_checksum_r_2cy (
         .clk                     ( clk_200M          ),
         .rst_n                   ( rst_n                  ),
@@ -271,7 +287,7 @@ module ifc_top (
         .signal_out              ( checksum_en_r   )
     );
     delay_cy #(
-        .cycles ( 1 ))
+        .cycles ( 3 ))
     u_delay_cy_checksum_w_1cy (
         .clk                     ( clk_200M          ),
         .rst_n                   ( rst_n        ),
@@ -280,7 +296,7 @@ module ifc_top (
         .signal_out              ( checksum_en_w   )
     );
     delay_cy #(
-        .cycles ( 2 ))
+        .cycles ( 4 ))
     u_delay_cy_checksum_w_2cy (
         .clk                     ( clk_200M          ),
         .rst_n                   ( rst_n        ),
@@ -291,10 +307,10 @@ module ifc_top (
     get_signal_edge  u_get_signal_edge_clko1 (
     .clk                     ( clk_200M        ),
     .rst_n                   ( rst_n      ),
-    .signal                  ( clk_o1     ),
+    .signal                  ( clk_20k     ),
 
-    .pos_edge                ( clk_o1_pe   ),
-    .neg_edge                ( clk_o1_ne   )
+    .pos_edge                ( clk_20k_pe   ),
+    .neg_edge                ( clk_20k_ne   )
     );
     get_signal_edge  u_get_signal_edge_clko5 (
     .clk                     ( clk_200M        ),
@@ -314,7 +330,7 @@ module ifc_top (
     );
 /*******************************各种信号边沿的提取和延时***************************************************/
 
-/*******************************IFC总线数据和地址位的移位处理**********************************************/
+/*******************************IFC总线数据和地址位的移位处理************************************************************************************************************/
     assign	ifc_data_r[15:0] = {ifc_ad_bus[0], ifc_ad_bus[1], ifc_ad_bus[2],  ifc_ad_bus[3],  ifc_ad_bus[4],  ifc_ad_bus[5],  ifc_ad_bus[6],  ifc_ad_bus[7],
                                ifc_ad_bus[8], ifc_ad_bus[9], ifc_ad_bus[10], ifc_ad_bus[11], ifc_ad_bus[12], ifc_ad_bus[13], ifc_ad_bus[14], ifc_ad_bus[15]};//
     assign  ifc_ad_bus[15:0] = (ifc_cs==0 && ifc_oe_b==0) ? {regd[0], regd[1], regd[2],  regd[3],  regd[4],  regd[5],  regd[6],  regd[7],
@@ -331,7 +347,7 @@ module ifc_top (
             end
         end
     end
-/*******************************IFC总线数据和地址位的移位处理**********************************************/
+/*******************************IFC总线数据和地址位的移位处理************************************************************************************************************/
 
 
 /**********************************************状态机的实现***********************************************/
@@ -544,6 +560,7 @@ module ifc_top (
 /**********************************************IFC单写操作的实现******************************************/
 
 /**********************************************IFC连写连读操作的实现***************************************/
+reg [7:0] cnt;
     always @(posedge clk_200M or negedge rst_n) begin
         if(rst_n == 0) begin
             FPGA_SYS_INFO_SERIALNUMBER              <= 16'h0000;
@@ -559,9 +576,11 @@ module ifc_top (
             FPGA_COMM_DATALEN                       <= 16'h0000;        //0x52
             FPGA_COMM_DATA                          <= 16'h0000;        //0x54
             FPGA_APP_SCOPE_SAMPLING                 <= {5'b0_0000, 2'b00, 9'd50}; //0x
-            pi                                      <= 0; 
+            pi                                      <= 0;
+            cnt                                     <= 0; 
             checksum_clear                          <= 0;
             sys_timer                               <= 0;
+            read_fifo_flag                          <= 0;
             // scp_period                              <= 5000;            //50us
             // reset_data_block;
             reset_period_data;
@@ -606,7 +625,7 @@ module ifc_top (
                 endcase
             end 
             if(cs == st_read_block && cs_ne && ifc_addr_r == 16'h54) begin
-                $display("read block.\n");
+                // $display("read block.\n");
                 if(pi <= FPGA_COMM_DATALEN/2 - 1) begin
                     if(hs_cmd == 8'h01) begin //period mode
                         FPGA_COMM_DATA <= data_period[pi];
@@ -623,7 +642,7 @@ module ifc_top (
                     pi <= pi + 1;
                 end
             end
-            else if (cs == st_write_block && cs_pe_1cy && ifc_addr_r == 16'h54) begin
+            else if (cs == st_write_block && cs_pe_1cy && ifc_addr_r == 16'h54) begin //打印出写入的信息
                 if(pi <= FPGA_COMM_DATALEN/2 - 1) begin
                     if(hs_cmd == 8'h01) begin //period mode
                         // data_block[pi] <= FPGA_COMM_DATA;
@@ -635,12 +654,6 @@ module ifc_top (
                     end else if(hs_cmd == 8'h04) begin //para mode
                         $display(".....Write data in para   mode: id = %d, FPGA_COMM_DATA = %h.....\n", pi, FPGA_COMM_DATA);
                     end
-                    pi <= pi + 1;
-                end
-            end            
-            else if (cs == st_w_frf_block && cs_pe_1cy && ifc_addr_r == 16'h54) begin
-                if(pi <= FPGA_COMM_DATALEN/2 - 1) begin
-                    // data_block[pi] <= FPGA_COMM_DATA;
                     pi <= pi + 1;
                 end
             end
@@ -673,6 +686,7 @@ module ifc_top (
                 end
                 pi <= 0;
                 checksum_clear <= 0;
+                read_fifo_flag <= 1;
             end
             else if(get_in_write_st) begin
                 pi <= 0;
@@ -709,6 +723,21 @@ module ifc_top (
                     end
                 end
             end
+            if(read_fifo_flag) begin
+                if(cnt == 2) begin//延时2个clk，和fifo读操作对齐
+                    if(pi == FPGA_COMM_DATALEN/2) begin
+                        pi <= 0;
+                        read_fifo_flag <= 0;
+                        cnt <= 0;
+                    end else begin
+                        data_period[pi] <= fifo_rdata;
+                        pi <= pi + 1;
+                    end
+                end else begin
+                    cnt <= cnt + 1;
+                end
+                //读取fifo 120 bytes
+            end
         end
     end
 /**********************************************IFC连写连读操作的实现***************************************/
@@ -732,11 +761,12 @@ module ifc_top (
 /**********************************************定时器模块实现**********************************************/
     //用于实现frf和scope数据采样的定时
     sample_timer #(
-        .freq ( 100 )
+        .freq ( 100 )//MHz
     ) u_sample_timer1 (
         .clk                     ( clk_100M          ),
         .rst_n                   ( rst_n        ),
-        .en1                     ( HS1_FRF_FUN_EN          ),
+        // .en1                     ( HS1_FRF_FUN_EN          ),
+        .en1                     ( 1'b1         ),
         .en2                     ( en2          ),
         .en3                     ( en3          ),
         .en4                     ( en4          ),
@@ -744,15 +774,15 @@ module ifc_top (
         .scp_period              ( scp_period   ),
         .scp_unit                ( scp_unit   ),
 
-        .clk_o1                  ( clk_o1       ),
-        .clk_o2                  ( clk_o2       ),
-        .clk_o3                  ( clk_o3       ),
-        .clk_o4                  ( clk_o4       ),
-        .clk_o5                  ( clk_o5       )
+        .clk_o1                  ( clk_20k       ),//20kHz
+        .clk_o2                  ( clk_o2       ),//10kHz
+        .clk_o3                  ( clk_o3       ),//5kHz
+        .clk_o4                  ( clk_o4       ),//2kHz
+        .clk_o5                  ( clk_o5       ) //scp, user define
     );
     //用于实现单板运行时间的定时
     sample_timer #(
-        .freq ( 100 )
+        .freq ( 100 )//MHz
     ) u_sample_timer2 (
         .clk                     ( clk_100M          ),
         .rst_n                   ( rst_n        ),
@@ -786,7 +816,7 @@ module ifc_top (
                     cnt_frf <= cnt_frf - 10;
                 end
                 // cnt_frf      <= 0;
-            end else if(clk_o1_ne && HS1_FRF_FUN_EN) begin
+            end else if(clk_20k_ne && HS1_FRF_FUN_EN) begin
                 if(cnt_frf > 9) begin
                     frf_data_avl <= 1;
                     cnt_frf <= cnt_frf + 1;
@@ -814,59 +844,62 @@ module ifc_top (
     end
 /**********************************************定时器模块实现**********************************************/
 
+/**********************************************FIFO模块实现begin*******************************************/
 
-/**********************************************ILA逻辑分析仪***********************************************/
-    wire [15:0] probe0;
-    wire [15:0] probe1;
-    wire [15:0] probe2;
-    wire [15:0] probe3;
-    wire [15:0] probe4;
-    wire [15:0] probe5;
-    wire [15:0] probe6;
-    wire [15:0] probe7;
-    wire [15:0] probe8;
-    wire [15:0] probe9;
-    wire  probe10;
-    wire  probe11;
-    wire  probe12;
-    wire  probe13;
-    wire  probe14;
-    wire  probe15;
+/**********************************************FIFO模块实现end*********************************************/
 
-    ila_0 u_ila_0 (
-        .clk(clk_200M), // input wire clk
+// /**********************************************ILA逻辑分析仪***********************************************/
+//     wire [15:0] probe0;
+//     wire [15:0] probe1;
+//     wire [15:0] probe2;
+//     wire [15:0] probe3;
+//     wire [15:0] probe4;
+//     wire [15:0] probe5;
+//     wire [15:0] probe6;
+//     wire [15:0] probe7;
+//     wire [15:0] probe8;
+//     wire [15:0] probe9;
+//     wire  probe10;
+//     wire  probe11;
+//     wire  probe12;
+//     wire  probe13;
+//     wire  probe14;
+//     wire  probe15;
 
-        .probe0(probe0), // input wire [15:0]  probe0  
-        .probe1(probe1), // input wire [15:0]  probe1 
-        .probe2(probe2), // input wire [15:0]  probe2 
-        .probe3(probe3), // input wire [15:0]  probe3 
-        .probe4(probe4), // input wire [15:0]  probe4 
-        .probe5(probe5), // input wire [15:0]  probe5 
-        .probe6(probe6), // input wire [15:0]  probe6 
-        .probe7(probe7), // input wire [15:0]  probe7 
-        .probe8(probe8), // input wire [15:0]  probe8 
-        .probe9(probe9), // input wire [15:0]  probe9 
-        .probe10(probe10), // input wire [0:0]  probe10 
-        .probe11(probe11), // input wire [0:0]  probe11 
-        .probe12(probe12), // input wire [0:0]  probe12 
-        .probe13(probe13), // input wire [0:0]  probe13 
-        .probe14(probe14), // input wire [0:0]  probe14 
-        .probe15(probe15) // input wire [0:0]  probe15 cnt_scope
-    );
-    assign probe0  = ifc_ad_bus;
-    assign probe1  = ifc_addr_lat;
-    assign probe3  = ifc_data_r;
-    assign probe4  = ifc_addr_r;
-    assign probe5  = checksum_out;
-    assign probe6  = FPGA_HANDSHAKE_CHANNEL0;
-    assign probe7  = FPGA_SYS_STA_STATUS;
-    assign probe8  = FPGA_HANDSHAKE_CHANNEL1;
-    assign probe2  = cnt_scope;
-    assign probe10 = ifc_cs;
-    assign probe11 = ifc_we_b;
-    assign probe12 = ifc_oe_b;
-    assign probe13 = ifc_avd;
-    assign probe14 = scope_data_avl;
-/**********************************************ILA逻辑分析仪***********************************************/
+//     ila_0 u_ila_0 (
+//         .clk(clk_200M), // input wire clk
+
+//         .probe0(probe0), // input wire [15:0]  probe0  
+//         .probe1(probe1), // input wire [15:0]  probe1 
+//         .probe2(probe2), // input wire [15:0]  probe2 
+//         .probe3(probe3), // input wire [15:0]  probe3 
+//         .probe4(probe4), // input wire [15:0]  probe4 
+//         .probe5(probe5), // input wire [15:0]  probe5 
+//         .probe6(probe6), // input wire [15:0]  probe6 
+//         .probe7(probe7), // input wire [15:0]  probe7 
+//         .probe8(probe8), // input wire [15:0]  probe8 
+//         .probe9(probe9), // input wire [15:0]  probe9 
+//         .probe10(probe10), // input wire [0:0]  probe10 
+//         .probe11(probe11), // input wire [0:0]  probe11 
+//         .probe12(probe12), // input wire [0:0]  probe12 
+//         .probe13(probe13), // input wire [0:0]  probe13 
+//         .probe14(probe14), // input wire [0:0]  probe14 
+//         .probe15(probe15) // input wire [0:0]  probe15 cnt_scope
+//     );
+//     assign probe0  = ifc_ad_bus;
+//     assign probe1  = ifc_addr_lat;
+//     assign probe3  = ifc_data_r;
+//     assign probe4  = ifc_addr_r;
+//     assign probe5  = checksum_out;
+//     assign probe6  = FPGA_HANDSHAKE_CHANNEL0;
+//     assign probe7  = FPGA_SYS_STA_STATUS;
+//     assign probe8  = FPGA_HANDSHAKE_CHANNEL1;
+//     assign probe2  = cnt_scope;
+//     assign probe10 = ifc_cs;
+//     assign probe11 = ifc_we_b;
+//     assign probe12 = ifc_oe_b;
+//     assign probe13 = ifc_avd;
+//     assign probe14 = scope_data_avl;
+// /**********************************************ILA逻辑分析仪***********************************************/
 
 endmodule

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_top_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb_top" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="581487012988fs"></ZoomEndTime>
+      <Cursor1Time time="601000000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="230"></NameColumnWidth>
+      <ValueColumnWidth column_width="105"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="27" />
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_adc_ads8688/u_sample_ads8688/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_adc_ads8688/u_sample_ads8688/rst_n" type="logic">
+      <obj_property name="ElementShortName">rst_n</obj_property>
+      <obj_property name="ObjectShortName">rst_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_adc_ads8688/u_sample_ads8688/enable" type="logic">
+      <obj_property name="ElementShortName">enable</obj_property>
+      <obj_property name="ObjectShortName">enable</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_adc_ads8688/u_sample_ads8688/wr_ack" type="logic">
+      <obj_property name="ElementShortName">wr_ack</obj_property>
+      <obj_property name="ObjectShortName">wr_ack</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_adc_ads8688/u_sample_ads8688/data_out" type="array">
+      <obj_property name="ElementShortName">data_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data_out[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_adc_ads8688/u_sample_ads8688/sync_pe" type="logic">
+      <obj_property name="ElementShortName">sync_pe</obj_property>
+      <obj_property name="ObjectShortName">sync_pe</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_adc_ads8688/u_sample_ads8688/wr_req" type="logic">
+      <obj_property name="ElementShortName">wr_req</obj_property>
+      <obj_property name="ObjectShortName">wr_req</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_adc_ads8688/u_sample_ads8688/data_in" type="array">
+      <obj_property name="ElementShortName">data_in[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data_in[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_adc_ads8688/u_sample_ads8688/isSampledOver" type="logic">
+      <obj_property name="ElementShortName">isSampledOver</obj_property>
+      <obj_property name="ObjectShortName">isSampledOver</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_adc_ads8688/u_sample_ads8688/cs_ads8688" type="logic">
+      <obj_property name="ElementShortName">cs_ads8688</obj_property>
+      <obj_property name="ObjectShortName">cs_ads8688</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_adc_ads8688/u_sample_ads8688/spl_data" type="array">
+      <obj_property name="ElementShortName">spl_data[127:0]</obj_property>
+      <obj_property name="ObjectShortName">spl_data[127:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_adc_ads8688/u_sample_ads8688/cs" type="array">
+      <obj_property name="ElementShortName">cs[2:0]</obj_property>
+      <obj_property name="ObjectShortName">cs[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_adc_ads8688/u_sample_ads8688/ns" type="array">
+      <obj_property name="ElementShortName">ns[2:0]</obj_property>
+      <obj_property name="ObjectShortName">ns[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_adc_ads8688/u_sample_ads8688/isSendCMD" type="logic">
+      <obj_property name="ElementShortName">isSendCMD</obj_property>
+      <obj_property name="ObjectShortName">isSendCMD</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_adc_ads8688/u_sample_ads8688/isSampled" type="logic">
+      <obj_property name="ElementShortName">isSampled</obj_property>
+      <obj_property name="ObjectShortName">isSampled</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_adc_ads8688/u_sample_ads8688/isDelayed" type="logic">
+      <obj_property name="ElementShortName">isDelayed</obj_property>
+      <obj_property name="ObjectShortName">isDelayed</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_adc_ads8688/u_sample_ads8688/nCS_ctrl" type="logic">
+      <obj_property name="ElementShortName">nCS_ctrl</obj_property>
+      <obj_property name="ObjectShortName">nCS_ctrl</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_adc_ads8688/u_sample_ads8688/data_init" type="array">
+      <obj_property name="ElementShortName">data_init[8:0][31:0]</obj_property>
+      <obj_property name="ObjectShortName">data_init[8:0][31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_adc_ads8688/u_sample_ads8688/data" type="array">
+      <obj_property name="ElementShortName">data[7:0][15:0]</obj_property>
+      <obj_property name="ObjectShortName">data[7:0][15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_adc_ads8688/u_sample_ads8688/wr_ack_edge" type="array">
+      <obj_property name="ElementShortName">wr_ack_edge[1:0]</obj_property>
+      <obj_property name="ObjectShortName">wr_ack_edge[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_adc_ads8688/u_sample_ads8688/wr_ack_pe" type="logic">
+      <obj_property name="ElementShortName">wr_ack_pe</obj_property>
+      <obj_property name="ObjectShortName">wr_ack_pe</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_adc_ads8688/u_sample_ads8688/i" type="array">
+      <obj_property name="ElementShortName">i[7:0]</obj_property>
+      <obj_property name="ObjectShortName">i[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_adc_ads8688/u_sample_ads8688/ticks" type="array">
+      <obj_property name="ElementShortName">ticks[23:0]</obj_property>
+      <obj_property name="ObjectShortName">ticks[23:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_adc_ads8688/u_sample_ads8688/IDLE" type="array">
+      <obj_property name="ElementShortName">IDLE[2:0]</obj_property>
+      <obj_property name="ObjectShortName">IDLE[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_adc_ads8688/u_sample_ads8688/SAMPLING" type="array">
+      <obj_property name="ElementShortName">SAMPLING[2:0]</obj_property>
+      <obj_property name="ObjectShortName">SAMPLING[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_adc_ads8688/u_sample_ads8688/SEND_DELAY" type="array">
+      <obj_property name="ElementShortName">SEND_DELAY[2:0]</obj_property>
+      <obj_property name="ObjectShortName">SEND_DELAY[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/u_top/u_analog_top/u_adc_ads8688/u_sample_ads8688/SPL_COMP" type="array">
+      <obj_property name="ElementShortName">SPL_COMP[2:0]</obj_property>
+      <obj_property name="ObjectShortName">SPL_COMP[2:0]</obj_property>
+   </wvobject>
+</wave_config>

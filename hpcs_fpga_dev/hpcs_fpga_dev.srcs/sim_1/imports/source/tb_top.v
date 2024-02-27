@@ -466,19 +466,20 @@ module tb_top;
     initial begin
         
         #500
-            // write_operation_period_data;
+            write_operation_period_data;
             // write_operation_frf_data;
-            write_operation_scope_data;
-            // read_operation_period_data;
+            // write_operation_scope_data;
+        #500
+            read_operation_period_data;
             // write_operation_para_data;
 
         // #100000
             // read_operation_frf_data;
             // read_operation_scope_data;
-        #600000
+        // #600000
         //     write_operation_period_data;
         //     read_operation_frf_data;
-            read_operation_scope_data;
+            // read_operation_scope_data;
 
         // #200 $finish;
     end
